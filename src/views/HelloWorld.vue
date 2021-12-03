@@ -1,5 +1,5 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
+  <img alt="Vue logo" src="../assets/logo.png" />
   <div class="hello">
     <h1>Wellcome to your Vue.js App</h1>
     <p>
@@ -31,13 +31,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'HelloWorld',
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;

@@ -1,12 +1,13 @@
 <template>
   <p>
     <router-link to="/">Home</router-link>
-    <router-link to="/about">HelloWorld</router-link>
+    |
+    <router-link to="/hello">HelloWorld</router-link>
   </p>
   <router-view></router-view>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "App",
 };

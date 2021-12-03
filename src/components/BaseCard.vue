@@ -23,6 +23,7 @@ export default defineComponent({
 
 <style lang="css" scoped>
 .card {
+  margin: 1rem;
   background-color: #eeeeee;
   border: 1px solid #aaaaaa;
   border-radius: 1rem;
