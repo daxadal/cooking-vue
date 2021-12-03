@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
-import HelloWorld from "./views/HelloWorld.vue";
-import Home from "./views/Home.vue";
+import HelloWorld from "@/views/HelloWorld.vue";
+import Home from "@/views/Home.vue";
 
 const routes = [
   { path: "/", component: Home },

@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import BaseCard from "../components/BaseCard.vue";
+import BaseCard from "@/components/BaseCard.vue";
 
 export default {
   name: "Home",
