@@ -1,10 +1,10 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <div class="cards">
-    <Card class="cards__card" title="Awesome card">
+    <BaseCard class="cards__card" title="Awesome card">
       <button>Click me!</button><button>No, click ME!</button>
-    </Card>
-    <Card class="cards__card" title="Lorem ipsum">
+    </BaseCard>
+    <BaseCard class="cards__card" title="Lorem ipsum">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus
         orci mauris, nec volutpat libero convallis non. Curabitur sed sagittis
@@ -14,23 +14,23 @@
         fringilla pretium, magna arcu ultricies odio, eget dapibus nulla ex nec
         risus. Suspendisse potenti
       </p>
-    </Card>
-    <Card class="cards__card">
+    </BaseCard>
+    <BaseCard class="cards__card">
       <input placeholder="Type something" />
-    </Card>
+    </BaseCard>
   </div>
   <HelloWorld msg="Welcome to Your Vue.js App" />
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
-import Card from "./components/Card.vue";
+import BaseCard from "./components/BaseCard.vue";
 
 export default {
   name: "App",
   components: {
     HelloWorld,
-    Card,
+    BaseCard,
   },
 };
 </script>
