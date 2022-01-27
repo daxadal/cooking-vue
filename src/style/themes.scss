@@ -1,0 +1,17 @@
+@use "./palletes";
+
+:root {
+  @include light-theme;
+
+  &.dark-theme {
+    @include dark-theme;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include dark-theme;
+
+    &.light-theme {
+      @include light-theme;
+    }
+  }
+}
