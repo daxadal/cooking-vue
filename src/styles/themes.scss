@@ -1,4 +1,12 @@
-@use "./palletes";
+@mixin light-theme {
+  --background-color: #fff;
+  // TODO: Add more colors
+}
+
+@mixin dark-theme {
+  --background-color: #000;
+  // TODO: Add more colors
+}
 
 :root {
   @include light-theme;
