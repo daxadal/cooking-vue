@@ -1,10 +1,18 @@
 @mixin light-theme {
   --background-color: #fff;
+  --highlight-background-color: #eee;
+  --soft-detail-color: #aaa;
+  --main-text-color: #000;
+  --cyan: #077;
   // TODO: Add more colors
 }
 
 @mixin dark-theme {
   --background-color: #000;
+  --highlight-background-color: #333;
+  --soft-detail-color: #666;
+  --main-text-color: #fff;
+  --cyan: #077;
   // TODO: Add more colors
 }
 

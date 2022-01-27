@@ -24,12 +24,12 @@ export default defineComponent({
 <style lang="css" scoped>
 .card {
   margin: 1rem;
-  background-color: #eeeeee;
-  border: 1px solid #aaaaaa;
+  background-color: var(--highlight-background-color);
+  border: 1px solid var(--soft-detail-color);
   border-radius: 1rem;
 }
 
 .card__title {
-  color: #007777;
+  color: var(--cyan);
 }
 </style>
