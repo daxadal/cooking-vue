@@ -19,6 +19,7 @@
     "@vue/cli-plugin-typescript": "4.5.14",
     "@vue/cli-service": "4.5.13",
     "@vue/compiler-sfc": "3.2.19",
+    "babel-eslint": "^10.1.0",
     "eslint": "6.8.0",
     "eslint-plugin-vue": "7.19.1",
     "prettier": "2.4.1",
