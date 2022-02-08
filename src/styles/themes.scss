@@ -1,18 +1,32 @@
 @mixin light-theme {
-  --background-color: #fff;
-  --highlight-background-color: #eee;
-  --soft-detail-color: #aaa;
-  --main-text-color: #000;
-  --cyan: #077;
+  // NEUTRAL
+  --neutral-background: #fff;
+  --neutral-foreground: #eee;
+  --neutral-detail: #aaa;
+  --neutral-text: #000;
+
+  // CYAN
+  --cyan-background: #0ff;
+  --cyan-foreground: #0ee;
+  --cyan-detail: #0aa;
+  --cyan-text: #077;
+
   // TODO: Add more colors
 }
 
 @mixin dark-theme {
-  --background-color: #000;
-  --highlight-background-color: #333;
-  --soft-detail-color: #666;
-  --main-text-color: #fff;
-  --cyan: #077;
+  // NEUTRAL
+  --neutral-background: #000;
+  --neutral-foreground: #333;
+  --neutral-detail: #666;
+  --neutral-text: #fff;
+
+  // CYAN
+  --cyan-background: #033;
+  --cyan-foreground: #066;
+  --cyan-detail: #0aa;
+  --cyan-text: #0ee;
+
   // TODO: Add more colors
 }
 
