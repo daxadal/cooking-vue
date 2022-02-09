@@ -1,7 +1,9 @@
 <template>
   <div :class="['card', `card--${color}`]">
-    <h1 v-if="title">{{ title }}</h1>
-    <slot />
+    <h1 v-if="title" class="card__top">{{ title }}</h1>
+    <div class="card__center">
+      <slot />
+    </div>
     <div class="card__bottom">
       <p v-if="leftCorner">{{ leftCorner }}</p>
       <p v-if="rightCorner">{{ rightCorner }}</p>
@@ -45,6 +47,9 @@ export default defineComponent({
   margin: 1rem;
   border: 1px solid;
   border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 
   &--neutral {
     background-color: var(--neutral-foreground);
@@ -57,8 +62,16 @@ export default defineComponent({
     color: var(--cyan-text);
     border-color: var(--cyan-detail);
   }
+  &__top {
+    flex: 0 0 auto;
+  }
+
+  &__center {
+    flex: 1 0 0;
+  }
 
   &__bottom {
+    flex: 0 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
