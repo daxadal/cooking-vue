@@ -1,6 +1,12 @@
 <template>
   <div class="cards">
-    <BaseCard class="cards__card" title="Awesome card" :color="Colors.CYAN">
+    <BaseCard
+      class="cards__card"
+      :color="Colors.CYAN"
+      title="Awesome card"
+      leftCorner="cornerL"
+      rightCorner="cornerR"
+    >
       <button>Click me!</button><button>No, click ME!</button>
     </BaseCard>
     <BaseCard class="cards__card" title="Lorem ipsum">

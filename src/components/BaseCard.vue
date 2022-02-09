@@ -2,6 +2,10 @@
   <div :class="['card', `card--${color}`]">
     <h1 v-if="title">{{ title }}</h1>
     <slot />
+    <div class="card__bottom">
+      <p v-if="leftCorner">{{ leftCorner }}</p>
+      <p v-if="rightCorner">{{ rightCorner }}</p>
+    </div>
   </div>
 </template>
 
@@ -16,6 +20,16 @@ export default defineComponent({
       type: String as PropType<Colors>,
       default: Colors.NEUTRAL,
       validator: (value: Colors) => Object.values(Colors).includes(value),
+    },
+    leftCorner: {
+      type: String,
+      required: false,
+      default: undefined,
+    },
+    rightCorner: {
+      type: String,
+      required: false,
+      default: undefined,
     },
     title: {
       type: String,
@@ -42,6 +56,12 @@ export default defineComponent({
     background-color: var(--cyan-foreground);
     color: var(--cyan-text);
     border-color: var(--cyan-detail);
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 </style>
