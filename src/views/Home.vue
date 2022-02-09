@@ -1,6 +1,6 @@
-<template >
+<template>
   <div class="cards">
-    <BaseCard class="cards__card" title="Awesome card">
+    <BaseCard class="cards__card" title="Awesome card" :color="Colors.CYAN">
       <button>Click me!</button><button>No, click ME!</button>
     </BaseCard>
     <BaseCard class="cards__card" title="Lorem ipsum">
@@ -22,13 +22,18 @@
 
 <script lang="ts">
 import BaseCard from "@/components/BaseCard.vue";
+import { Colors } from "@/resources/constants-types";
+import { defineComponent } from "@vue/runtime-core";
 
-export default {
+export default defineComponent({
   name: "Home",
   components: {
     BaseCard,
   },
-};
+  setup() {
+    return { Colors };
+  },
+});
 </script>
 
 <style>

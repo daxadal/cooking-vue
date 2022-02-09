@@ -1,4 +1,4 @@
 export enum Colors {
-  NEUTRAL,
-  CYAN,
+  NEUTRAL = "neutral",
+  CYAN = "cyan",
 }
