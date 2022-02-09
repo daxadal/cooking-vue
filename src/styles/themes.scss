@@ -1,0 +1,47 @@
+@mixin light-theme {
+  // NEUTRAL
+  --neutral-background: #fff;
+  --neutral-foreground: #eee;
+  --neutral-detail: #aaa;
+  --neutral-text: #000;
+
+  // CYAN
+  --cyan-background: #0ff;
+  --cyan-foreground: #0ee;
+  --cyan-detail: #0aa;
+  --cyan-text: #077;
+
+  // TODO: Add more colors
+}
+
+@mixin dark-theme {
+  // NEUTRAL
+  --neutral-background: #000;
+  --neutral-foreground: #333;
+  --neutral-detail: #666;
+  --neutral-text: #fff;
+
+  // CYAN
+  --cyan-background: #033;
+  --cyan-foreground: #066;
+  --cyan-detail: #0aa;
+  --cyan-text: #0ee;
+
+  // TODO: Add more colors
+}
+
+:root {
+  @include light-theme;
+
+  &.dark-theme {
+    @include dark-theme;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include dark-theme;
+
+    &.light-theme {
+      @include light-theme;
+    }
+  }
+}
