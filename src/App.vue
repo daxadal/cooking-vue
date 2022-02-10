@@ -1,15 +1,22 @@
 <template>
-  <p>
-    <router-link to="/">Home</router-link>
-    |
-    <router-link to="/hello">HelloWorld</router-link>
-  </p>
-  <router-view></router-view>
+  <BaseToolbar>
+    <h1 class="title">Cooking Vue</h1>
+  </BaseToolbar>
+  <div class="content">
+    <p>
+      <router-link to="/">Home</router-link>
+      |
+      <router-link to="/hello">HelloWorld</router-link>
+    </p>
+    <router-view />
+  </div>
 </template>
 
 <script lang="ts">
+import BaseToolbar from "./components/BaseToolbar.vue";
 export default {
   name: "App",
+  components: { BaseToolbar },
 };
 </script>
 
@@ -20,5 +27,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   margin-top: 60px;
+}
+
+.title {
+  align-self: center;
+  margin: 0 auto;
+}
+
+.content {
+  margin-top: 8rem;
 }
 </style>
