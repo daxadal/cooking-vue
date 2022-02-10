@@ -9,7 +9,7 @@
     >
       <button>Click me!</button><button>No, click ME!</button>
     </BaseCard>
-    <BaseCard class="cards__card" title="Lorem ipsum">
+    <BaseCard class="cards__card" title="Lorem ipsum" leftCorner="cornerL">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus
         orci mauris, nec volutpat libero convallis non. Curabitur sed sagittis
@@ -20,7 +20,7 @@
         risus. Suspendisse potenti
       </p>
     </BaseCard>
-    <BaseCard class="cards__card">
+    <BaseCard class="cards__card" rightCorner="cornerR">
       <input placeholder="Type something" />
     </BaseCard>
   </div>
