@@ -30,7 +30,7 @@ export default defineComponent({
     // if (props.tag === "submit" && slots.default) {
     //   innerText = slots.default()?.[0]?.children?.toString().trim();
     // } else {
-      innerText = undefined;
+    innerText = undefined;
     // }
     const classes = computed(() => [
       {
@@ -64,7 +64,6 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-
 @mixin setButtonType($color) {
   background-color: $color;
   border: 1px solid $color;
