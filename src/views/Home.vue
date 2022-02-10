@@ -1,4 +1,4 @@
-<template >
+<template>
   <div class="cards">
     <BaseCard class="cards__card" title="Awesome card">
       <button>Click me!</button><button>No, click ME!</button>
@@ -18,15 +18,20 @@
       <input placeholder="Type something" />
     </BaseCard>
   </div>
+  <div>
+    <PalleteSwitch />
+  </div>
 </template>
 
 <script lang="ts">
 import BaseCard from "@/components/BaseCard.vue";
+import PalleteSwitch from "@/components/PalleteSwitch.vue";
 
 export default {
   name: "Home",
   components: {
     BaseCard,
+    PalleteSwitch,
   },
 };
 </script>
