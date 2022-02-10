@@ -1,6 +1,7 @@
 <template>
   <BaseToolbar>
     <h1 class="title">Cooking Vue</h1>
+    <BaseAvatar size="3rem"/>
   </BaseToolbar>
   <div class="content">
     <p>
@@ -14,9 +15,10 @@
 
 <script lang="ts">
 import BaseToolbar from "./components/BaseToolbar.vue";
+import BaseAvatar from "./components/BaseAvatar.vue";
 export default {
   name: "App",
-  components: { BaseToolbar },
+  components: { BaseToolbar, BaseAvatar },
 };
 </script>
 
