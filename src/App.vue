@@ -9,6 +9,7 @@
     :closeOnClickAway="true"
     :hasMask="true"
     :placement="Positions.R"
+    :topOffset="toolbarHeight"
   >
     <BaseList>
       <router-link to="/">Home</router-link>
@@ -33,8 +34,9 @@ export default defineComponent({
   components: { BaseToolbar, BaseAvatar, BaseDrawer, BaseList },
   setup() {
     const isDrawerShowing = ref(false);
+    const toolbarHeight = ref(81); // TODO get toolbar height dynamicly
 
-    return { isDrawerShowing, Positions };
+    return { isDrawerShowing, Positions, toolbarHeight };
   },
 });
 </script>

@@ -19,6 +19,7 @@ export default defineComponent({
       required: true,
       validator: (value: Positions) => Object.values(Positions).includes(value),
     },
+    topOffset: { type: Number, required: true },
   },
   setup(props, { emit }) {
     function maskClick() {
@@ -44,17 +45,16 @@ export default defineComponent({
     <aside class="drawer">
       <div
         v-show="isShowing && hasMask"
-        aria-label="mask"
         class="drawer__mask"
         tabindex="0"
         @click.self="maskClick"
+        :style="{ top: topOffset + 'px' }"
       />
       <div
-        class="drawer__body"
-        aria-label="body"
-        :class="`drawer__body--${placement}`"
-        :style="{ width }"
         v-show="isShowing"
+        class="drawer__body"
+        :class="`drawer__body--${placement}`"
+        :style="{ width, top: topOffset + 'px' }"
       >
         <slot />
       </div>
@@ -64,11 +64,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .drawer {
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-
   &__mask {
     position: fixed;
     top: 81px; // TODO: Harcoded toolbar height. Find a betterway
