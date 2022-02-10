@@ -71,7 +71,7 @@ export default defineComponent({
 
   &__mask {
     position: fixed;
-    top: 0;
+    top: 81px; // TODO: Harcoded toolbar height. Find a betterway
     left: 0;
     box-sizing: border-box;
     width: 100%;
@@ -82,6 +82,7 @@ export default defineComponent({
 
   &__body {
     position: fixed;
+    top: 80px; // TODO: Harcoded toolbar height. Find a betterway
     display: flex;
     flex-direction: column;
     -moz-box-sizing: border-box;
@@ -96,17 +97,14 @@ export default defineComponent({
     //   0 0 0 1px rgba(50, 50, 93, 0.05);
     transition: transform 0.2s ease-in-out;
     transition-delay: 1s;
+    border: 1px solid var(--neutral-detail);
 
     &--right {
-      top: 0;
       right: 0;
-      border-left: 1px solid var(--neutral-detail);
     }
 
     &--left {
-      top: 0;
       left: 0;
-      border-right: 1px solid var(--neutral-detail);
     }
   }
 }

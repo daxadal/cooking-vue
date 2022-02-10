@@ -1,6 +1,6 @@
 <template>
   <BaseToolbar>
-    <h1 class="title">Cooking Vue</h1>
+    <h1 class="toolbar__title">Cooking Vue</h1>
     <BaseAvatar size="3rem" @click="isDrawerShowing = !isDrawerShowing" />
   </BaseToolbar>
   <BaseDrawer
@@ -27,6 +27,7 @@ import BaseToolbar from "./components/BaseToolbar.vue";
 import BaseAvatar from "./components/BaseAvatar.vue";
 import BaseDrawer, { Positions } from "./components/BaseDrawer.vue";
 import BaseList from "./components/BaseList.vue";
+
 export default defineComponent({
   name: "App",
   components: { BaseToolbar, BaseAvatar, BaseDrawer, BaseList },
@@ -47,7 +48,7 @@ export default defineComponent({
   margin-top: 60px;
 }
 
-.title {
+.toolbar__title {
   align-self: center;
   margin: 0 auto;
 }
