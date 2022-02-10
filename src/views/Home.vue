@@ -1,4 +1,4 @@
-<template >
+<template>
   <div class="cards">
     <BaseCard class="cards__card" title="Awesome card">
       <button>Click me!</button><button>No, click ME!</button>

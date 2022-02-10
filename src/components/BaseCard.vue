@@ -17,7 +17,6 @@ export default defineComponent({
       default: undefined,
     },
   },
-  setup() {},
 });
 </script>
 
