@@ -12,8 +12,10 @@
     :topOffset="toolbarHeight"
   >
     <BaseList>
-      <router-link to="/">Home</router-link>
-      <router-link to="/hello">HelloWorld</router-link>
+      <router-link to="/" @click="isDrawerShowing = false">Home</router-link>
+      <router-link to="/hello" @click="isDrawerShowing = false">
+        HelloWorld
+      </router-link>
     </BaseList>
   </BaseDrawer>
   <div class="content">
