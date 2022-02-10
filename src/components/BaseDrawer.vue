@@ -10,19 +10,19 @@ export default defineComponent({
   name: "navigation-drawer",
   components: {},
   props: {
-    isShowing: { type: Boolean, default: false },
-    width: { type: String, default: "50vw" },
-    closableMask: { type: Boolean, default: true },
-    hideMask: Boolean,
+    isShowing: { type: Boolean, required: true },
+    width: { type: String, required: true },
+    closeOnClickAway: { type: Boolean, required: true },
+    hasMask: { type: Boolean, required: true },
     placement: {
       type: String as PropType<Positions>,
-      default: Positions.R,
+      required: true,
       validator: (value: Positions) => Object.values(Positions).includes(value),
     },
   },
   setup(props, { emit }) {
     function maskClick() {
-      if (props.closableMask) {
+      if (props.closeOnClickAway) {
         close();
       }
     }
@@ -43,7 +43,7 @@ export default defineComponent({
   <teleport to="body">
     <aside class="drawer">
       <div
-        v-show="isShowing && !hideMask"
+        v-show="isShowing && hasMask"
         aria-label="mask"
         class="drawer__mask"
         tabindex="0"
@@ -77,7 +77,7 @@ export default defineComponent({
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(black, 0.5);
   }
 
   &__body {
@@ -91,18 +91,22 @@ export default defineComponent({
     height: 100%;
     padding: 2rem;
     overflow: auto;
-    background-color: var(--primary-green-color);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 7px 14px rgba(50, 50, 93, 0.1),
-      0 0 0 1px rgba(50, 50, 93, 0.05);
+    background-color: var(--neutral-foreground);
+    // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 7px 14px rgba(50, 50, 93, 0.1),
+    //   0 0 0 1px rgba(50, 50, 93, 0.05);
     transition: transform 0.2s ease-in-out;
     transition-delay: 1s;
 
     &--right {
+      top: 0;
       right: 0;
+      border-left: 1px solid var(--neutral-detail);
     }
 
     &--left {
+      top: 0;
       left: 0;
+      border-right: 1px solid var(--neutral-detail);
     }
   }
 }
