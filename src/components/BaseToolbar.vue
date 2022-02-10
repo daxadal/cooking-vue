@@ -28,7 +28,7 @@ export default defineComponent({
   width: 100%;
   overflow: hidden;
   background-color: var(--neutral-foreground);
-  box-shadow: 0 6px 24px -12px black;
+  // box-shadow: 0 6px 24px -12px black;
   border-bottom: 1px solid var(--neutral-detail);
 
   &__nav {
