@@ -18,20 +18,15 @@
       <input placeholder="Type something" />
     </BaseCard>
   </div>
-  <div>
-    <PalleteSwitch />
-  </div>
 </template>
 
 <script lang="ts">
 import BaseCard from "@/components/BaseCard.vue";
-import PalleteSwitch from "@/components/PalleteSwitch.vue";
 
 export default {
   name: "Home",
   components: {
     BaseCard,
-    PalleteSwitch,
   },
 };
 </script>
