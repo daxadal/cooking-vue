@@ -1,3 +1,24 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+
+import BaseModal from "./BaseModal.vue";
+import BaseButton from "./BaseButton.vue";
+
+export default defineComponent({
+  components: { BaseModal, BaseButton },
+  props: {
+    message: { type: String },
+    title: { type: String },
+    isError: { type: Boolean, required: true },
+  },
+  setup(props, { emit }) {
+    const changeVisibility = (visibility: boolean) =>
+      emit("update:isVisible", visibility);
+
+    return { changeVisibility };
+  },
+});
+</script>
 <template>
   <BaseModal
     @update:isVisible="changeVisibility"
@@ -22,28 +43,6 @@
     </template>
   </BaseModal>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-
-import BaseModal from "./BaseModal.vue";
-import BaseButton from "./BaseButton.vue";
-
-export default defineComponent({
-  components: { BaseModal, BaseButton },
-  props: {
-    message: { type: String },
-    title: { type: String },
-    isError: { type: Boolean, required: true },
-  },
-  setup(props, { emit }) {
-    const changeVisibility = (visibility: boolean) =>
-      emit("update:isVisible", visibility);
-
-    return { changeVisibility };
-  },
-});
-</script>
 
 <style lang="scss" scoped>
 .wrapper {
