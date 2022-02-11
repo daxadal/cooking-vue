@@ -11,7 +11,23 @@
   --cyan-detail: #0aa;
   --cyan-text: #077;
 
-  // TODO: Add more colors
+  // GREEN
+  --green-background: #0f0;
+  --green-foreground: #0e0;
+  --green-detail: #0a0;
+  --green-text: #070;
+
+  // PURPLE
+  --purple-background: #f0f;
+  --purple-foreground: #e0e;
+  --purple-detail: #a0a;
+  --purple-text: #707;
+
+  // YELLOW
+  --yellow-background: #ff0;
+  --yellow-foreground: #ee0;
+  --yellow-detail: #aa0;
+  --yellow-text: #770;
 }
 
 @mixin dark-theme {
@@ -27,7 +43,23 @@
   --cyan-detail: #0aa;
   --cyan-text: #0ee;
 
-  // TODO: Add more colors
+  // GREEN
+  --green-background: #030;
+  --green-foreground: #060;
+  --green-detail: #0a0;
+  --green-text: #0e0;
+
+  // PURPLE
+  --purple-background: #303;
+  --purple-foreground: #606;
+  --purple-detail: #a0a;
+  --purple-text: #e0e;
+
+  // YELLOW
+  --yellow-background: #330;
+  --yellow-foreground: #660;
+  --yellow-detail: #aa0;
+  --yellow-text: #ee0;
 }
 
 :root {

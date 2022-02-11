@@ -1,6 +1,9 @@
 export enum Colors {
   NEUTRAL = "neutral",
   CYAN = "cyan",
+  GREEN = "green",
+  PURPLE = "purple",
+  YELLOW = "yellow",
 }
 
 export enum IngredientType {
