@@ -103,52 +103,37 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-@use "./src/assets/styles/settings/variables";
-
 .modal {
   &__mask {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: variables.$z_modal;
-    width: variables.$width-100;
-    height: variables.$height-100;
-    margin: 0;
-    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.45);
   }
 
   &__wrap {
     display: table;
-    width: variables.$width-100;
-    height: variables.$height-100;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
     transition-delay: 0.05s;
 
     &--inner {
       display: table-cell;
-      padding: variables.$space-48 0;
       vertical-align: middle;
     }
   }
 
   &__body {
-    display: table;
-    width: variables.$width-100;
     margin: 0 auto;
-    overflow: hidden;
-    background-color: var(--background-color);
-    border: none;
-    border-radius: variables.$space-16;
-    outline: none;
-    box-shadow: 0 0 0 variables.$space-1 rgba(0, 0, 0, 0.15),
-      0 variables.$space-2 variables.$space-1 rgba(0, 0, 0, 0.1);
-    cursor: default;
+    background-color: var(--neutral-background);
+    border: 1px solid var(--neutral-detail);
+    border-radius: 16px;
     transition: transform 0.2s ease-in-out;
 
     > img {
       display: block;
-      max-width: variables.$width-100;
+      max-width: 100vw;
     }
 
     &--has-image {
@@ -159,9 +144,10 @@ export default defineComponent({
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: variables.$space-16 variables.$space-32;
-      font-weight: variables.$font-weight-modal-header;
-      font-size: variables.$font-modal-header;
+      background-color: var(--neutral-foreground);
+      padding: 16px 32px;
+      font-weight: 500;
+      font-size: 1.125rem;
       line-height: 1;
       text-align: left;
 
@@ -175,21 +161,15 @@ export default defineComponent({
     }
 
     &__content {
-      padding: variables.$space-16 variables.$space-32;
-      overflow: auto;
-      font-size: variables.$font-modal-content;
+      padding: 16px 32px;
     }
 
     &__footer {
       display: flex;
       justify-content: flex-end;
-      // flex-direction: row-reverse;
-      padding: variables.$space-16 variables.$space-32;
-      background-color: var(--background-color-2);
-
-      .button + .button {
-        margin-left: variables.$space-16;
-      }
+      padding: 16px 32px;
+      gap: 16px;
+      background-color: var(--neutral-foreground);
     }
   }
 }
