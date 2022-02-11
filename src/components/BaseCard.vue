@@ -1,17 +1,3 @@
-<template>
-  <div :class="['card', `card--${color}`]">
-    <h1 v-if="title" class="card__top">{{ title }}</h1>
-    <div class="card__center">
-      <slot />
-    </div>
-    <div class="card__bottom">
-      <p class="card__bottom__corner" v-if="leftCorner">{{ leftCorner }}</p>
-      <span class="card__bottom__center" />
-      <p class="card__bottom__corner" v-if="rightCorner">{{ rightCorner }}</p>
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import { Colors } from "@/resources/constants-types";
 import { defineComponent, PropType } from "vue";
@@ -42,6 +28,20 @@ export default defineComponent({
   },
 });
 </script>
+
+<template>
+  <div :class="['card', `card--${color}`]">
+    <h1 v-if="title" class="card__top">{{ title }}</h1>
+    <div class="card__center">
+      <slot />
+    </div>
+    <div class="card__bottom">
+      <p class="card__bottom__corner" v-if="leftCorner">{{ leftCorner }}</p>
+      <span class="card__bottom__center" />
+      <p class="card__bottom__corner" v-if="rightCorner">{{ rightCorner }}</p>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .card {
