@@ -34,14 +34,7 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.card {
-  margin: 1rem;
-  border: 1px solid;
-  border-radius: 1rem;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-
+@mixin colorStyles {
   &--neutral {
     background-color: var(--neutral-foreground);
     color: var(--neutral-text);
@@ -53,6 +46,36 @@ export default defineComponent({
     color: var(--cyan-text);
     border-color: var(--cyan-detail);
   }
+
+  &--green {
+    background-color: var(--green-foreground);
+    color: var(--green-text);
+    border-color: var(--green-detail);
+  }
+
+  &--purple {
+    background-color: var(--purple-foreground);
+    color: var(--purple-text);
+    border-color: var(--purple-detail);
+  }
+
+  &--yellow {
+    background-color: var(--yellow-foreground);
+    color: var(--yellow-text);
+    border-color: var(--yellow-detail);
+  }
+}
+
+.card {
+  margin: 1rem;
+  border: 1px solid;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  @include colorStyles;
+
   &__top {
     flex: 0 0 auto;
   }
