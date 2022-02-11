@@ -24,4 +24,4 @@ build-dev:
     expire_in: 1 day
   script:
     - npm ci
-    - npm build
+    - npm run build
