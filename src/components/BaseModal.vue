@@ -85,9 +85,8 @@ export default defineComponent({
                     </span>
                   </div>
                 </div>
-                <slot name="image" />
-                <slot />
                 <div v-if="modalHasBody" class="modal__body__content">
+                  <slot name="image" />
                   <slot name="body" />
                 </div>
                 <div v-if="modalHasActions" class="modal__body__footer">
@@ -125,16 +124,12 @@ export default defineComponent({
   }
 
   &__body {
+    text-align: center;
     margin: 0 auto;
-    background-color: var(--neutral-background);
+    background-color: var(--neutral-foreground);
     border: 1px solid var(--neutral-detail);
     border-radius: 16px;
     transition: transform 0.2s ease-in-out;
-
-    > img {
-      display: block;
-      max-width: 100vw;
-    }
 
     &--has-image {
       width: auto;
@@ -144,7 +139,6 @@ export default defineComponent({
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: var(--neutral-foreground);
       padding: 16px 32px;
       font-weight: 500;
       font-size: 1.125rem;
@@ -161,6 +155,7 @@ export default defineComponent({
     }
 
     &__content {
+      background-color: var(--neutral-background);
       padding: 16px 32px;
     }
 
@@ -169,7 +164,6 @@ export default defineComponent({
       justify-content: flex-end;
       padding: 16px 32px;
       gap: 16px;
-      background-color: var(--neutral-foreground);
     }
   }
 }
