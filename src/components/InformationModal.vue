@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-import BaseModal from "./BaseModal.vue";
-import BaseButton from "./BaseButton.vue";
+import BaseModal from "@/components/BaseModal.vue";
+import BaseButton from "@/components/BaseButton.vue";
 
 export default defineComponent({
   components: { BaseModal, BaseButton },

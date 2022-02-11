@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from "vue";
+
 import { ScreenType, getScreenType } from "@/services/screen-size";
 
 export default defineComponent({
