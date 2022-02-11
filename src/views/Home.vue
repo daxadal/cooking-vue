@@ -18,17 +18,50 @@
       <input placeholder="Type something" />
     </BaseCard>
   </div>
+  <BaseButton text @click="showModalError"> Modal </BaseButton>
+  <InformationModal
+    v-if="isInfoVisible"
+    @update:isVisible="isInfoVisible = $event"
+    :title="modalTitle"
+    :message="modalMessage"
+    :isError="isError"
+  />
 </template>
 
 <script lang="ts">
-import BaseCard from "@/components/BaseCard.vue";
+import { defineComponent, ref } from "vue";
 
-export default {
+import BaseCard from "@/components/BaseCard.vue";
+import InformationModal from "@/components/InformationModal.vue";
+
+export default defineComponent({
   name: "Home",
   components: {
     BaseCard,
+    InformationModal,
   },
-};
+  setup() {
+    const isInfoVisible = ref(false);
+    const modalTitle = ref();
+    const modalMessage = ref();
+    const isError = ref(true);
+
+    function showModalError() {
+      isError.value = true;
+      modalTitle.value = "Error";
+      modalMessage.value = "Mensaje de error";
+      isInfoVisible.value = true;
+    }
+
+    return {
+      isInfoVisible,
+      modalTitle,
+      modalMessage,
+      isError,
+      showModalError,
+    };
+  },
+});
 </script>
 
 <style>
