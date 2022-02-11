@@ -5,8 +5,9 @@
       <slot />
     </div>
     <div class="card__bottom">
-      <p v-if="leftCorner">{{ leftCorner }}</p>
-      <p v-if="rightCorner">{{ rightCorner }}</p>
+      <p class="card__bottom__corner" v-if="leftCorner">{{ leftCorner }}</p>
+      <span class="card__bottom__center" />
+      <p class="card__bottom__corner" v-if="rightCorner">{{ rightCorner }}</p>
     </div>
   </div>
 </template>
@@ -75,6 +76,14 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    &__corner {
+      flex: 0 0 auto;
+    }
+
+    &__center {
+      flex: 1 0 0;
+    }
   }
 }
 </style>
