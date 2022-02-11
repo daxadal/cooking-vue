@@ -3,7 +3,7 @@
     <div class="toolbar__left" />
     <h1 class="toolbar__center">Cooking Vue</h1>
     <div class="toolbar__right">
-      <PalleteSwitch />
+      <PalleteSwitch @change="setTheme" />
       <BaseAvatar size="3rem" @click="isDrawerShowing = !isDrawerShowing" />
     </div>
   </BaseToolbar>
@@ -49,7 +49,7 @@ import BaseAvatar from "./components/BaseAvatar.vue";
 import BaseDrawer, { Positions } from "./components/BaseDrawer.vue";
 import BaseList from "./components/BaseList.vue";
 import BaseButton from "./components/BaseButton.vue";
-import PalleteSwitch from "./components/PalleteSwitch.vue";
+import PalleteSwitch, { Palletes } from "./components/PalleteSwitch.vue";
 
 export default defineComponent({
   name: "App",
@@ -65,7 +65,19 @@ export default defineComponent({
     const isDrawerShowing = ref(false);
     const toolbarHeight = ref(81); // TODO get toolbar height dynamicly
 
-    return { isDrawerShowing, Positions, toolbarHeight };
+    function setTheme(themeSelected: Palletes) {
+      const html = document.documentElement;
+
+      html.classList.remove("light-theme", "dark-theme");
+
+      if (themeSelected === "light") {
+        html.classList.add("light-theme");
+      } else if (themeSelected === "dark") {
+        html.classList.add("dark-theme");
+      }
+    }
+
+    return { isDrawerShowing, Positions, setTheme, toolbarHeight };
   },
 });
 </script>
@@ -97,7 +109,7 @@ export default defineComponent({
 
   &__right {
     flex: 1 1 0;
-    justify-content: end;
+    justify-content: flex-end;
 
     display: flex;
     gap: 1rem;
