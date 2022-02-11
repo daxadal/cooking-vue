@@ -14,12 +14,11 @@ function getScreenType(): ComputedRef<ScreenType> {
   onMounted(() => window.addEventListener("resize", onWidthChange));
   onUnmounted(() => window.removeEventListener("resize", onWidthChange));
 
-  const getTypeFromWidth = (): ScreenType =>
+  return computed(() =>
     windowWidth.value >= WIDTH_THRESHOLD
       ? ScreenType.DESKTOP
-      : ScreenType.MOBILE;
-
-  return computed(() => getTypeFromWidth());
+      : ScreenType.MOBILE
+  );
 }
 
 export { getScreenType, ScreenType };
