@@ -30,28 +30,10 @@
   </div>
   <div class="cards">
     <IngredientCard
+      v-for="ingredient in ingredients"
+      :key="ingredient.id"
+      :ingredient="ingredient"
       class="cards__card"
-      :ingredient="{
-        id: 101,
-        name: 'Lettuce',
-        type: IngredientType.START,
-      }"
-    />
-    <IngredientCard
-      class="cards__card"
-      :ingredient="{
-        id: 102,
-        name: 'Chapped',
-        type: IngredientType.MID,
-      }"
-    />
-    <IngredientCard
-      class="cards__card"
-      :ingredient="{
-        id: 103,
-        name: 'Dish',
-        type: IngredientType.END,
-      }"
     />
     <UtensilCard
       class="cards__card"
@@ -69,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 
 import BaseCard from "@/components/BaseCard.vue";
 import BaseButton from "@/components/BaseButton.vue";
@@ -77,7 +59,8 @@ import InformationModal from "@/components/InformationModal.vue";
 import IngredientCard from "@/components/IngredientCard.vue";
 import UtensilCard from "@/components/UtensilCard.vue";
 
-import { Colors, IngredientType } from "@/resources/constants-types";
+import { Colors, Ingredient } from "@/resources/constants-types";
+import { getAllIngredients } from "@/services/api/routes";
 
 export default defineComponent({
   name: "Home",
@@ -89,6 +72,8 @@ export default defineComponent({
     UtensilCard,
   },
   setup() {
+    const ingredients = ref<Ingredient[]>([]);
+
     const isInfoVisible = ref(false);
     const modalTitle = ref();
     const modalMessage = ref();
@@ -101,6 +86,10 @@ export default defineComponent({
       isInfoVisible.value = true;
     }
 
+    onMounted(async () => {
+      ingredients.value = await getAllIngredients();
+    });
+
     return {
       Colors,
       isInfoVisible,
@@ -109,7 +98,7 @@ export default defineComponent({
       isError,
       showModalError,
 
-      IngredientType,
+      ingredients,
     };
   },
 });
