@@ -17,3 +17,9 @@ export interface Ingredient {
   name: string;
   type: IngredientType;
 }
+
+export interface Utensil {
+  id: number;
+  name: string;
+  waitTimeInMillis: number;
+}

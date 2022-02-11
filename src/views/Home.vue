@@ -32,7 +32,7 @@
     <IngredientCard
       class="cards__card"
       :ingredient="{
-        id: 1,
+        id: 101,
         name: 'Lettuce',
         type: IngredientType.START,
       }"
@@ -40,7 +40,7 @@
     <IngredientCard
       class="cards__card"
       :ingredient="{
-        id: 2,
+        id: 102,
         name: 'Chapped',
         type: IngredientType.MID,
       }"
@@ -48,10 +48,14 @@
     <IngredientCard
       class="cards__card"
       :ingredient="{
-        id: 3,
+        id: 103,
         name: 'Dish',
         type: IngredientType.END,
       }"
+    />
+    <UtensilCard
+      class="cards__card"
+      :utensil="{ id: 1, name: 'Shaker', waitTimeInMillis: 500 }"
     />
   </div>
   <BaseButton text @click="showModalError"> Modal </BaseButton>
@@ -71,6 +75,7 @@ import BaseCard from "@/components/BaseCard.vue";
 import BaseButton from "@/components/BaseButton.vue";
 import InformationModal from "@/components/InformationModal.vue";
 import IngredientCard from "@/components/IngredientCard.vue";
+import UtensilCard from "@/components/UtensilCard.vue";
 
 import { Colors, IngredientType } from "@/resources/constants-types";
 
@@ -81,6 +86,7 @@ export default defineComponent({
     BaseButton,
     InformationModal,
     IngredientCard,
+    UtensilCard,
   },
   setup() {
     const isInfoVisible = ref(false);
