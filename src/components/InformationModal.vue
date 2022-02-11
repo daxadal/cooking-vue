@@ -1,6 +1,5 @@
 <template>
-  <modal
-    :isVisible="isVisible"
+  <BaseModal
     @update:isVisible="changeVisibility"
     :closeOnClickAway="false"
     :hasCloseButton="false"
@@ -9,8 +8,8 @@
       <h3 class="title">{{ title }}</h3>
     </template>
     <template #image>
-      <img src="@/assets/resources/images/placeholders/error.png" v-if="isError" />
-      <img src="@/assets/resources/images/placeholders/success.png" v-else />
+      <img v-if="isError" src="@/assets/error.png" />
+      <img v-else src="@/assets/success.png" />
     </template>
 
     <template #body>
@@ -18,32 +17,30 @@
     </template>
     <template #actions>
       <div class="wrapper">
-        <h-button type="primary" text @click="changeVisibility(false)"> Aceptar </h-button>
+        <BaseButton text @click="changeVisibility(false)"> Aceptar </BaseButton>
       </div>
     </template>
-  </modal>
+  </BaseModal>
 </template>
 
 <script lang="ts">
-import modal from "@/components/ui/molecules/modal/modal.vue";
 import { defineComponent } from "vue";
-import hButton from "@/components/ui/atoms/button/button.vue";
+
+import BaseModal from "./BaseModal.vue";
+import BaseButton from "./BaseButton.vue";
 
 export default defineComponent({
-  components: { modal, hButton },
+  components: { BaseModal, BaseButton },
   props: {
     message: { type: String },
     title: { type: String },
-    isVisible: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
   },
   setup(props, { emit }) {
-    function changeVisibility(visibility: boolean) {
+    const changeVisibility = (visibility: boolean) =>
       emit("update:isVisible", visibility);
-    }
-    return {
-      changeVisibility,
-    };
+
+    return { changeVisibility };
   },
 });
 </script>

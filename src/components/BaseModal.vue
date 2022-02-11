@@ -1,12 +1,11 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from "vue";
-import { SCREEN_TYPE, useScreenType } from "@/composables/layout/screen-size";
+import { ScreenType, getScreenType } from "@/services/screen-size";
 
 export default defineComponent({
   name: "modal",
   inheritAttrs: false,
   props: {
-    isVisible: { type: Boolean, default: false },
     closeOnClickAway: { type: Boolean, default: true },
     hasCloseButton: { type: Boolean, default: true },
     width: { type: String },
@@ -18,7 +17,7 @@ export default defineComponent({
     const modalHasActions = "actions" in slots;
     const modalHasImage = "image" in slots;
     const modalBody = ref<HTMLElement | null>();
-    const screenType = useScreenType();
+    const screenType = getScreenType();
 
     function close() {
       emit("update:isVisible", false);
@@ -31,7 +30,8 @@ export default defineComponent({
     }
 
     const onlyHasImage = computed(
-      () => !modalHasActions && !modalHasBody && !modalHasHeader && modalHasImage
+      () =>
+        !modalHasActions && !modalHasBody && !modalHasHeader && modalHasImage
     );
 
     return {
@@ -44,7 +44,7 @@ export default defineComponent({
       modalHasHeader,
       onlyHasImage,
       screenType,
-      SCREEN_TYPE,
+      ScreenType,
     };
   },
 });
@@ -53,16 +53,20 @@ export default defineComponent({
 <template>
   <teleport to="body">
     <transition name="fade">
-      <div v-show="isVisible" v-bind="$attrs" ref="modalRef" class="modal__mask">
+      <div v-bind="$attrs" ref="modalRef" class="modal__mask">
         <transition name="drop-top">
-          <div v-show="isVisible" class="modal__wrap">
-            <div class="modal__wrap--inner" tabindex="0" @click.self="onClickAway">
+          <div class="modal__wrap">
+            <div
+              class="modal__wrap--inner"
+              tabindex="0"
+              @click.self="onClickAway"
+            >
               <div
                 class="modal__body"
                 ref="modalBody"
                 :class="onlyHasImage ? 'modal__body--has-image' : ''"
                 :style="
-                  !onlyHasImage && screenType === SCREEN_TYPE.DESKTOP
+                  !onlyHasImage && screenType === ScreenType.DESKTOP
                     ? { maxWidth: '35rem', width }
                     : { maxWidth: '22rem' }
                 "
