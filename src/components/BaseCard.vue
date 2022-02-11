@@ -10,16 +10,6 @@ export default defineComponent({
       default: Colors.NEUTRAL,
       validator: (value: Colors) => Object.values(Colors).includes(value),
     },
-    leftCorner: {
-      type: String,
-      required: false,
-      default: undefined,
-    },
-    rightCorner: {
-      type: String,
-      required: false,
-      default: undefined,
-    },
     title: {
       type: String,
       required: false,
@@ -33,12 +23,12 @@ export default defineComponent({
   <div :class="['card', `card--${color}`]">
     <h1 v-if="title" class="card__top">{{ title }}</h1>
     <div class="card__center">
-      <slot />
+      <slot name="center" />
     </div>
     <div class="card__bottom">
-      <p class="card__bottom__corner" v-if="leftCorner">{{ leftCorner }}</p>
+      <slot name="left-corner" />
       <span class="card__bottom__center" />
-      <p class="card__bottom__corner" v-if="rightCorner">{{ rightCorner }}</p>
+      <slot name="right-corner" />
     </div>
   </div>
 </template>
@@ -76,10 +66,6 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-    &__corner {
-      flex: 0 0 auto;
-    }
 
     &__center {
       flex: 1 0 0;
