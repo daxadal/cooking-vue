@@ -35,6 +35,7 @@ export default defineComponent({
     @include display;
 
     padding: 1rem;
+    width: 100%;
   }
 }
 </style>
