@@ -7,22 +7,52 @@
       leftCorner="cornerL"
       rightCorner="cornerR"
     >
-      <button>Click me!</button><button>No, click ME!</button>
+      <template #center>
+        <button>Click me!</button><button>No, click ME!</button>
+      </template>
     </BaseCard>
     <BaseCard class="cards__card" title="Lorem ipsum" leftCorner="cornerL">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus
-        orci mauris, nec volutpat libero convallis non. Curabitur sed sagittis
-        nisi. Nullam elementum augue et urna placerat, pretium sollicitudin
-        nulla gravida. Donec ac pellentesque dolor. Nulla commodo auctor purus,
-        ultricies bibendum mi ultrices rutrum. Pellentesque facilisis, orci nec
-        fringilla pretium, magna arcu ultricies odio, eget dapibus nulla ex nec
-        risus. Suspendisse potenti
-      </p>
+      <template #center>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus
+          orci mauris, nec volutpat libero convallis non. Curabitur sed sagittis
+          nisi. Nullam elementum augue et urna placerat, pretium sollicitudin
+          nulla gravida. Donec ac pellentesque dolor. Nulla commodo auctor
+          purus, ultricies bibendum mi ultrices rutrum. Pellentesque facilisis,
+          orci nec fringilla pretium, magna arcu ultricies odio, eget dapibus
+          nulla ex nec risus. Suspendisse potenti
+        </p>
+      </template>
     </BaseCard>
     <BaseCard class="cards__card" rightCorner="cornerR">
-      <input placeholder="Type something" />
+      <template #center> <input placeholder="Type something" /> </template>
     </BaseCard>
+  </div>
+  <div class="cards">
+    <IngredientCard
+      class="cards__card"
+      :ingredient="{
+        id: 1,
+        name: 'Lettuce',
+        type: IngredientType.START,
+      }"
+    />
+    <IngredientCard
+      class="cards__card"
+      :ingredient="{
+        id: 2,
+        name: 'Chapped',
+        type: IngredientType.MID,
+      }"
+    />
+    <IngredientCard
+      class="cards__card"
+      :ingredient="{
+        id: 3,
+        name: 'Dish',
+        type: IngredientType.END,
+      }"
+    />
   </div>
   <BaseButton text @click="showModalError"> Modal </BaseButton>
   <InformationModal
@@ -38,15 +68,19 @@
 import { defineComponent, ref } from "vue";
 
 import BaseCard from "@/components/BaseCard.vue";
+import BaseButton from "@/components/BaseButton.vue";
 import InformationModal from "@/components/InformationModal.vue";
+import IngredientCard from "@/components/IngredientCard.vue";
 
-import { Colors } from "@/resources/constants-types";
+import { Colors, IngredientType } from "@/resources/constants-types";
 
 export default defineComponent({
   name: "Home",
   components: {
     BaseCard,
+    BaseButton,
     InformationModal,
+    IngredientCard,
   },
   setup() {
     const isInfoVisible = ref(false);
@@ -68,6 +102,8 @@ export default defineComponent({
       modalMessage,
       isError,
       showModalError,
+
+      IngredientType,
     };
   },
 });
