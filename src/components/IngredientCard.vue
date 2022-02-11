@@ -1,11 +1,13 @@
 <script lang="ts">
+import { computed, defineComponent, PropType } from "vue";
+
+import BaseCard from "@/components/BaseCard.vue";
+
 import {
   Colors,
   Ingredient,
   IngredientType,
 } from "@/resources/constants-types";
-import { computed, defineComponent, PropType } from "vue";
-import BaseCard from "@/components/BaseCard.vue";
 
 export default defineComponent({
   components: {
@@ -30,7 +32,7 @@ export default defineComponent({
           return Colors.NEUTRAL;
       }
     });
-    return { color, Colors };
+    return { color };
   },
 });
 </script>

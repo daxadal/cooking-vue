@@ -1,6 +1,7 @@
 <script lang="ts">
-import { Colors } from "@/resources/constants-types";
 import { defineComponent, PropType } from "vue";
+
+import { Colors } from "@/resources/constants-types";
 
 export default defineComponent({
   name: "BaseCard",
