@@ -1,6 +1,7 @@
 <script lang="ts">
 import { ref, onMounted, defineComponent, computed } from "vue";
 
+import InformationModal from "@/components/InformationModal.vue";
 import IngredientCard from "@/components/IngredientCard.vue";
 
 import { Ingredient } from "@/resources/constants-types";
@@ -9,9 +10,21 @@ import { getScreenType, ScreenType } from "@/services/screen-size";
 
 export default defineComponent({
   name: "Ingredients",
-  components: { IngredientCard },
+  components: { IngredientCard, InformationModal },
   setup() {
     const ingredients = ref<Ingredient[]>([]);
+
+    const isInfoVisible = ref(false);
+    const modalTitle = ref();
+    const modalMessage = ref();
+    const isError = ref(true);
+
+    function showErrorModal(message: string) {
+      isError.value = true;
+      modalTitle.value = "Error";
+      modalMessage.value = message;
+      isInfoVisible.value = true;
+    }
 
     const screenType = getScreenType();
     const columnStyle = computed(() =>
@@ -19,10 +32,22 @@ export default defineComponent({
     );
 
     onMounted(async () => {
-      ingredients.value = await getAllIngredients();
+      try {
+        ingredients.value = await getAllIngredients();
+      } catch (error: any) {
+        showErrorModal(error);
+      }
     });
 
-    return { columnStyle, ingredients };
+    return {
+      columnStyle,
+      ingredients,
+
+      isInfoVisible,
+      modalTitle,
+      modalMessage,
+      isError,
+    };
   },
 });
 </script>
@@ -36,6 +61,13 @@ export default defineComponent({
       class="cards__card"
     />
   </div>
+  <InformationModal
+    v-if="isInfoVisible"
+    @update:isVisible="isInfoVisible = $event"
+    :title="modalTitle"
+    :message="modalMessage"
+    :isError="isError"
+  />
 </template>
 
 <style scoped>
