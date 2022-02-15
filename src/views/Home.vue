@@ -28,18 +28,6 @@
       <template #center> <input placeholder="Type something" /> </template>
     </BaseCard>
   </div>
-  <div class="cards">
-    <IngredientCard
-      v-for="ingredient in ingredients"
-      :key="ingredient.id"
-      :ingredient="ingredient"
-      class="cards__card"
-    />
-    <UtensilCard
-      class="cards__card"
-      :utensil="{ id: 1, name: 'Shaker', waitTimeInMillis: 500 }"
-    />
-  </div>
   <BaseButton text @click="showModalError"> Modal </BaseButton>
   <InformationModal
     v-if="isInfoVisible"
@@ -51,16 +39,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, ref } from "vue";
 
 import BaseCard from "@/components/BaseCard.vue";
 import BaseButton from "@/components/BaseButton.vue";
 import InformationModal from "@/components/InformationModal.vue";
-import IngredientCard from "@/components/IngredientCard.vue";
-import UtensilCard from "@/components/UtensilCard.vue";
 
-import { Colors, Ingredient } from "@/resources/constants-types";
-import { getAllIngredients } from "@/services/api/routes";
+import { Colors } from "@/resources/constants-types";
 
 export default defineComponent({
   name: "Home",
@@ -68,12 +53,8 @@ export default defineComponent({
     BaseCard,
     BaseButton,
     InformationModal,
-    IngredientCard,
-    UtensilCard,
   },
   setup() {
-    const ingredients = ref<Ingredient[]>([]);
-
     const isInfoVisible = ref(false);
     const modalTitle = ref();
     const modalMessage = ref();
@@ -86,10 +67,6 @@ export default defineComponent({
       isInfoVisible.value = true;
     }
 
-    onMounted(async () => {
-      ingredients.value = await getAllIngredients();
-    });
-
     return {
       Colors,
       isInfoVisible,
@@ -97,8 +74,6 @@ export default defineComponent({
       modalMessage,
       isError,
       showModalError,
-
-      ingredients,
     };
   },
 });
