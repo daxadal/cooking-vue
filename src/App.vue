@@ -25,6 +25,7 @@
       >
         Home
       </BaseButton>
+      <BaseDivider />
       <BaseButton
         tag="router-link"
         to="/ingredients"
@@ -50,6 +51,7 @@ import BaseDrawer, { Positions } from "./components/BaseDrawer.vue";
 import BaseList from "./components/BaseList.vue";
 import BaseButton from "./components/BaseButton.vue";
 import PalleteSwitch, { Palletes } from "./components/PalleteSwitch.vue";
+import BaseDivider from "./components/BaseDivider.vue";
 
 export default defineComponent({
   name: "App",
@@ -60,6 +62,7 @@ export default defineComponent({
     BaseList,
     BaseButton,
     PalleteSwitch,
+    BaseDivider,
   },
   setup() {
     const isDrawerShowing = ref(false);
