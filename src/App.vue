@@ -35,6 +35,15 @@
       >
         Ingredients
       </BaseButton>
+      <BaseButton
+        tag="router-link"
+        to="/utensils"
+        text
+        type="neutral"
+        @click="isDrawerShowing = false"
+      >
+        Utensils
+      </BaseButton>
     </BaseList>
   </BaseDrawer>
   <div class="content">
