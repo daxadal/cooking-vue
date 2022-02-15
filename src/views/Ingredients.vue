@@ -35,10 +35,6 @@ export default defineComponent({
       :ingredient="ingredient"
       class="cards__card"
     />
-    <UtensilCard
-      class="cards__card"
-      :utensil="{ id: 1, name: 'Shaker', waitTimeInMillis: 500 }"
-    />
   </div>
 </template>
 
