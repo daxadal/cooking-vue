@@ -30,7 +30,7 @@ export default defineComponent({
       <p>ID: {{ utensil.id }}</p>
     </template>
     <template #right-corner>
-      <p>Millis: {{ utensil.waitTimeInMillis }}</p>
+      <p>{{ utensil.waitTimeInMillis }} ms</p>
     </template>
   </BaseCard>
 </template>

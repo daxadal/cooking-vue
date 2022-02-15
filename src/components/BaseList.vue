@@ -31,7 +31,6 @@ export default defineComponent({
   list-style: none;
   display: flex;
   flex-wrap: nowrap;
-  gap: 1rem;
   align-items: center;
   justify-content: center;
 
