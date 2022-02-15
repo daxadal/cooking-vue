@@ -1,6 +1,13 @@
-import { Ingredient, IngredientArray } from "@/resources/constants-types";
+import {
+  Ingredient,
+  IngredientArray,
+  Utensil,
+  UtensilArray,
+} from "@/resources/constants-types";
 
 import { del, get, post, put } from "./http-methods";
+
+// #region --- Ingredients ---
 
 export const getAllIngredients = async (): Promise<Ingredient[]> => {
   const response = await get("/ingredients");
@@ -31,3 +38,37 @@ export const updateIngredient = async (
 
 export const deleteIngredient = async (id: number): Promise<void> =>
   del(`/ingredients/${id}`);
+
+// #endregion --- Ingredients ---
+
+// #region --- Utensils ---
+
+export const getAllUtensils = async (): Promise<Utensil[]> => {
+  const response = await get("/utensils");
+  return UtensilArray.parse(response);
+};
+
+export const getUtensil = async (id: number): Promise<Utensil> => {
+  const response = await get(`/utensils/${id}`);
+  return Utensil.parse(response);
+};
+
+export const createUtensil = async (
+  utensil: Omit<Utensil, "id">
+): Promise<Utensil> => {
+  const response = await post("/utensils", utensil);
+  return Utensil.parse(response);
+};
+
+export const updateUtensil = async (utensil: Utensil): Promise<Utensil> => {
+  const response = await put(`/utensils/${utensil.id}`, {
+    name: utensil.name,
+    waitTimeInMillis: utensil.waitTimeInMillis,
+  });
+  return Utensil.parse(response);
+};
+
+export const deleteUtensil = async (id: number): Promise<void> =>
+  del(`/utensils/${id}`);
+
+// #endregion --- Utensils ---
