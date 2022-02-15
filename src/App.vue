@@ -27,12 +27,12 @@
       </BaseButton>
       <BaseButton
         tag="router-link"
-        to="/hello"
+        to="/ingredients"
         text
         type="neutral"
         @click="isDrawerShowing = false"
       >
-        HelloWorld
+        Ingredients
       </BaseButton>
     </BaseList>
   </BaseDrawer>
