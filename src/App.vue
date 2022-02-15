@@ -111,6 +111,10 @@ export default defineComponent({
   &__left {
     flex: 1 1 0;
     justify-content: start;
+
+    display: flex;
+    gap: 1rem;
+    align-items: center;
   }
 
   &__center {
