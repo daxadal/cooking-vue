@@ -32,7 +32,7 @@ export default defineComponent({
           return Colors.NEUTRAL;
       }
     });
-    return { color };
+    return { color, IngredientType };
   },
 });
 </script>
@@ -40,7 +40,15 @@ export default defineComponent({
 <template>
   <BaseCard :title="ingredient.name" :color="color">
     <template #center>
-      <img src="@/assets/success.png" />
+      <img
+        v-if="ingredient.type === IngredientType.START"
+        src="@/assets/vegetables.svg"
+      />
+      <img
+        v-else-if="ingredient.type === IngredientType.MID"
+        src="@/assets/pan.svg"
+      />
+      <img v-else src="@/assets/chinese-food.svg" />
     </template>
     <template #left-corner>
       <p>ID: {{ ingredient.id }}</p>
