@@ -42,7 +42,8 @@ export default defineComponent({
   }
 
   &__arrow {
-    flex: 0 1 auto;
+    flex: 0 1 100px;
+    min-width: 25px;
     fill: var(--neutral-detail);
   }
 }
