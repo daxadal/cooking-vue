@@ -21,11 +21,11 @@ export default defineComponent({
 
 <template>
   <div class="cards">
-    <IngredientCard :ingredient="step.input" />
-    <img src="@/assets/right-arrow.svg" />
-    <UtensilCard :utensil="step.utensil" />
-    <img src="@/assets/right-arrow.svg" />
-    <IngredientCard :ingredient="step.input" />
+    <IngredientCard class="cards__card" :ingredient="step.input" />
+    <img class="cards__arrow" src="@/assets/right-arrow.svg" />
+    <UtensilCard class="cards__card" :utensil="step.utensil" />
+    <img class="cards__arrow" src="@/assets/right-arrow.svg" />
+    <IngredientCard class="cards__card" :ingredient="step.output" />
   </div>
 </template>
 
@@ -33,5 +33,18 @@ export default defineComponent({
 .cards {
   display: flex;
   flex-direction: row;
+  align-items: center;
+
+  &__card {
+    flex: 1 0 auto;
+  }
+
+  &__arrow {
+    flex: 0 1 100px;
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+    color: var(--neutral-detail);
+  }
 }
 </style>
