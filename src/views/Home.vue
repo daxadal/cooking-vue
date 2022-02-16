@@ -28,52 +28,33 @@
       <template #center> <input placeholder="Type something" /> </template>
     </BaseCard>
   </div>
-  <BaseButton text @click="showModalError"> Modal </BaseButton>
-  <InformationModal
-    v-if="isInfoVisible"
-    @update:isVisible="isInfoVisible = $event"
-    :title="modalTitle"
-    :message="modalMessage"
-    :isError="isError"
+  <StepCarrousel
+    :step="{
+      input: { id: 101, name: 'Input', type: IngredientType.START },
+      utensil: { id: 5, name: 'Utensil', waitTimeInMillis: 500 },
+      output: { id: 102, name: 'Output', type: IngredientType.MID },
+    }"
   />
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 
 import BaseCard from "@/components/BaseCard.vue";
-import BaseButton from "@/components/BaseButton.vue";
-import InformationModal from "@/components/InformationModal.vue";
 
-import { Colors } from "@/resources/constants-types";
+import { Colors, IngredientType } from "@/resources/constants-types";
+import StepCarrousel from "@/components/StepCarrousel.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
     BaseCard,
-    BaseButton,
-    InformationModal,
+    StepCarrousel,
   },
   setup() {
-    const isInfoVisible = ref(false);
-    const modalTitle = ref();
-    const modalMessage = ref();
-    const isError = ref(true);
-
-    function showModalError() {
-      isError.value = true;
-      modalTitle.value = "Error";
-      modalMessage.value = "Mensaje de error";
-      isInfoVisible.value = true;
-    }
-
     return {
+      IngredientType,
       Colors,
-      isInfoVisible,
-      modalTitle,
-      modalMessage,
-      isError,
-      showModalError,
     };
   },
 });
