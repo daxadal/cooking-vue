@@ -24,7 +24,7 @@ export default defineComponent({
 <template>
   <BaseCard :title="utensil.name" :color="Colors.YELLOW">
     <template #center>
-      <img src="@/assets/success.png" />
+      <img src="@/assets/whisk.svg" />
     </template>
     <template #left-corner>
       <p>ID: {{ utensil.id }}</p>
