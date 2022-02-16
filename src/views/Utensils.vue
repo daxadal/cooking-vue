@@ -19,7 +19,7 @@ export default defineComponent({
     const modalMessage = ref();
     const isError = ref(true);
 
-    function showModalError(error: any) {
+    function showErrorModal(error: any) {
       isError.value = true;
       modalTitle.value = "Error";
       modalMessage.value = error?.message || error || "Ha ocurrido un error";
@@ -34,7 +34,7 @@ export default defineComponent({
     onMounted(async () => {
       try {
         utensils.value = await getAllUtensils();
-      } catch (error: any) {
+      } catch (error) {
         showErrorModal(error);
       }
     });
