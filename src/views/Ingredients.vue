@@ -19,10 +19,10 @@ export default defineComponent({
     const modalMessage = ref();
     const isError = ref(true);
 
-    function showErrorModal(message: string) {
+    function showModalError(error: any) {
       isError.value = true;
       modalTitle.value = "Error";
-      modalMessage.value = message;
+      modalMessage.value = error?.message || error || "Ha ocurrido un error";
       isInfoVisible.value = true;
     }
 

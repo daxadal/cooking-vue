@@ -110,7 +110,7 @@ export default defineComponent({
 
   &__left {
     flex: 1 1 0;
-    justify-content: start;
+    justify-content: flex-start;
 
     display: flex;
     gap: 1rem;
