@@ -56,8 +56,16 @@ export const DetailedStepArray = z.array(DetailedStep);
 
 export const SimpleRecipe = z.object({
   input: z.number(),
-  utensil: z.number(),
-  output: z.number(),
+  utensil1: z.number(),
+  mid1: z.number(),
+  utensil2: z.number(),
+  mid2: z.number(),
+  utensil3: z.number(),
+  mid3: z.number(),
+  utensil4: z.number(),
+  mid4: z.number(),
+  utensil5: z.number(),
+  mid5: z.number(),
 });
 
 export type SimpleRecipe = z.infer<typeof SimpleRecipe>;
@@ -66,8 +74,16 @@ export const SimpleRecipeArray = z.array(SimpleRecipe);
 
 export const DetailedRecipe = z.object({
   input: Ingredient,
-  utensil: Utensil,
-  output: Ingredient,
+  utensil1: Utensil,
+  mid1: Ingredient,
+  utensil2: Utensil,
+  mid2: Ingredient,
+  utensil3: Utensil,
+  mid3: Ingredient,
+  utensil4: Utensil,
+  mid4: Ingredient,
+  utensil5: Utensil,
+  mid5: Ingredient,
 });
 
 export type DetailedRecipe = z.infer<typeof DetailedRecipe>;
