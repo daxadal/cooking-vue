@@ -44,6 +44,15 @@
       >
         Utensils
       </BaseButton>
+      <BaseButton
+        tag="router-link"
+        to="/steps"
+        text
+        type="neutral"
+        @click="isDrawerShowing = false"
+      >
+        Steps
+      </BaseButton>
     </BaseList>
   </BaseDrawer>
   <div class="content">
