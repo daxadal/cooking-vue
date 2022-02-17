@@ -35,6 +35,19 @@
       output: { id: 102, name: 'Output', type: IngredientType.MID },
     }"
   />
+  <RecipeCarrousel
+    :recipe="{
+      steps: 3,
+      input: { id: 101, name: 'Liquid dough', type: IngredientType.START },
+      utensil1: { id: 1, name: 'Stand mixer', waitTimeInMillis: 2000 },
+      mid1: { id: 103, name: 'Raw muffin', type: IngredientType.MID },
+      utensil2: { id: 4, name: 'Chocolate sprinkler', waitTimeInMillis: 1000 },
+      mid2: { id: 105, name: 'Raw chocolate muffin', type: IngredientType.MID },
+      utensil3: { id: 2, name: 'Oven', waitTimeInMillis: 5000 },
+      mid3: { id: 110, name: 'Chocolate muffin', type: IngredientType.END },
+      output: { id: 110, name: 'Chocolate muffin', type: IngredientType.END },
+    }"
+  />
 </template>
 
 <script lang="ts">
@@ -44,12 +57,14 @@ import BaseCard from "@/components/BaseCard.vue";
 
 import { Colors, IngredientType } from "@/resources/constants-types";
 import StepCarrousel from "@/components/StepCarrousel.vue";
+import RecipeCarrousel from "@/components/RecipeCarrousel.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
     BaseCard,
     StepCarrousel,
+    RecipeCarrousel,
   },
   setup() {
     return {

@@ -35,10 +35,10 @@ export default defineComponent({
 .cards {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
 
   &__card {
-    flex: 1 0 auto;
+    flex: 1 0 0;
   }
 
   &__arrow {

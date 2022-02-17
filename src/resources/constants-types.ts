@@ -53,3 +53,45 @@ export const DetailedStep = z.object({
 export type DetailedStep = z.infer<typeof DetailedStep>;
 
 export const DetailedStepArray = z.array(DetailedStep);
+
+export const SimpleRecipe = z.object({
+  input: z.number(),
+  utensil1: z.number(),
+  mid1: z.number(),
+  utensil2: z.number().optional(),
+  mid2: z.number().optional(),
+  utensil3: z.number().optional(),
+  mid3: z.number().optional(),
+  utensil4: z.number().optional(),
+  mid4: z.number().optional(),
+  utensil5: z.number().optional(),
+  mid5: z.number().optional(),
+
+  steps: z.number(),
+  output: z.number(),
+});
+
+export type SimpleRecipe = z.infer<typeof SimpleRecipe>;
+
+export const SimpleRecipeArray = z.array(SimpleRecipe);
+
+export const DetailedRecipe = z.object({
+  input: Ingredient,
+  utensil1: Utensil,
+  mid1: Ingredient,
+  utensil2: Utensil.optional(),
+  mid2: Ingredient.optional(),
+  utensil3: Utensil.optional(),
+  mid3: Ingredient.optional(),
+  utensil4: Utensil.optional(),
+  mid4: Ingredient.optional(),
+  utensil5: Utensil.optional(),
+  mid5: Ingredient.optional(),
+
+  steps: z.number(),
+  output: Ingredient,
+});
+
+export type DetailedRecipe = z.infer<typeof DetailedRecipe>;
+
+export const DetailedRecipeArray = z.array(DetailedRecipe);
