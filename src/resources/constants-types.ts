@@ -58,14 +58,17 @@ export const SimpleRecipe = z.object({
   input: z.number(),
   utensil1: z.number(),
   mid1: z.number(),
-  utensil2: z.number(),
-  mid2: z.number(),
-  utensil3: z.number(),
-  mid3: z.number(),
-  utensil4: z.number(),
-  mid4: z.number(),
-  utensil5: z.number(),
-  mid5: z.number(),
+  utensil2: z.number().optional(),
+  mid2: z.number().optional(),
+  utensil3: z.number().optional(),
+  mid3: z.number().optional(),
+  utensil4: z.number().optional(),
+  mid4: z.number().optional(),
+  utensil5: z.number().optional(),
+  mid5: z.number().optional(),
+
+  steps: z.number(),
+  output: z.number(),
 });
 
 export type SimpleRecipe = z.infer<typeof SimpleRecipe>;
@@ -76,14 +79,17 @@ export const DetailedRecipe = z.object({
   input: Ingredient,
   utensil1: Utensil,
   mid1: Ingredient,
-  utensil2: Utensil,
-  mid2: Ingredient,
-  utensil3: Utensil,
-  mid3: Ingredient,
-  utensil4: Utensil,
-  mid4: Ingredient,
-  utensil5: Utensil,
-  mid5: Ingredient,
+  utensil2: Utensil.optional(),
+  mid2: Ingredient.optional(),
+  utensil3: Utensil.optional(),
+  mid3: Ingredient.optional(),
+  utensil4: Utensil.optional(),
+  mid4: Ingredient.optional(),
+  utensil5: Utensil.optional(),
+  mid5: Ingredient.optional(),
+
+  steps: z.number(),
+  output: Ingredient,
 });
 
 export type DetailedRecipe = z.infer<typeof DetailedRecipe>;
