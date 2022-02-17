@@ -48,7 +48,7 @@ export default defineComponent({
 <template>
   <StepCarrousel
     v-for="step in steps"
-    :key="`${step.input.id}-${step.utensil.id}-${step.output.id}`"
+    :key="`${step.input.id}-${step.output.id}`"
     :step="step"
   />
 
