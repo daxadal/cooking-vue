@@ -95,3 +95,17 @@ export const del = async (
       },
     })
   );
+
+export const delWithBody = (
+  path: string,
+  body?: Record<string, unknown>
+): Promise<any> =>
+  request(
+    new Request(formatURL(DOMAIN, path), {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+  );
