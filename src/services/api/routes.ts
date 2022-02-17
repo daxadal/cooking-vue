@@ -1,11 +1,16 @@
 import {
+  DetailedRecipe,
+  DetailedRecipeArray,
+  DetailedStep,
+  DetailedStepArray,
   Ingredient,
   IngredientArray,
+  SimpleStep,
   Utensil,
   UtensilArray,
 } from "@/resources/constants-types";
 
-import { del, get, post, put } from "./http-methods";
+import { del, delWithBody, get, post, put } from "./http-methods";
 
 // #region --- Ingredients ---
 
@@ -72,3 +77,29 @@ export const deleteUtensil = async (id: number): Promise<void> =>
   del(`/utensils/${id}`);
 
 // #endregion --- Utensils ---
+
+// #region --- Steps ---
+
+export const getAllDetailedSteps = async (): Promise<DetailedStep[]> => {
+  const response = await get("/steps?detailed=true");
+  return DetailedStepArray.parse(response);
+};
+
+export const createStep = async (step: SimpleStep): Promise<DetailedStep> => {
+  const response = await post("/steps", step);
+  return DetailedStep.parse(response);
+};
+
+export const deleteStep = async (step: SimpleStep): Promise<void> =>
+  delWithBody("/steps", step);
+
+// #endregion --- Steps ---
+
+// #region --- Recipes ---
+
+export const getAllDetailedRecipes = async (): Promise<DetailedRecipe[]> => {
+  const response = await get("/recipes?detailed=true");
+  return DetailedRecipeArray.parse(response);
+};
+
+// #endregion --- Recipes ---

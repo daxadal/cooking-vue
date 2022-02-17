@@ -18,6 +18,18 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "utensils" */ "../views/Utensils.vue"),
   },
+  {
+    path: "/steps",
+    name: "Steps",
+    component: () =>
+      import(/* webpackChunkName: "steps" */ "../views/Steps.vue"),
+  },
+  {
+    path: "/recipes",
+    name: "Recipes",
+    component: () =>
+      import(/* webpackChunkName: "recipes" */ "../views/Recipes.vue"),
+  },
 ];
 
 const router = createRouter({
