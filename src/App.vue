@@ -53,6 +53,15 @@
       >
         Steps
       </BaseButton>
+      <BaseButton
+        tag="router-link"
+        to="/recipes"
+        text
+        type="neutral"
+        @click="isDrawerShowing = false"
+      >
+        Recipes
+      </BaseButton>
     </BaseList>
   </BaseDrawer>
   <div class="content">
