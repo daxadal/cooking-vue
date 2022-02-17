@@ -1,4 +1,6 @@
 import {
+  DetailedRecipe,
+  DetailedRecipeArray,
   DetailedStep,
   DetailedStepArray,
   Ingredient,
@@ -92,3 +94,12 @@ export const deleteStep = async (step: SimpleStep): Promise<void> =>
   delWithBody("/steps", step);
 
 // #endregion --- Steps ---
+
+// #region --- Recipes ---
+
+export const getAllDetailedRecipes = async (): Promise<DetailedRecipe[]> => {
+  const response = await get("/recipes?detailed=true");
+  return DetailedRecipeArray.parse(response);
+};
+
+// #endregion --- Recipes ---
