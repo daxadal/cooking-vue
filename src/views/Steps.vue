@@ -1,7 +1,6 @@
 <script lang="ts">
 import { ref, onMounted, defineComponent } from "vue";
 
-import BaseDivider from "@/components/BaseDivider.vue";
 import InformationModal from "@/components/InformationModal.vue";
 import StepCarrousel from "@/components/StepCarrousel.vue";
 
@@ -10,7 +9,7 @@ import { getAllDetailedSteps } from "@/services/api/routes";
 
 export default defineComponent({
   name: "Steps",
-  components: { StepCarrousel, InformationModal, BaseDivider },
+  components: { StepCarrousel, InformationModal },
   setup() {
     const steps = ref<DetailedStep[]>([]);
 
@@ -47,13 +46,12 @@ export default defineComponent({
 </script>
 
 <template>
-  <template
+  <StepCarrousel
     v-for="step in steps"
     :key="`${step.input.id}-${step.utensil.id}-${step.output.id}`"
-  >
-    <StepCarrousel :step="step" />
-    <BaseDivider />
-  </template>
+    :step="step"
+  />
+
   <InformationModal
     v-if="isInfoVisible"
     @update:isVisible="isInfoVisible = $event"
