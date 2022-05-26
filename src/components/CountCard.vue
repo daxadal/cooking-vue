@@ -28,7 +28,14 @@ export default defineComponent({
 <template>
   <BaseCard :title="title" :color="Colors.NEUTRAL">
     <template #center>
-      <p>{{ count }}</p>
+      <p class="counter">{{ count }}</p>
     </template>
   </BaseCard>
 </template>
+
+<style lang="scss" scoped>
+.counter {
+  font-size: 500%;
+  margin: 16px;
+}
+</style>
