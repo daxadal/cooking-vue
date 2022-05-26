@@ -1,4 +1,5 @@
 import {
+  ApiInfo,
   DetailedRecipe,
   DetailedRecipeArray,
   DetailedStep,
@@ -11,6 +12,15 @@ import {
 } from "@/resources/constants-types";
 
 import { del, delWithBody, get, post, put } from "./http-methods";
+
+// #region --- Default ---
+
+export const getStatus = async (): Promise<ApiInfo> => {
+  const response = await get("/");
+  return ApiInfo.parse(response);
+};
+
+// #endregion --- Default ---
 
 // #region --- Ingredients ---
 
