@@ -54,26 +54,18 @@ export default defineComponent({
 
 <template>
   <div class="cards" v-if="apiInfo">
-    <CountCard
-      class="cards__card"
-      title="Ingredients"
-      :count="apiInfo?.stats.ingredients"
-    />
-    <CountCard
-      class="cards__card"
-      title="Utensils"
-      :count="apiInfo?.stats.utensils"
-    />
-    <CountCard
-      class="cards__card"
-      title="Steps"
-      :count="apiInfo?.stats.steps"
-    />
-    <CountCard
-      class="cards__card"
-      title="Recipes"
-      :count="apiInfo?.stats.recipes"
-    />
+    <router-link class="cards__card" to="/ingredients">
+      <CountCard title="Ingredients" :count="apiInfo?.stats.ingredients" />
+    </router-link>
+    <router-link class="cards__card" to="/utensils">
+      <CountCard title="Utensils" :count="apiInfo?.stats.utensils" />
+    </router-link>
+    <router-link class="cards__card" to="/steps">
+      <CountCard title="Steps" :count="apiInfo?.stats.steps" />
+    </router-link>
+    <router-link class="cards__card" to="/recipes">
+      <CountCard title="Recipes" :count="apiInfo?.stats.recipes" />
+    </router-link>
   </div>
 </template>
 
