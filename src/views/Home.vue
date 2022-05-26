@@ -1,44 +1,79 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent, onMounted, ref } from "vue";
 
-import BaseCard from "@/components/BaseCard.vue";
+import CountCard from "@/components/CountCard.vue";
+import { ApiInfo } from "@/resources/constants-types";
+import { getStatus } from "@/services/api/routes";
+import { getScreenType, ScreenType } from "@/services/screen-size";
 
 export default defineComponent({
   name: "Home",
   components: {
-    BaseCard,
+    CountCard,
+  },
+  setup() {
+    const apiInfo = ref<ApiInfo>();
+
+    const isInfoVisible = ref(false);
+    const modalTitle = ref();
+    const modalMessage = ref();
+    const isError = ref(true);
+
+    function showErrorModal(error: any) {
+      isError.value = true;
+      modalTitle.value = "Error";
+      modalMessage.value = error?.message || error || "Ha ocurrido un error";
+      isInfoVisible.value = true;
+    }
+
+    const screenType = getScreenType();
+    const columnStyle = computed(() =>
+      screenType.value === ScreenType.DESKTOP ? "--columns: 4" : "--columns: 2"
+    );
+
+    onMounted(async () => {
+      try {
+        apiInfo.value = await getStatus();
+      } catch (error) {
+        showErrorModal(error);
+      }
+    });
+
+    return {
+      columnStyle,
+      apiInfo,
+
+      isInfoVisible,
+      modalTitle,
+      modalMessage,
+      isError,
+    };
   },
 });
 </script>
 
 <template>
-  <div class="cards">
-    <BaseCard
+  <div class="cards" v-if="apiInfo">
+    <CountCard
       class="cards__card"
-      title="Awesome card"
-      leftCorner="cornerL"
-      rightCorner="cornerR"
-    >
-      <template #center>
-        <button>Click me!</button><button>No, click ME!</button>
-      </template>
-    </BaseCard>
-    <BaseCard class="cards__card" title="Lorem ipsum" leftCorner="cornerL">
-      <template #center>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus
-          orci mauris, nec volutpat libero convallis non. Curabitur sed sagittis
-          nisi. Nullam elementum augue et urna placerat, pretium sollicitudin
-          nulla gravida. Donec ac pellentesque dolor. Nulla commodo auctor
-          purus, ultricies bibendum mi ultrices rutrum. Pellentesque facilisis,
-          orci nec fringilla pretium, magna arcu ultricies odio, eget dapibus
-          nulla ex nec risus. Suspendisse potenti
-        </p>
-      </template>
-    </BaseCard>
-    <BaseCard class="cards__card" rightCorner="cornerR">
-      <template #center> <input placeholder="Type something" /> </template>
-    </BaseCard>
+      title="Ingredients"
+      :count="apiInfo?.stats.ingredients"
+    />
+    <CountCard
+      class="cards__card"
+      title="Utensils"
+      :count="apiInfo?.stats.utensils"
+    />
+    <CountCard
+      class="cards__card"
+      title="Steps"
+      :count="apiInfo?.stats.steps"
+    />
+    <CountCard
+      class="cards__card"
+      title="Recipes"
+      :count="apiInfo?.stats.recipes"
+    />
   </div>
 </template>
 
