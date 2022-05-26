@@ -10,6 +10,23 @@ export enum Colors {
   YELLOW = "yellow",
 }
 
+export enum Environment {
+  PROD = "PROD",
+  DEV = "DEV",
+}
+
+export const ApiInfo = z.object({
+  environment: z.nativeEnum(Environment),
+  stats: z.object({
+    ingredients: z.number().int(),
+    utensils: z.number().int(),
+    steps: z.number().int(),
+    recipes: z.number().int(),
+  }),
+});
+
+export type ApiInfo = z.infer<typeof ApiInfo>;
+
 // #endregion --- Default ---
 
 // #region --- Ingredients ---
