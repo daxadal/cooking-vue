@@ -1,3 +1,16 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+
+import BaseCard from "@/components/BaseCard.vue";
+
+export default defineComponent({
+  name: "Home",
+  components: {
+    BaseCard,
+  },
+});
+</script>
+
 <template>
   <div class="cards">
     <BaseCard
@@ -28,19 +41,6 @@
     </BaseCard>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-
-import BaseCard from "@/components/BaseCard.vue";
-
-export default defineComponent({
-  name: "Home",
-  components: {
-    BaseCard,
-  },
-});
-</script>
 
 <style>
 .cards {
