@@ -1,7 +1,9 @@
 <template>
   <BaseToolbar class="toolbar">
     <div class="toolbar__left" />
-    <h1 class="toolbar__center">Cooking Vue</h1>
+    <BaseButton tag="router-link" to="/" text type="neutral">
+      <h1 class="toolbar__center">Cooking Vue</h1>
+    </BaseButton>
     <div class="toolbar__right">
       <PalletteSwitch @change="setTheme" />
       <BaseAvatar size="3rem" @click="isDrawerShowing = !isDrawerShowing" />
