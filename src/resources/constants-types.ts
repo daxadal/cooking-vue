@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+// #region --- Default ---
+
 export enum Colors {
   NEUTRAL = "neutral",
   CYAN = "cyan",
@@ -8,6 +10,10 @@ export enum Colors {
   YELLOW = "yellow",
 }
 
+// #endregion --- Default ---
+
+// #region --- Ingredients ---
+
 export enum IngredientType {
   START = "start",
   MID = "mid",
@@ -15,7 +21,7 @@ export enum IngredientType {
 }
 
 export const Ingredient = z.object({
-  id: z.number(),
+  id: z.number().int(),
   name: z.string(),
   type: z.nativeEnum(IngredientType),
 });
@@ -24,20 +30,28 @@ export type Ingredient = z.infer<typeof Ingredient>;
 
 export const IngredientArray = z.array(Ingredient);
 
+// #endregion --- Ingredients ---
+
+// #region --- Utensils ---
+
 export const Utensil = z.object({
-  id: z.number(),
+  id: z.number().int(),
   name: z.string(),
-  waitTimeInMillis: z.number(),
+  waitTimeInMillis: z.number().int(),
 });
 
 export type Utensil = z.infer<typeof Utensil>;
 
 export const UtensilArray = z.array(Utensil);
 
+// #endregion --- Utensils ---
+
+// #region --- Steps ---
+
 export const SimpleStep = z.object({
-  input: z.number(),
-  utensil: z.number(),
-  output: z.number(),
+  input: z.number().int(),
+  utensil: z.number().int(),
+  output: z.number().int(),
 });
 
 export type SimpleStep = z.infer<typeof SimpleStep>;
@@ -54,21 +68,25 @@ export type DetailedStep = z.infer<typeof DetailedStep>;
 
 export const DetailedStepArray = z.array(DetailedStep);
 
-export const SimpleRecipe = z.object({
-  input: z.number(),
-  utensil1: z.number(),
-  mid1: z.number(),
-  utensil2: z.number().optional(),
-  mid2: z.number().optional(),
-  utensil3: z.number().optional(),
-  mid3: z.number().optional(),
-  utensil4: z.number().optional(),
-  mid4: z.number().optional(),
-  utensil5: z.number().optional(),
-  mid5: z.number().optional(),
+// #endregion --- Steps ---
 
-  steps: z.number(),
-  output: z.number(),
+// #region --- Recipes ---
+
+export const SimpleRecipe = z.object({
+  input: z.number().int(),
+  utensil1: z.number().int(),
+  mid1: z.number().int(),
+  utensil2: z.number().int().optional(),
+  mid2: z.number().int().optional(),
+  utensil3: z.number().int().optional(),
+  mid3: z.number().int().optional(),
+  utensil4: z.number().int().optional(),
+  mid4: z.number().int().optional(),
+  utensil5: z.number().int().optional(),
+  mid5: z.number().int().optional(),
+
+  steps: z.number().int(),
+  output: z.number().int(),
 });
 
 export type SimpleRecipe = z.infer<typeof SimpleRecipe>;
@@ -88,10 +106,12 @@ export const DetailedRecipe = z.object({
   utensil5: Utensil.optional(),
   mid5: Ingredient.optional(),
 
-  steps: z.number(),
+  steps: z.number().int(),
   output: Ingredient,
 });
 
 export type DetailedRecipe = z.infer<typeof DetailedRecipe>;
 
 export const DetailedRecipeArray = z.array(DetailedRecipe);
+
+// #endregion --- Recipes ---
