@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-export enum Palletes {
+export enum Pallettes {
   DEFAULT = "default",
   LIGHT = "light",
   DARK = "dark",
@@ -14,11 +14,11 @@ export default defineComponent({
     function setTheme(event: Event) {
       const themeSelected = (event.target as HTMLInputElement).value;
 
-      emit("change", themeSelected as Palletes);
+      emit("change", themeSelected as Pallettes);
     }
 
     return {
-      Palletes,
+      Pallettes,
       setTheme,
     };
   },
@@ -28,8 +28,8 @@ export default defineComponent({
 <template>
   <label>Tema:</label>
   <select id="themeSelector" class="a-select" @change="setTheme">
-    <option :value="Palletes.DEFAULT">Por defecto</option>
-    <option :value="Palletes.LIGHT">Claro</option>
-    <option :value="Palletes.DARK">Oscuro</option>
+    <option :value="Pallettes.DEFAULT">Por defecto</option>
+    <option :value="Pallettes.LIGHT">Claro</option>
+    <option :value="Pallettes.DARK">Oscuro</option>
   </select>
 </template>

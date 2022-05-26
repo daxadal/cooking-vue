@@ -3,7 +3,7 @@
     <div class="toolbar__left" />
     <h1 class="toolbar__center">Cooking Vue</h1>
     <div class="toolbar__right">
-      <PalleteSwitch @change="setTheme" />
+      <PalletteSwitch @change="setTheme" />
       <BaseAvatar size="3rem" @click="isDrawerShowing = !isDrawerShowing" />
     </div>
   </BaseToolbar>
@@ -77,7 +77,7 @@ import BaseAvatar from "./components/BaseAvatar.vue";
 import BaseDrawer, { Positions } from "./components/BaseDrawer.vue";
 import BaseList from "./components/BaseList.vue";
 import BaseButton from "./components/BaseButton.vue";
-import PalleteSwitch, { Palletes } from "./components/PalleteSwitch.vue";
+import PalletteSwitch, { Pallettes } from "./components/PalletteSwitch.vue";
 import BaseDivider from "./components/BaseDivider.vue";
 
 export default defineComponent({
@@ -88,14 +88,14 @@ export default defineComponent({
     BaseDrawer,
     BaseList,
     BaseButton,
-    PalleteSwitch,
+    PalletteSwitch,
     BaseDivider,
   },
   setup() {
     const isDrawerShowing = ref(false);
     const toolbarHeight = ref(81); // TODO get toolbar height dynamicly
 
-    function setTheme(themeSelected: Palletes) {
+    function setTheme(themeSelected: Pallettes) {
       const html = document.documentElement;
 
       html.classList.remove("light-theme", "dark-theme");
