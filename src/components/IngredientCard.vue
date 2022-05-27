@@ -48,7 +48,11 @@ export default defineComponent({
         v-else-if="ingredient.type === IngredientType.MID"
         src="@/assets/pan.svg"
       />
-      <img v-else src="@/assets/chinese-food.svg" />
+      <img
+        v-else-if="ingredient.type === IngredientType.END"
+        src="@/assets/chinese-food.svg"
+      />
+      <img v-else src="@/assets/question-mark.svg" />
     </template>
     <template #left-corner>
       <p>ID: {{ ingredient.id }}</p>
