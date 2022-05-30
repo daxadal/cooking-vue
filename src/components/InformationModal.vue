@@ -38,7 +38,7 @@ export default defineComponent({
     </template>
     <template #actions>
       <div class="wrapper">
-        <BaseButton text @click="changeVisibility(false)"> Aceptar </BaseButton>
+        <BaseButton text @click="changeVisibility(false)"> OK </BaseButton>
       </div>
     </template>
   </BaseModal>

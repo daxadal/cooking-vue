@@ -34,7 +34,8 @@ export default defineComponent({
     function showErrorModal(error: any) {
       isError.value = true;
       modalTitle.value = "Error";
-      modalMessage.value = error?.message || error || "Ha ocurrido un error";
+      modalMessage.value =
+        error?.message || error || "An unexpected error has occurred";
       isInfoVisible.value = true;
     }
 
@@ -47,7 +48,7 @@ export default defineComponent({
       try {
         const { name, type } = ingredientData.value;
         if (!name || !type) {
-          showErrorModal("Rellena todos los campos");
+          showErrorModal("Fill out all the fields");
           return;
         }
         const ingredient = await createIngredient({ name, type });
