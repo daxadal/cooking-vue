@@ -5,14 +5,24 @@ import InformationModal from "@/components/InformationModal.vue";
 import IngredientCard from "@/components/IngredientCard.vue";
 
 import { Ingredient, IngredientType } from "@/resources/constants-types";
+
 import { createIngredient } from "@/services/api/routes";
 import { getScreenType, ScreenType } from "@/services/screen-size";
-import BaseButton from "@/components/BaseButton.vue";
 import router from "@/services/router";
+
+import BaseButton from "@/components/BaseButton.vue";
+import BaseInput from "@/components/BaseInput.vue";
+import BaseSelector from "@/components/BaseSelector.vue";
 
 export default defineComponent({
   name: "ingredientData",
-  components: { IngredientCard, InformationModal, BaseButton },
+  components: {
+    IngredientCard,
+    InformationModal,
+    BaseButton,
+    BaseInput,
+    BaseSelector,
+  },
   setup() {
     const ingredientData = ref<Partial<Ingredient>>({});
 
@@ -65,18 +75,27 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="cards" :style="columnStyle">
-    <IngredientCard :ingredient="ingredientData" class="cards__card" />
-    <form @submit.prevent="submit">
-      <label for="name">Name: </label>
-      <input id="name" v-model="ingredientData.name" type="text" name="name" />
-      <select id="type-selector" class="a-select" v-model="ingredientData.type">
-        <option :value="undefined">(no type)</option>
+  <div class="wrapper" :style="columnStyle">
+    <IngredientCard :ingredient="ingredientData" class="wrapper__card" />
+
+    <form @submit.prevent="submit" class="wrapper__form">
+      <BaseInput
+        id="name"
+        v-model="ingredientData.name"
+        type="text"
+        tag="Name: "
+      />
+      <BaseSelector
+        id="type-selector"
+        tag="Type: "
+        v-model="ingredientData.type"
+      >
+        <option value="">(Select an option)</option>
         <option :value="IngredientType.START">Raw ingredient</option>
         <option :value="IngredientType.MID">Half-cooked food</option>
         <option :value="IngredientType.END">Finished product</option>
-      </select>
-      <BaseButton tag="submit" value="Create"></BaseButton>
+      </BaseSelector>
+      <BaseButton tag="submit" value="Create" />
     </form>
   </div>
 
@@ -89,14 +108,20 @@ export default defineComponent({
   />
 </template>
 
-<style scoped>
-.cards {
-  display: grid;
-  grid-template-columns: repeat(var(--columns), 1fr);
-  row-gap: 1rem;
-}
+<style lang="scss" scoped>
+.wrapper {
+  display: flex;
+  flex-direction: row;
 
-.cards__card {
-  flex: 1 0 0;
+  &__card {
+    flex: 1 0 0;
+  }
+  &__form {
+    flex: calc(var(--columns) - 1) 0 0;
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 }
 </style>
