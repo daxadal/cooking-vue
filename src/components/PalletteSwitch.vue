@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
+import BaseSelector from "./BaseSelector.vue";
 
 export enum Pallettes {
   DEFAULT = "default",
@@ -8,15 +9,15 @@ export enum Pallettes {
 }
 
 export default defineComponent({
-  name: "HelloWorld",
+  components: {
+    BaseSelector,
+  },
   emits: ["change"],
   setup(props, { emit }) {
     function setTheme(event: Event) {
       const themeSelected = (event.target as HTMLInputElement).value;
-
       emit("change", themeSelected as Pallettes);
     }
-
     return {
       Pallettes,
       setTheme,
@@ -26,10 +27,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <label>Tema:</label>
-  <select id="themeSelector" class="a-select" @change="setTheme">
+  <BaseSelector
+    tag="Tema:"
+    id="themeSelector"
+    class="a-select"
+    @change="setTheme"
+  >
     <option :value="Pallettes.DEFAULT">Por defecto</option>
     <option :value="Pallettes.LIGHT">Claro</option>
     <option :value="Pallettes.DARK">Oscuro</option>
-  </select>
+  </BaseSelector>
 </template>
