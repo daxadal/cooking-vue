@@ -13,6 +13,14 @@ const routes = [
       import(/* webpackChunkName: "ingredients" */ "../views/Ingredients.vue"),
   },
   {
+    path: "/ingredients/new",
+    name: "Ingredient creation",
+    component: () =>
+      import(
+        /* webpackChunkName: "ingredients-new" */ "../views/IngredientCreation.vue"
+      ),
+  },
+  {
     path: "/utensils",
     name: "Utensils",
     component: () =>
