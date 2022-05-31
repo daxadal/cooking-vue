@@ -116,6 +116,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+// cSpell:words Avenir
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
