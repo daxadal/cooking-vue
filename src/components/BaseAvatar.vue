@@ -20,6 +20,7 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
+// cSpell:words nums
 .avatar {
   display: inline-block;
   margin: 0;

@@ -28,13 +28,13 @@ export default defineComponent({
 
 <template>
   <BaseSelector
-    tag="Tema:"
+    tag="Theme:"
     id="themeSelector"
     class="a-select"
     @change="setTheme"
   >
-    <option :value="Pallettes.DEFAULT">Por defecto</option>
-    <option :value="Pallettes.LIGHT">Claro</option>
-    <option :value="Pallettes.DARK">Oscuro</option>
+    <option :value="Pallettes.DEFAULT">Default</option>
+    <option :value="Pallettes.LIGHT">Light</option>
+    <option :value="Pallettes.DARK">Dark</option>
   </BaseSelector>
 </template>

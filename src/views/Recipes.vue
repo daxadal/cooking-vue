@@ -21,7 +21,8 @@ export default defineComponent({
     function showErrorModal(error: any) {
       isError.value = true;
       modalTitle.value = "Error";
-      modalMessage.value = error?.message || error || "Ha ocurrido un error";
+      modalMessage.value =
+        error?.message || error || "An unexpected error has occurred";
       isInfoVisible.value = true;
     }
 

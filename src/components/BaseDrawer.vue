@@ -66,7 +66,7 @@ export default defineComponent({
 .drawer {
   &__mask {
     position: fixed;
-    top: 81px; // TODO: Harcoded toolbar height. Find a betterway
+    top: 81px; // TODO: Hardcoded toolbar height. Find a better way
     left: 0;
     box-sizing: border-box;
     width: 100%;
@@ -77,7 +77,7 @@ export default defineComponent({
 
   &__body {
     position: fixed;
-    top: 80px; // TODO: Harcoded toolbar height. Find a betterway
+    top: 80px; // TODO: Hardcoded toolbar height. Find a better way
     display: flex;
     flex-direction: column;
     -moz-box-sizing: border-box;
