@@ -67,7 +67,7 @@
       </BaseButton>
     </BaseList>
   </BaseDrawer>
-  <div class="content">
+  <div class="content" :style="{ 'margin-top': toolbarHeight + 'px' }">
     <router-view />
   </div>
 </template>
@@ -153,9 +153,5 @@ export default defineComponent({
     gap: 1rem;
     align-items: center;
   }
-}
-
-.content {
-  margin-top: 8rem;
 }
 </style>
