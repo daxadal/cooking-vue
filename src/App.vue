@@ -1,11 +1,7 @@
 <template>
   <BaseToolbar class="toolbar" :height="toolbarHeight">
     <div class="toolbar__left">
-      <IconThreeBars
-        height="2rem"
-        width="2rem"
-        @click="isDrawerShowing = !isDrawerShowing"
-      />
+      <IconThreeBars @click="isDrawerShowing = !isDrawerShowing" />
     </div>
     <BaseButton tag="router-link" to="/" text type="neutral">
       <h1 class="toolbar__center">Cooking Vue</h1>
