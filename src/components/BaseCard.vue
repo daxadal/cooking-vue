@@ -22,7 +22,7 @@ export default defineComponent({
 
 <template>
   <div :class="['card', `card--${color}`]">
-    <h1 v-if="title" class="card__top">{{ title }}</h1>
+    <h2 v-if="title" class="card__top">{{ title }}</h2>
     <div class="card__center">
       <slot name="center" />
     </div>
@@ -78,11 +78,12 @@ export default defineComponent({
   @include colorStyles;
 
   &__top {
-    flex: 0 0 auto;
+    flex: 1 0 auto;
   }
 
   &__center {
-    flex: 1 0 0;
+    flex: 0 1 auto;
+    max-height: 96px;
   }
 
   &__bottom {
