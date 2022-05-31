@@ -1,12 +1,17 @@
 <template>
-  <BaseToolbar class="toolbar">
-    <div class="toolbar__left" />
+  <BaseToolbar class="toolbar" :height="toolbarHeight">
+    <div class="toolbar__left">
+      <IconThreeBars
+        height="2rem"
+        width="2rem"
+        @click="isDrawerShowing = !isDrawerShowing"
+      />
+    </div>
     <BaseButton tag="router-link" to="/" text type="neutral">
       <h1 class="toolbar__center">Cooking Vue</h1>
     </BaseButton>
     <div class="toolbar__right">
       <PalletteSwitch @change="setTheme" />
-      <BaseAvatar size="3rem" @click="isDrawerShowing = !isDrawerShowing" />
     </div>
   </BaseToolbar>
   <BaseDrawer
@@ -14,7 +19,7 @@
     width="450px"
     :closeOnClickAway="true"
     :hasMask="true"
-    :placement="Positions.R"
+    :placement="Positions.L"
     :topOffset="toolbarHeight"
   >
     <BaseList>
@@ -75,27 +80,27 @@
 import { defineComponent, ref } from "vue";
 
 import BaseToolbar from "./components/BaseToolbar.vue";
-import BaseAvatar from "./components/BaseAvatar.vue";
 import BaseDrawer, { Positions } from "./components/BaseDrawer.vue";
 import BaseList from "./components/BaseList.vue";
 import BaseButton from "./components/BaseButton.vue";
 import PalletteSwitch, { Pallettes } from "./components/PalletteSwitch.vue";
 import BaseDivider from "./components/BaseDivider.vue";
+import IconThreeBars from "./icons/IconThreeBars.vue";
 
 export default defineComponent({
   name: "App",
   components: {
     BaseToolbar,
-    BaseAvatar,
     BaseDrawer,
     BaseList,
     BaseButton,
     PalletteSwitch,
     BaseDivider,
+    IconThreeBars,
   },
   setup() {
     const isDrawerShowing = ref(false);
-    const toolbarHeight = ref(81); // TODO get toolbar height dynamicly
+    const toolbarHeight = ref(80); // TODO get toolbar height dynamicly
 
     function setTheme(themeSelected: Pallettes) {
       const html = document.documentElement;
