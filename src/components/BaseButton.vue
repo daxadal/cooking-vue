@@ -26,23 +26,18 @@ export default defineComponent({
     relatedId: { type: String },
   },
   setup(props, { slots }) {
-    let innerText;
-    // if (props.tag === "submit" && slots.default) {
-    //   innerText = slots.default()?.[0]?.children?.toString().trim();
-    // } else {
-    innerText = undefined;
-    // }
-    const classes = computed(() => [
-      {
-        "button--empty": !slots.default,
-        [`button--${props.type}--outlined`]: props.outlined,
-        "button--rounded": props.rounded,
-        "button--block": props.block,
-        "button--text": props.text,
-        [`button--${props.type || "neutral"}`]: props.type,
-      },
-    ]);
-    return { classes, innerText };
+    return {
+      classes: computed(() => [
+        {
+          "button--empty": !slots.default,
+          [`button--${props.type}--outlined`]: props.outlined,
+          "button--rounded": props.rounded,
+          "button--block": props.block,
+          "button--text": props.text,
+          [`button--${props.type || "neutral"}`]: props.type,
+        },
+      ]),
+    };
   },
 });
 </script>
@@ -51,7 +46,6 @@ export default defineComponent({
   <component
     :is="tag === 'submit' ? 'input' : tag"
     :type="tag === 'submit' ? 'submit' : undefined"
-    :value="innerText"
     :disabled="disabled"
     class="button"
     :class="classes"
@@ -168,8 +162,8 @@ export default defineComponent({
     box-sizing: border-box;
     color: var(--neutral-text);
     text-shadow: none;
-    background-color: var(--background-color);
-    border: 1px solid var(--soft-highlight);
+    background-color: var(--neutral-foreground);
+    border: 1px solid var(--neutral-detail);
     box-shadow: #e4e7eb 0 1px 1px 0;
 
     &:focus {
@@ -197,18 +191,6 @@ export default defineComponent({
       background-color: fade-out(black, 0.8);
       box-shadow: none;
     }
-  }
-
-  &:disabled,
-  &:disabled:hover,
-  &:disabled:active {
-    top: 0;
-    color: var(--disabled-color);
-    text-shadow: none;
-    background-color: var(--disabled-color);
-    border: 1px solid var(--disabled-color);
-    box-shadow: none;
-    cursor: not-allowed;
   }
 }
 </style>
