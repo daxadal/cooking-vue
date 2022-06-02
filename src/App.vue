@@ -91,7 +91,7 @@ export default defineComponent({
   },
   setup() {
     const isDrawerShowing = ref(false);
-    const toolbarHeight = ref(80); // TODO get toolbar height dynamicly
+    const toolbarHeight = 80;
 
     function setTheme(themeSelected: Pallettes) {
       const html = document.documentElement;
