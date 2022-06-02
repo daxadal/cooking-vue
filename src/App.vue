@@ -79,7 +79,6 @@ import BaseDivider from "./components/BaseDivider.vue";
 import IconThreeBars from "./icons/IconThreeBars.vue";
 
 export default defineComponent({
-  name: "App",
   components: {
     BaseToolbar,
     BaseDrawer,
