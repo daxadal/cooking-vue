@@ -47,11 +47,16 @@ export default defineComponent({
 </script>
 
 <template>
-  <StepCarrousel
-    v-for="step in steps"
-    :key="`${step.input.id}-${step.output.id}`"
-    :step="step"
-  />
+  <div class="title">
+    <h1>Steps</h1>
+  </div>
+  <div>
+    <StepCarrousel
+      v-for="step in steps"
+      :key="`${step.input.id}-${step.output.id}`"
+      :step="step"
+    />
+  </div>
 
   <InformationModal
     v-if="isInfoVisible"
@@ -62,4 +67,10 @@ export default defineComponent({
   />
 </template>
 
-<style scoped></style>
+<style scoped>
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>

@@ -54,6 +54,9 @@ export default defineComponent({
 </script>
 
 <template>
+  <div class="title">
+    <h1>Utensils</h1>
+  </div>
   <div class="cards" :style="columnStyle">
     <UtensilCard
       v-for="utensil in utensils"
@@ -72,6 +75,11 @@ export default defineComponent({
 </template>
 
 <style scoped>
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .cards {
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
