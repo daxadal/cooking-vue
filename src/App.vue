@@ -111,6 +111,24 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+@use "@/styles/themes.scss";
+
+:root {
+  @include themes.light-theme;
+
+  &.dark-theme {
+    @include themes.dark-theme;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include themes.dark-theme;
+
+    &.light-theme {
+      @include themes.light-theme;
+    }
+  }
+}
+
 // cSpell:words Avenir
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
