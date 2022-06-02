@@ -35,37 +35,7 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-@mixin colorStyles {
-  &--neutral {
-    background-color: var(--neutral-foreground);
-    color: var(--neutral-text);
-    border-color: var(--neutral-detail);
-  }
-
-  &--cyan {
-    background-color: var(--cyan-foreground);
-    color: var(--cyan-text);
-    border-color: var(--cyan-detail);
-  }
-
-  &--green {
-    background-color: var(--green-foreground);
-    color: var(--green-text);
-    border-color: var(--green-detail);
-  }
-
-  &--purple {
-    background-color: var(--purple-foreground);
-    color: var(--purple-text);
-    border-color: var(--purple-detail);
-  }
-
-  &--yellow {
-    background-color: var(--yellow-foreground);
-    color: var(--yellow-text);
-    border-color: var(--yellow-detail);
-  }
-}
+@use "../styles/mixins.scss";
 
 .card {
   margin: 1rem;
@@ -75,7 +45,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
 
-  @include colorStyles;
+  @include mixins.colorStyles;
 
   &__top {
     flex: 1 0 auto;
