@@ -1,3 +1,45 @@
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+
+import BaseToolbar from "./components/BaseToolbar.vue";
+import BaseDrawer, { Positions } from "./components/BaseDrawer.vue";
+import BaseList from "./components/BaseList.vue";
+import BaseButton from "./components/BaseButton.vue";
+import PalletteSwitch, { Pallettes } from "./components/PalletteSwitch.vue";
+import BaseDivider from "./components/BaseDivider.vue";
+import IconThreeBars from "./icons/IconThreeBars.vue";
+
+export default defineComponent({
+  components: {
+    BaseToolbar,
+    BaseDrawer,
+    BaseList,
+    BaseButton,
+    PalletteSwitch,
+    BaseDivider,
+    IconThreeBars,
+  },
+  setup() {
+    const isDrawerShowing = ref(false);
+    const toolbarHeight = 80;
+
+    function setTheme(themeSelected: Pallettes) {
+      const html = document.documentElement;
+
+      html.classList.remove("light-theme", "dark-theme");
+
+      if (themeSelected === "light") {
+        html.classList.add("light-theme");
+      } else if (themeSelected === "dark") {
+        html.classList.add("dark-theme");
+      }
+    }
+
+    return { isDrawerShowing, Positions, setTheme, toolbarHeight };
+  },
+});
+</script>
+
 <template>
   <BaseToolbar class="toolbar" :height="toolbarHeight">
     <div class="toolbar__left">
@@ -66,48 +108,6 @@
     <router-view />
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-
-import BaseToolbar from "./components/BaseToolbar.vue";
-import BaseDrawer, { Positions } from "./components/BaseDrawer.vue";
-import BaseList from "./components/BaseList.vue";
-import BaseButton from "./components/BaseButton.vue";
-import PalletteSwitch, { Pallettes } from "./components/PalletteSwitch.vue";
-import BaseDivider from "./components/BaseDivider.vue";
-import IconThreeBars from "./icons/IconThreeBars.vue";
-
-export default defineComponent({
-  components: {
-    BaseToolbar,
-    BaseDrawer,
-    BaseList,
-    BaseButton,
-    PalletteSwitch,
-    BaseDivider,
-    IconThreeBars,
-  },
-  setup() {
-    const isDrawerShowing = ref(false);
-    const toolbarHeight = 80;
-
-    function setTheme(themeSelected: Pallettes) {
-      const html = document.documentElement;
-
-      html.classList.remove("light-theme", "dark-theme");
-
-      if (themeSelected === "light") {
-        html.classList.add("light-theme");
-      } else if (themeSelected === "dark") {
-        html.classList.add("dark-theme");
-      }
-    }
-
-    return { isDrawerShowing, Positions, setTheme, toolbarHeight };
-  },
-});
-</script>
 
 <style lang="scss">
 @use "@/styles/themes.scss";
