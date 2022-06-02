@@ -23,7 +23,6 @@
         tag="router-link"
         to="/"
         text
-        type="neutral"
         @click="isDrawerShowing = false"
       >
         Home
@@ -33,7 +32,6 @@
         tag="router-link"
         to="/ingredients"
         text
-        type="neutral"
         @click="isDrawerShowing = false"
       >
         Ingredients
@@ -42,7 +40,6 @@
         tag="router-link"
         to="/utensils"
         text
-        type="neutral"
         @click="isDrawerShowing = false"
       >
         Utensils
@@ -51,7 +48,6 @@
         tag="router-link"
         to="/steps"
         text
-        type="neutral"
         @click="isDrawerShowing = false"
       >
         Steps
@@ -60,7 +56,6 @@
         tag="router-link"
         to="/recipes"
         text
-        type="neutral"
         @click="isDrawerShowing = false"
       >
         Recipes
