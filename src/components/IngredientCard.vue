@@ -15,7 +15,7 @@ export default defineComponent({
   },
   props: {
     ingredient: {
-      type: Object as PropType<Ingredient>,
+      type: Object as PropType<Partial<Ingredient>>,
       required: true,
     },
   },
@@ -38,7 +38,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <BaseCard :title="ingredient.name" :color="color">
+  <BaseCard :title="ingredient.name || '(No name)'" :color="color">
     <template #center>
       <img
         v-if="ingredient.type === IngredientType.START"
@@ -48,13 +48,17 @@ export default defineComponent({
         v-else-if="ingredient.type === IngredientType.MID"
         src="@/assets/pan.svg"
       />
-      <img v-else src="@/assets/chinese-food.svg" />
+      <img
+        v-else-if="ingredient.type === IngredientType.END"
+        src="@/assets/chinese-food.svg"
+      />
+      <img v-else src="@/assets/question-mark.svg" />
     </template>
-    <template #left-corner>
+    <template #left-corner v-if="ingredient.id">
       <p>ID: {{ ingredient.id }}</p>
     </template>
     <template #right-corner>
-      <p>Type: {{ ingredient.type }}</p>
+      <p>Type: {{ ingredient.type || "(No type)" }}</p>
     </template>
   </BaseCard>
 </template>
