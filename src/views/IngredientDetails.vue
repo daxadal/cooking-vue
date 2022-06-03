@@ -114,10 +114,20 @@ export default defineComponent({
 </script>
 
 <template>
+  <div class="title">
+    <h1>Ingredients</h1>
+  </div>
   <div class="wrapper" :style="columnStyle">
     <IngredientCard :ingredient="ingredientData" class="wrapper__card" />
     <div class="wrapper__right">
       <form @submit.prevent="update" class="wrapper__right__form">
+        <BaseInput
+          id="id"
+          :modelValue="String(ingredientData.id)"
+          type="text"
+          tag="ID: "
+          disabled
+        />
         <BaseInput
           id="name"
           v-model="ingredientData.name"
@@ -151,6 +161,12 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .wrapper {
   display: flex;
   flex-direction: row;
