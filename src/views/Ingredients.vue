@@ -65,12 +65,14 @@ export default defineComponent({
   </div>
 
   <div class="cards" :style="columnStyle">
-    <IngredientCard
+    <router-link
       v-for="ingredient in ingredients"
       :key="ingredient.id"
-      :ingredient="ingredient"
-      class="cards__card"
-    />
+      :to="`/ingredients/${ingredient.id}`"
+      class="cards__link"
+    >
+      <IngredientCard :ingredient="ingredient" class="cards__card" />
+    </router-link>
   </div>
 
   <InformationModal
