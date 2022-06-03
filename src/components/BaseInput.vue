@@ -13,6 +13,9 @@ export default defineComponent({
       type: String,
       default: "text",
     },
+    modelValue: {
+      default: "",
+    },
   },
   emits: ["update:modelValue"],
   setup(props, { emit }) {
@@ -33,6 +36,7 @@ export default defineComponent({
     <input
       :id="id"
       :type="type"
+      :value="modelValue"
       @input="onChange"
       class="wrapper__input"
       v-bind="$attrs"
