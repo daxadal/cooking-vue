@@ -11,7 +11,7 @@ export default defineComponent({
     },
     modelValue: {},
   },
-  emits: ["change", "update:modelValue"],
+  emits: ["update:modelValue"],
   setup(props, { emit }) {
     return {
       onChange: function (event: Event) {

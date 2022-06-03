@@ -14,13 +14,11 @@ export default defineComponent({
   },
   emits: ["change"],
   setup(props, { emit }) {
-    function setTheme(event: Event) {
-      const themeSelected = (event.target as HTMLInputElement).value;
-      emit("change", themeSelected as Pallettes);
-    }
     return {
       Pallettes,
-      setTheme,
+      setTheme: (themeSelected: Pallettes) => {
+        emit("change", themeSelected);
+      },
     };
   },
 });
@@ -28,10 +26,10 @@ export default defineComponent({
 
 <template>
   <BaseSelector
-    tag="Theme:"
+    tag="Theme: "
     id="themeSelector"
     class="a-select"
-    @change="setTheme"
+    @update:modelValue="setTheme"
   >
     <option :value="Pallettes.DEFAULT">Default</option>
     <option :value="Pallettes.LIGHT">Light</option>

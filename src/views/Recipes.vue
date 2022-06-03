@@ -47,11 +47,16 @@ export default defineComponent({
 </script>
 
 <template>
-  <RecipeCarrousel
-    v-for="recipe in recipes"
-    :key="`${recipe.input.id}-${recipe.output.id}`"
-    :recipe="recipe"
-  />
+  <div class="title">
+    <h1>Recipes</h1>
+  </div>
+  <div>
+    <RecipeCarrousel
+      v-for="recipe in recipes"
+      :key="`${recipe.input.id}-${recipe.output.id}`"
+      :recipe="recipe"
+    />
+  </div>
 
   <InformationModal
     v-if="isInfoVisible"
@@ -62,4 +67,10 @@ export default defineComponent({
   />
 </template>
 
-<style scoped></style>
+<style scoped>
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>

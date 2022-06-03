@@ -66,7 +66,6 @@ export default defineComponent({
 .drawer {
   &__mask {
     position: fixed;
-    top: 81px; // TODO: Hardcoded toolbar height. Find a better way
     left: 0;
     box-sizing: border-box;
     width: 100%;
@@ -77,7 +76,6 @@ export default defineComponent({
 
   &__body {
     position: fixed;
-    top: 80px; // TODO: Hardcoded toolbar height. Find a better way
     display: flex;
     flex-direction: column;
     -moz-box-sizing: border-box;
@@ -88,8 +86,6 @@ export default defineComponent({
     padding: 2rem;
     overflow: auto;
     background-color: var(--neutral-foreground);
-    // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 7px 14px rgba(50, 50, 93, 0.1),
-    //   0 0 0 1px rgba(50, 50, 93, 0.05);
     transition: transform 0.2s ease-in-out;
     transition-delay: 1s;
     border: 1px solid var(--neutral-detail);

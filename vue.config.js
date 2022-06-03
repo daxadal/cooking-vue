@@ -2,6 +2,12 @@
 const path = require("path");
 
 module.exports = {
+  pages: {
+    index: {
+      entry: "src/main.ts",
+      title: "Cooking Vue",
+    },
+  },
   configureWebpack: {
     resolve: {
       alias: {

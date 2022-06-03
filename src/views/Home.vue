@@ -54,6 +54,22 @@ export default defineComponent({
 </script>
 
 <template>
+  <div class="welcome">
+    <h1>Welcome to Cooking Vue!</h1>
+    <p class="welcome__explanation">
+      This project is a user interface connected to the Cooking API. <br />
+      This UI allows interaction with all operations from the API, presenting
+      the data in a user-friendly way.
+    </p>
+  </div>
+  <div class="status">
+    <h2>API status:</h2>
+
+    <p>{{ apiInfo ? "Connected" : "Not connected" }}</p>
+
+    <img v-if="apiInfo" class="status__image" src="@/assets/success.png" />
+    <img v-else class="status__image" src="@/assets/error.png" />
+  </div>
   <div class="cards" v-if="apiInfo">
     <router-link class="cards__card" to="/ingredients">
       <CountCard title="Ingredients" :count="apiInfo?.stats.ingredients" />
@@ -70,13 +86,38 @@ export default defineComponent({
   </div>
 </template>
 
-<style>
+<style lang="scss">
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__explanation {
+    padding: 16px;
+    max-width: 720px;
+  }
+}
 .cards {
   display: flex;
   flex-direction: row;
+
+  &__card {
+    flex: 1 0 0;
+  }
 }
 
-.cards__card {
-  flex: 1 0 0;
+.status {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  &__image {
+    width: 24px;
+    height: 24px;
+    margin-top: -8px;
+  }
 }
 </style>

@@ -13,9 +13,6 @@ export default defineComponent({
       type: String,
       default: "text",
     },
-    modelValue: {
-      default: "",
-    },
   },
   emits: ["update:modelValue"],
   setup(props, { emit }) {
