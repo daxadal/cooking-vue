@@ -65,8 +65,7 @@ export default defineComponent({
   <div class="status">
     <h2>API status:</h2>
 
-    <p v-if="apiInfo">Connected</p>
-    <p v-else>Not connected</p>
+    <p>{{ apiInfo ? "Connected" : "Not connected" }}</p>
 
     <img v-if="apiInfo" class="status__image" src="@/assets/success.png" />
     <img v-else class="status__image" src="@/assets/error.png" />
