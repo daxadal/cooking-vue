@@ -15,7 +15,6 @@ import BaseInput from "@/components/BaseInput.vue";
 import BaseSelector from "@/components/BaseSelector.vue";
 
 export default defineComponent({
-  name: "ingredientData",
   components: {
     IngredientCard,
     InformationModal,
