@@ -82,7 +82,7 @@ export default defineComponent({
                       @click="close"
                       style="vertical-align: center; cursor: pointer"
                     >
-                      Cerrar
+                      Close
                     </span>
                   </div>
                 </div>

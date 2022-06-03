@@ -3,11 +3,14 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "BaseToolbar",
+  props: {
+    height: { type: Number, required: true },
+  },
 });
 </script>
 
 <template>
-  <header class="toolbar">
+  <header class="toolbar" :style="{ height: height + 'px' }">
     <nav class="toolbar__nav">
       <slot />
     </nav>
@@ -23,12 +26,12 @@ export default defineComponent({
 }
 
 .toolbar {
+  box-sizing: border-box;
   position: fixed;
   top: 0;
   width: 100%;
   overflow: hidden;
   background-color: var(--neutral-foreground);
-  // box-shadow: 0 6px 24px -12px black;
   border-bottom: 1px solid var(--neutral-detail);
 
   &__nav {

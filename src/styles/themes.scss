@@ -61,19 +61,3 @@
   --yellow-detail: #aa0;
   --yellow-text: #ee0;
 }
-
-:root {
-  @include light-theme;
-
-  &.dark-theme {
-    @include dark-theme;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    @include dark-theme;
-
-    &.light-theme {
-      @include light-theme;
-    }
-  }
-}

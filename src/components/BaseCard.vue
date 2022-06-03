@@ -22,7 +22,7 @@ export default defineComponent({
 
 <template>
   <div :class="['card', `card--${color}`]">
-    <h1 v-if="title" class="card__top">{{ title }}</h1>
+    <h2 v-if="title" class="card__top">{{ title }}</h2>
     <div class="card__center">
       <slot name="center" />
     </div>
@@ -35,37 +35,7 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-@mixin colorStyles {
-  &--neutral {
-    background-color: var(--neutral-foreground);
-    color: var(--neutral-text);
-    border-color: var(--neutral-detail);
-  }
-
-  &--cyan {
-    background-color: var(--cyan-foreground);
-    color: var(--cyan-text);
-    border-color: var(--cyan-detail);
-  }
-
-  &--green {
-    background-color: var(--green-foreground);
-    color: var(--green-text);
-    border-color: var(--green-detail);
-  }
-
-  &--purple {
-    background-color: var(--purple-foreground);
-    color: var(--purple-text);
-    border-color: var(--purple-detail);
-  }
-
-  &--yellow {
-    background-color: var(--yellow-foreground);
-    color: var(--yellow-text);
-    border-color: var(--yellow-detail);
-  }
-}
+@use "../styles/mixins.scss";
 
 .card {
   margin: 1rem;
@@ -75,14 +45,15 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
 
-  @include colorStyles;
+  @include mixins.colorStyles;
 
   &__top {
-    flex: 0 0 auto;
+    flex: 1 0 auto;
   }
 
   &__center {
-    flex: 1 0 0;
+    flex: 0 1 auto;
+    max-height: 96px;
   }
 
   &__bottom {
