@@ -28,6 +28,12 @@
   --yellow-foreground: #ee0;
   --yellow-detail: #aa0;
   --yellow-text: #770;
+
+  // RED
+  --red-background: #f00;
+  --red-foreground: #e00;
+  --red-detail: #a00;
+  --red-text: #700;
 }
 
 @mixin dark-theme {
@@ -60,4 +66,10 @@
   --yellow-foreground: #660;
   --yellow-detail: #aa0;
   --yellow-text: #ee0;
+
+  // RED
+  --red-background: #300;
+  --red-foreground: #600;
+  --red-detail: #a00;
+  --red-text: #e00;
 }

@@ -8,6 +8,7 @@ export enum Colors {
   GREEN = "green",
   PURPLE = "purple",
   YELLOW = "yellow",
+  RED = "red",
 }
 
 export enum Environment {

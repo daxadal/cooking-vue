@@ -28,4 +28,10 @@
     color: var(--yellow-text);
     border-color: var(--yellow-detail);
   }
+
+  &--red {
+    background-color: var(--red-foreground);
+    color: var(--red-text);
+    border-color: var(--red-detail);
+  }
 }
