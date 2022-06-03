@@ -51,7 +51,7 @@ export default defineComponent({
           return;
         }
         const ingredient = await createIngredient({ name, type });
-        router.push(`/ingredient/${ingredient.id}`);
+        router.push(`/ingredients/${ingredient.id}`);
       } catch (error) {
         showErrorModal(error);
       }
