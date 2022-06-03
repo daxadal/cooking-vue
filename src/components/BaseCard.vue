@@ -42,8 +42,10 @@ export default defineComponent({
   border: 1px solid;
   border-radius: 1rem;
   padding: 1rem;
+
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 
   @include mixins.colorStyles;
 
@@ -52,8 +54,12 @@ export default defineComponent({
   }
 
   &__center {
-    flex: 0 1 auto;
-    max-height: 96px;
+    flex: 0 0 auto;
+    align-self: center;
+
+    height: 96px;
+    width: 96px;
+    margin: 8px;
   }
 
   &__bottom {

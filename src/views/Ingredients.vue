@@ -106,6 +106,10 @@ export default defineComponent({
   grid-template-columns: repeat(var(--columns), 1fr);
   row-gap: 1rem;
 
+  &__link {
+    display: flex;
+  }
+
   &__card {
     flex: 1 0 0;
   }
