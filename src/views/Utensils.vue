@@ -7,10 +7,11 @@ import UtensilCard from "@/components/UtensilCard.vue";
 import { Utensil } from "@/resources/constants-types";
 import { getAllUtensils } from "@/services/api/routes";
 import { getScreenType, ScreenType } from "@/services/screen-size";
+import BaseButton from "@/components/BaseButton.vue";
 
 export default defineComponent({
   name: "Utensils",
-  components: { UtensilCard, InformationModal },
+  components: { UtensilCard, InformationModal, BaseButton },
   setup() {
     const utensils = ref<Utensil[]>([]);
 
@@ -56,7 +57,11 @@ export default defineComponent({
 <template>
   <div class="title">
     <h1>Utensils</h1>
+    <div class="title__buttons">
+      <BaseButton tag="router-link" to="/utensils/new"> Create new </BaseButton>
+    </div>
   </div>
+
   <div class="cards" :style="columnStyle">
     <UtensilCard
       v-for="utensil in utensils"
@@ -65,6 +70,7 @@ export default defineComponent({
       class="cards__card"
     />
   </div>
+
   <InformationModal
     v-if="isInfoVisible"
     @update:isVisible="isInfoVisible = $event"
@@ -74,19 +80,30 @@ export default defineComponent({
   />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .title {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &__buttons {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 32px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 }
+
 .cards {
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   row-gap: 1rem;
-}
 
-.cards__card {
-  flex: 1 0 0;
+  &__card {
+    flex: 1 0 0;
+  }
 }
 </style>

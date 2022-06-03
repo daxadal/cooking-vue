@@ -27,6 +27,14 @@ const routes = [
       import(/* webpackChunkName: "utensils" */ "../views/Utensils.vue"),
   },
   {
+    path: "/utensils/new",
+    name: "Utensil creation",
+    component: () =>
+      import(
+        /* webpackChunkName: "utensils-new" */ "../views/UtensilCreation.vue"
+      ),
+  },
+  {
     path: "/steps",
     name: "Steps",
     component: () =>
