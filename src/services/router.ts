@@ -21,6 +21,14 @@ const routes = [
       ),
   },
   {
+    path: "/ingredients/:id",
+    name: "Ingredient details",
+    component: () =>
+      import(
+        /* webpackChunkName: "ingredients-id" */ "../views/IngredientDetails.vue"
+      ),
+  },
+  {
     path: "/utensils",
     name: "Utensils",
     component: () =>
