@@ -11,7 +11,7 @@ export default defineComponent({
   },
   props: {
     utensil: {
-      type: Object as PropType<Utensil>,
+      type: Object as PropType<Partial<Utensil>>,
       required: true,
     },
   },
@@ -22,15 +22,15 @@ export default defineComponent({
 </script>
 
 <template>
-  <BaseCard :title="utensil.name" :color="Colors.YELLOW">
+  <BaseCard :title="utensil.name || '(No name)'" :color="Colors.YELLOW">
     <template #center>
       <img src="@/assets/whisk.svg" />
     </template>
-    <template #left-corner>
+    <template #left-corner v-if="utensil.id">
       <p>ID: {{ utensil.id }}</p>
     </template>
     <template #right-corner>
-      <p>{{ utensil.waitTimeInMillis }} ms</p>
+      <p>{{ utensil.waitTimeInMillis || 0 }} ms</p>
     </template>
   </BaseCard>
 </template>
