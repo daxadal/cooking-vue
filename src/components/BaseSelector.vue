@@ -64,6 +64,10 @@ export default defineComponent({
     &:focus {
       border-color: var(--neutral-text);
     }
+
+    &[disabled] {
+      background-color: var(--neutral-background);
+    }
   }
 }
 </style>
