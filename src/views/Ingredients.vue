@@ -7,10 +7,11 @@ import IngredientCard from "@/components/IngredientCard.vue";
 import { Ingredient } from "@/resources/constants-types";
 import { getAllIngredients } from "@/services/api/routes";
 import { getScreenType, ScreenType } from "@/services/screen-size";
+import BaseButton from "@/components/BaseButton.vue";
 
 export default defineComponent({
   name: "Ingredients",
-  components: { IngredientCard, InformationModal },
+  components: { IngredientCard, InformationModal, BaseButton },
   setup() {
     const ingredients = ref<Ingredient[]>([]);
 
@@ -56,7 +57,13 @@ export default defineComponent({
 <template>
   <div class="title">
     <h1>Ingredients</h1>
+    <div class="title__buttons">
+      <BaseButton tag="router-link" to="/ingredients/new">
+        Create new
+      </BaseButton>
+    </div>
   </div>
+
   <div class="cards" :style="columnStyle">
     <IngredientCard
       v-for="ingredient in ingredients"
@@ -65,6 +72,7 @@ export default defineComponent({
       class="cards__card"
     />
   </div>
+
   <InformationModal
     v-if="isInfoVisible"
     @update:isVisible="isInfoVisible = $event"
@@ -74,20 +82,30 @@ export default defineComponent({
   />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .title {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &__buttons {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 32px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 }
 
 .cards {
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   row-gap: 1rem;
-}
 
-.cards__card {
-  flex: 1 0 0;
+  &__card {
+    flex: 1 0 0;
+  }
 }
 </style>
