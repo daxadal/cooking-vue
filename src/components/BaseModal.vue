@@ -11,6 +11,7 @@ export default defineComponent({
     hasCloseButton: { type: Boolean, default: true },
     width: { type: String },
   },
+  emits: ["close"],
   setup(props, { emit, slots }) {
     const modalRef = ref<HTMLElement | null>();
     const modalHasHeader = "header" in slots;
@@ -21,7 +22,7 @@ export default defineComponent({
     const screenType = getScreenType();
 
     function close() {
-      emit("update:isVisible", false);
+      emit("close");
     }
 
     function onClickAway() {

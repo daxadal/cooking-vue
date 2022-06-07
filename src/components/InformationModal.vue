@@ -21,10 +21,8 @@ export default defineComponent({
       validator: (value: ModalType) => Object.values(ModalType).includes(value),
     },
   },
-  setup(props, { emit }) {
-    const changeVisibility = (visibility: boolean) =>
-      emit("update:isVisible", visibility);
-
+  emits: ["close"],
+  setup(props) {
     const title = computed(() => {
       switch (props.type) {
         case ModalType.SUCCESS:
@@ -40,7 +38,6 @@ export default defineComponent({
 
     return {
       ModalType,
-      changeVisibility,
 
       title,
     };
@@ -49,7 +46,7 @@ export default defineComponent({
 </script>
 <template>
   <BaseModal
-    @update:isVisible="changeVisibility"
+    @close="$emit('close')"
     :closeOnClickAway="false"
     :hasCloseButton="false"
   >
@@ -66,7 +63,7 @@ export default defineComponent({
     </template>
     <template #actions>
       <div class="wrapper">
-        <BaseButton text @click="changeVisibility(false)"> OK </BaseButton>
+        <BaseButton text @click="$emit('close')"> OK </BaseButton>
       </div>
     </template>
   </BaseModal>

@@ -94,7 +94,7 @@ export default defineComponent({
 
   <InformationModal
     v-if="isInfoVisible"
-    @update:isVisible="isInfoVisible = $event"
+    @close="isInfoVisible = false"
     :message="modalMessage"
     :type="ModalType.ERROR"
   />
