@@ -1,5 +1,6 @@
 <script lang="ts">
 import { ref, onMounted, defineComponent, computed } from "vue";
+import { RouterLink } from "vue-router";
 
 import InformationModal, { ModalType } from "@/components/InformationModal.vue";
 import UtensilCard from "@/components/UtensilCard.vue";
@@ -11,7 +12,7 @@ import BaseButton from "@/components/BaseButton.vue";
 
 export default defineComponent({
   name: "Utensils",
-  components: { UtensilCard, InformationModal, BaseButton },
+  components: { UtensilCard, InformationModal, BaseButton, RouterLink },
   setup() {
     const utensils = ref<Utensil[]>([]);
 
@@ -59,12 +60,14 @@ export default defineComponent({
   </div>
 
   <div class="cards" :style="columnStyle">
-    <UtensilCard
+    <RouterLink
       v-for="utensil in utensils"
       :key="utensil.id"
-      :utensil="utensil"
-      class="cards__card"
-    />
+      :to="`/utensils/${utensil.id}`"
+      class="cards__link"
+    >
+      <UtensilCard :utensil="utensil" class="cards__card" />
+    </RouterLink>
   </div>
 
   <InformationModal
@@ -96,6 +99,10 @@ export default defineComponent({
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   row-gap: 1rem;
+
+  &__link {
+    display: flex;
+  }
 
   &__card {
     flex: 1 0 0;
