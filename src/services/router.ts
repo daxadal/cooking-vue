@@ -1,11 +1,15 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
+  // #region --- Home ---
   {
     path: "/",
     name: "Home",
     component: () => import(/* webpackChunkName: "home" */ "../views/Home.vue"),
   },
+  // #endregion --- Home ---
+
+  // #region --- Ingredients ---
   {
     path: "/ingredients",
     name: "Ingredients",
@@ -28,6 +32,10 @@ const routes = [
         /* webpackChunkName: "ingredients-id" */ "../views/IngredientDetails.vue"
       ),
   },
+  { path: "/ingredients/:any(.*)", redirect: "/ingredients" },
+  // #endregion --- Ingredients ---
+
+  // #region --- Utensils ---
   {
     path: "/utensils",
     name: "Utensils",
@@ -42,18 +50,26 @@ const routes = [
         /* webpackChunkName: "utensils-new" */ "../views/UtensilCreation.vue"
       ),
   },
+  // #endregion --- Utensils ---
+
+  // #region --- Steps ---
   {
     path: "/steps",
     name: "Steps",
     component: () =>
       import(/* webpackChunkName: "steps" */ "../views/Steps.vue"),
   },
+  // #endregion --- Steps ---
+
+  // #region --- Recipes ---
   {
     path: "/recipes",
     name: "Recipes",
     component: () =>
       import(/* webpackChunkName: "recipes" */ "../views/Recipes.vue"),
   },
+
+  // #endregion --- Recipes ---
 ];
 
 const router = createRouter({
