@@ -58,7 +58,7 @@ export default defineComponent({
 
     const screenType = getScreenType();
     const columnStyle = computed(() =>
-      screenType.value === ScreenType.DESKTOP ? "--columns: 4" : "--columns: 2"
+      screenType.value === ScreenType.DESKTOP ? "width: 75%" : "width: 100%"
     );
 
     const id = Number(useRoute().params.id);
@@ -117,10 +117,10 @@ export default defineComponent({
   <div class="title">
     <h1>Ingredients</h1>
   </div>
-  <div class="wrapper" :style="columnStyle">
-    <IngredientCard :ingredient="ingredientData" class="wrapper__card" />
-    <div class="wrapper__right">
-      <form @submit.prevent="update" class="wrapper__right__form">
+  <div class="container" :style="columnStyle">
+    <IngredientCard :ingredient="ingredientData" class="container__card" />
+    <div class="container__right">
+      <form @submit.prevent="update" class="container__right__form">
         <BaseInput
           id="id"
           :modelValue="String(ingredientData.id)"
@@ -146,7 +146,7 @@ export default defineComponent({
         </BaseSelector>
         <BaseButton tag="submit" value="Update" />
       </form>
-      <BaseDivider class="wrapper__right__divider" />
+      <BaseDivider class="container__right__divider" />
       <BaseButton tag="button" :color="Colors.RED"> Delete </BaseButton>
     </div>
   </div>
@@ -167,15 +167,16 @@ export default defineComponent({
   align-items: center;
 }
 
-.wrapper {
+.container {
   display: flex;
   flex-direction: row;
+  margin: auto;
 
   &__card {
     flex: 1 0 0;
   }
   &__right {
-    flex: calc(var(--columns) - 1) 0 0;
+    flex: 1 0 0;
     margin: 16px;
     gap: 16px;
 
