@@ -8,6 +8,7 @@ import BaseButton from "./components/BaseButton.vue";
 import PalletteSwitch, { Pallettes } from "./components/PalletteSwitch.vue";
 import BaseDivider from "./components/BaseDivider.vue";
 import IconThreeBars from "./icons/IconThreeBars.vue";
+import { RouterView } from "vue-router";
 
 export default defineComponent({
   components: {
@@ -18,6 +19,7 @@ export default defineComponent({
     PalletteSwitch,
     BaseDivider,
     IconThreeBars,
+    RouterView,
   },
   setup() {
     const isDrawerShowing = ref(false);
