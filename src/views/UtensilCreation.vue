@@ -34,7 +34,7 @@ export default defineComponent({
 
     const screenType = getScreenType();
     const columnStyle = computed(() =>
-      screenType.value === ScreenType.DESKTOP ? "--columns: 4" : "--columns: 2"
+      screenType.value === ScreenType.DESKTOP ? "width: 75%" : "width: 100%"
     );
 
     async function submit() {
@@ -49,7 +49,7 @@ export default defineComponent({
           return;
         }
         const utensil = await createUtensil({ name, waitTimeInMillis });
-        router.push(`/utensil/${utensil.id}`);
+        router.push(`/utensils/${utensil.id}`);
       } catch (error) {
         showErrorModal(error);
       }
@@ -71,10 +71,20 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="wrapper" :style="columnStyle">
-    <UtensilCard :utensil="utensilData" class="wrapper__card" />
+  <div class="title">
+    <h1>Utensils</h1>
+  </div>
+  <div class="container" :style="columnStyle">
+    <UtensilCard :utensil="utensilData" class="container__card" />
 
-    <form @submit.prevent="submit" class="wrapper__form">
+    <form @submit.prevent="submit" class="container__form">
+      <BaseInput
+        id="id"
+        modelValue="(not set)"
+        type="text"
+        tag="ID: "
+        disabled
+      />
       <BaseInput
         id="name"
         v-model="utensilData.name"
@@ -101,16 +111,24 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
   display: flex;
   flex-direction: row;
+  margin: auto;
 
   &__card {
     flex: 1 0 0;
   }
   &__form {
-    flex: calc(var(--columns) - 1) 0 0;
+    flex: 1 0 0;
     margin: 16px;
+
     display: flex;
     flex-direction: column;
     gap: 16px;
