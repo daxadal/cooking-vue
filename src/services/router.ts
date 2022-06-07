@@ -21,7 +21,7 @@ const routes = [
       ),
   },
   {
-    path: "/ingredients/:id",
+    path: "/ingredients/:id(\\d+)",
     name: "Ingredient details",
     component: () =>
       import(
