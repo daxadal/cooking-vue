@@ -50,6 +50,15 @@ const routes = [
         /* webpackChunkName: "utensils-new" */ "../views/UtensilCreation.vue"
       ),
   },
+  {
+    path: "/utensils/:id(\\d+)",
+    name: "Utensil details",
+    component: () =>
+      import(
+        /* webpackChunkName: "utensils-id" */ "../views/UtensilDetails.vue"
+      ),
+  },
+  { path: "/utensils/:any(.*)", redirect: "/utensils" },
   // #endregion --- Utensils ---
 
   // #region --- Steps ---
