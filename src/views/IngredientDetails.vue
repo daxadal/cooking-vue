@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ref, defineComponent, computed, onMounted } from "vue";
+import { ref, defineComponent, computed, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 
 import {
@@ -34,6 +34,8 @@ export default defineComponent({
     BaseDivider,
   },
   setup() {
+    const route = useRoute();
+
     const ingredientData = ref<Partial<Ingredient>>({});
 
     const isInfoVisible = ref(false);
@@ -61,18 +63,23 @@ export default defineComponent({
       screenType.value === ScreenType.DESKTOP ? "width: 75%" : "width: 100%"
     );
 
-    const id = Number(useRoute().params.id);
+    onMounted(() => loadIngredient(Number(route.params.id)));
+    watch(
+      () => route.params,
+      (params) => loadIngredient(Number(params.id))
+    );
 
-    onMounted(async () => {
+    async function loadIngredient(id: number) {
       try {
         ingredientData.value = await getIngredient(id);
       } catch (error) {
         showErrorModal(error);
       }
-    });
+    }
 
     async function update() {
       try {
+        const id = Number(route.params.id);
         const { name, type } = ingredientData.value;
         if (!name || !type) {
           showErrorModal("Fill out all the fields");
@@ -87,6 +94,7 @@ export default defineComponent({
 
     async function destroy() {
       try {
+        const id = Number(route.params.id);
         await deleteIngredient(id);
         router.push("/ingredient");
       } catch (error) {
