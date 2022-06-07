@@ -62,18 +62,31 @@ export default defineComponent({
       <p>{{ message }}</p>
     </template>
     <template #actions>
-      <div class="wrapper">
-        <BaseButton text @click="$emit('close')"> OK </BaseButton>
+      <div class="actions">
+        <BaseButton class="actions__button" text @click="$emit('close')">
+          OK
+        </BaseButton>
       </div>
     </template>
   </BaseModal>
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
-  justify-content: center;
+.actions {
   width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  gap: 160px;
+
+  justify-content: center;
+  align-content: center;
+
+  &__button {
+    flex: 1 0 0;
+  }
 }
+
 .title {
   text-align: center;
 }
