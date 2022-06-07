@@ -19,7 +19,7 @@ import BaseButton from "@/components/BaseButton.vue";
 import BaseInput from "@/components/BaseInput.vue";
 import BaseSelector from "@/components/BaseSelector.vue";
 import BaseDivider from "@/components/BaseDivider.vue";
-import InformationModal from "@/components/InformationModal.vue";
+import InformationModal, { ModalType } from "@/components/InformationModal.vue";
 import IngredientCard from "@/components/IngredientCard.vue";
 
 import router from "@/services/router";
@@ -39,21 +39,18 @@ export default defineComponent({
     const ingredientData = ref<Partial<Ingredient>>({});
 
     const isInfoVisible = ref(false);
-    const modalTitle = ref();
+    const modalType = ref<ModalType>();
     const modalMessage = ref();
-    const isError = ref(true);
 
     function showErrorModal(error: any) {
-      isError.value = true;
-      modalTitle.value = "Error";
+      modalType.value = ModalType.ERROR;
       modalMessage.value =
         error?.message || error || "An unexpected error has occurred";
       isInfoVisible.value = true;
     }
 
     function showInfoModal(message: string) {
-      isError.value = false;
-      modalTitle.value = "Info";
+      modalType.value = ModalType.INFO;
       modalMessage.value = message;
       isInfoVisible.value = true;
     }
@@ -103,6 +100,7 @@ export default defineComponent({
     }
 
     return {
+      ModalType,
       Colors,
       IngredientType,
 
@@ -113,9 +111,8 @@ export default defineComponent({
       destroy,
 
       isInfoVisible,
-      modalTitle,
+      modalType,
       modalMessage,
-      isError,
     };
   },
 });
@@ -162,9 +159,8 @@ export default defineComponent({
   <InformationModal
     v-if="isInfoVisible"
     @update:isVisible="isInfoVisible = $event"
-    :title="modalTitle"
     :message="modalMessage"
-    :isError="isError"
+    :type="modalType"
   />
 </template>
 

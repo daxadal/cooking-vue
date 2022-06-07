@@ -1,7 +1,7 @@
 <script lang="ts">
 import { ref, onMounted, defineComponent, computed } from "vue";
 
-import InformationModal from "@/components/InformationModal.vue";
+import InformationModal, { ModalType } from "@/components/InformationModal.vue";
 import IngredientCard from "@/components/IngredientCard.vue";
 
 import { Ingredient } from "@/resources/constants-types";
@@ -16,13 +16,9 @@ export default defineComponent({
     const ingredients = ref<Ingredient[]>([]);
 
     const isInfoVisible = ref(false);
-    const modalTitle = ref();
     const modalMessage = ref();
-    const isError = ref(true);
 
     function showErrorModal(error: any) {
-      isError.value = true;
-      modalTitle.value = "Error";
       modalMessage.value =
         error?.message || error || "An unexpected error has occurred";
       isInfoVisible.value = true;
@@ -42,13 +38,13 @@ export default defineComponent({
     });
 
     return {
+      ModalType,
+
       columnStyle,
       ingredients,
 
       isInfoVisible,
-      modalTitle,
       modalMessage,
-      isError,
     };
   },
 });
@@ -78,9 +74,8 @@ export default defineComponent({
   <InformationModal
     v-if="isInfoVisible"
     @update:isVisible="isInfoVisible = $event"
-    :title="modalTitle"
     :message="modalMessage"
-    :isError="isError"
+    :type="ModalType.ERROR"
   />
 </template>
 
