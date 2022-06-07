@@ -25,6 +25,8 @@ import IngredientCard from "@/components/IngredientCard.vue";
 
 import router from "@/services/router";
 
+type VoidOp = () => void;
+
 export default defineComponent({
   components: {
     IngredientCard,
@@ -43,20 +45,23 @@ export default defineComponent({
     const isInfoVisible = ref(false);
     const modalType = ref<ModalType>();
     const modalMessage = ref();
+    const onCloseInfoModal = ref<VoidOp>(() => null);
 
     const isConfirmVisible = ref(false);
 
-    function showErrorModal(error: any) {
+    function showErrorModal(error: any, onClose: VoidOp = () => null) {
       modalType.value = ModalType.ERROR;
       modalMessage.value =
         error?.message || error || "An unexpected error has occurred";
       isInfoVisible.value = true;
+      onCloseInfoModal.value = onClose;
     }
 
-    function showInfoModal(message: string) {
-      modalType.value = ModalType.INFO;
+    function showSuccessModal(message: string, onClose: VoidOp = () => null) {
+      modalType.value = ModalType.SUCCESS;
       modalMessage.value = message;
       isInfoVisible.value = true;
+      onCloseInfoModal.value = onClose;
     }
 
     const screenType = getScreenType();
@@ -64,17 +69,17 @@ export default defineComponent({
       screenType.value === ScreenType.DESKTOP ? "width: 75%" : "width: 100%"
     );
 
-    onMounted(() => loadIngredient(Number(route.params.id)));
+    onMounted(() => loadIngredient(route.params.id));
     watch(
       () => route.params,
-      (params) => loadIngredient(Number(params.id))
+      (params) => loadIngredient(params.id)
     );
 
-    async function loadIngredient(id: number) {
+    async function loadIngredient(id?: unknown) {
       try {
-        ingredientData.value = await getIngredient(id);
+        ingredientData.value = await getIngredient(Number(id));
       } catch (error) {
-        showErrorModal(error);
+        showErrorModal(error, () => router.push("/ingredients"));
       }
     }
 
@@ -87,7 +92,7 @@ export default defineComponent({
           return;
         }
         ingredientData.value = await updateIngredient({ id, name, type });
-        showInfoModal("Ingredient updated");
+        showSuccessModal("Ingredient updated");
       } catch (error) {
         showErrorModal(error);
       }
@@ -97,7 +102,10 @@ export default defineComponent({
       try {
         const id = Number(route.params.id);
         await deleteIngredient(id);
-        router.push("/ingredient");
+
+        showSuccessModal("Ingredient deleted", () =>
+          router.push("/ingredients")
+        );
       } catch (error) {
         showErrorModal(error);
       }
@@ -113,6 +121,8 @@ export default defineComponent({
 
       update,
       destroy,
+
+      onCloseInfoModal,
 
       isInfoVisible,
       modalType,
@@ -170,7 +180,10 @@ export default defineComponent({
 
   <InformationModal
     v-if="isInfoVisible"
-    @close="isInfoVisible = false"
+    @close="
+      isInfoVisible = false;
+      onCloseInfoModal();
+    "
     :message="modalMessage"
     :type="modalType"
   />
