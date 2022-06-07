@@ -14,6 +14,7 @@ export default defineComponent({
       default: "text",
     },
     modelValue: {
+      type: null,
       default: "",
     },
   },
