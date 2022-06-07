@@ -1,5 +1,6 @@
 <script lang="ts">
 import { ref, onMounted, defineComponent, computed } from "vue";
+import { RouterLink } from "vue-router";
 
 import InformationModal, { ModalType } from "@/components/InformationModal.vue";
 import IngredientCard from "@/components/IngredientCard.vue";
@@ -11,7 +12,7 @@ import BaseButton from "@/components/BaseButton.vue";
 
 export default defineComponent({
   name: "Ingredients",
-  components: { IngredientCard, InformationModal, BaseButton },
+  components: { IngredientCard, InformationModal, BaseButton, RouterLink },
   setup() {
     const ingredients = ref<Ingredient[]>([]);
 
@@ -61,14 +62,14 @@ export default defineComponent({
   </div>
 
   <div class="cards" :style="columnStyle">
-    <router-link
+    <RouterLink
       v-for="ingredient in ingredients"
       :key="ingredient.id"
       :to="`/ingredients/${ingredient.id}`"
       class="cards__link"
     >
       <IngredientCard :ingredient="ingredient" class="cards__card" />
-    </router-link>
+    </RouterLink>
   </div>
 
   <InformationModal

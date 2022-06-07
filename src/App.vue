@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { RouterView } from "vue-router";
 
 import BaseToolbar from "./components/BaseToolbar.vue";
 import BaseDrawer, { Positions } from "./components/BaseDrawer.vue";
@@ -8,7 +9,6 @@ import BaseButton from "./components/BaseButton.vue";
 import PalletteSwitch, { Pallettes } from "./components/PalletteSwitch.vue";
 import BaseDivider from "./components/BaseDivider.vue";
 import IconThreeBars from "./icons/IconThreeBars.vue";
-import { RouterView } from "vue-router";
 
 export default defineComponent({
   components: {
@@ -107,7 +107,7 @@ export default defineComponent({
     </BaseList>
   </BaseDrawer>
   <div class="content" :style="{ 'margin-top': toolbarHeight + 'px' }">
-    <router-view />
+    <RouterView />
   </div>
 </template>
 
