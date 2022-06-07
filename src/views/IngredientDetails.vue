@@ -19,6 +19,7 @@ import BaseButton from "@/components/BaseButton.vue";
 import BaseInput from "@/components/BaseInput.vue";
 import BaseSelector from "@/components/BaseSelector.vue";
 import BaseDivider from "@/components/BaseDivider.vue";
+import ConfirmationModal from "@/components/ConfirmationModal.vue";
 import InformationModal, { ModalType } from "@/components/InformationModal.vue";
 import IngredientCard from "@/components/IngredientCard.vue";
 
@@ -27,6 +28,7 @@ import router from "@/services/router";
 export default defineComponent({
   components: {
     IngredientCard,
+    ConfirmationModal,
     InformationModal,
     BaseButton,
     BaseInput,
@@ -41,6 +43,8 @@ export default defineComponent({
     const isInfoVisible = ref(false);
     const modalType = ref<ModalType>();
     const modalMessage = ref();
+
+    const isConfirmVisible = ref(false);
 
     function showErrorModal(error: any) {
       modalType.value = ModalType.ERROR;
@@ -113,6 +117,8 @@ export default defineComponent({
       isInfoVisible,
       modalType,
       modalMessage,
+
+      isConfirmVisible,
     };
   },
 });
@@ -152,7 +158,13 @@ export default defineComponent({
         <BaseButton tag="submit" value="Update" />
       </form>
       <BaseDivider class="container__right__divider" />
-      <BaseButton tag="button" :color="Colors.RED"> Delete </BaseButton>
+      <BaseButton
+        tag="button"
+        :color="Colors.RED"
+        @click="isConfirmVisible = true"
+      >
+        Delete
+      </BaseButton>
     </div>
   </div>
 
@@ -161,6 +173,16 @@ export default defineComponent({
     @close="isInfoVisible = false"
     :message="modalMessage"
     :type="modalType"
+  />
+
+  <ConfirmationModal
+    v-if="isConfirmVisible"
+    message="Are you sure you want to delete this ingredient?"
+    @cancel="isConfirmVisible = false"
+    @confirm="
+      isConfirmVisible = false;
+      destroy();
+    "
   />
 </template>
 
