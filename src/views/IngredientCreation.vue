@@ -36,7 +36,7 @@ export default defineComponent({
 
     const screenType = getScreenType();
     const columnStyle = computed(() =>
-      screenType.value === ScreenType.DESKTOP ? "--columns: 4" : "--columns: 2"
+      screenType.value === ScreenType.DESKTOP ? "width: 75%" : "width: 100%"
     );
 
     async function submit() {
@@ -73,10 +73,10 @@ export default defineComponent({
   <div class="title">
     <h1>Ingredients</h1>
   </div>
-  <div class="wrapper" :style="columnStyle">
-    <IngredientCard :ingredient="ingredientData" class="wrapper__card" />
+  <div class="container" :style="columnStyle">
+    <IngredientCard :ingredient="ingredientData" class="container__card" />
 
-    <form @submit.prevent="submit" class="wrapper__form">
+    <form @submit.prevent="submit" class="container__form">
       <BaseInput
         id="id"
         modelValue="(not set)"
@@ -119,16 +119,18 @@ export default defineComponent({
   align-items: center;
 }
 
-.wrapper {
+.container {
   display: flex;
   flex-direction: row;
+  margin: auto;
 
   &__card {
     flex: 1 0 0;
   }
   &__form {
-    flex: calc(var(--columns) - 1) 0 0;
+    flex: 1 0 0;
     margin: 16px;
+
     display: flex;
     flex-direction: column;
     gap: 16px;
