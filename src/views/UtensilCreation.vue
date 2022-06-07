@@ -1,7 +1,7 @@
 <script lang="ts">
 import { ref, defineComponent, computed } from "vue";
 
-import InformationModal from "@/components/InformationModal.vue";
+import InformationModal, { ModalType } from "@/components/InformationModal.vue";
 import UtensilCard from "@/components/UtensilCard.vue";
 
 import { Utensil } from "@/resources/constants-types";
@@ -24,13 +24,9 @@ export default defineComponent({
     const utensilData = ref<Partial<Utensil>>({});
 
     const isInfoVisible = ref(false);
-    const modalTitle = ref();
     const modalMessage = ref();
-    const isError = ref(true);
 
     function showErrorModal(error: any) {
-      isError.value = true;
-      modalTitle.value = "Error";
       modalMessage.value =
         error?.message || error || "An unexpected error has occurred";
       isInfoVisible.value = true;
@@ -38,7 +34,7 @@ export default defineComponent({
 
     const screenType = getScreenType();
     const columnStyle = computed(() =>
-      screenType.value === ScreenType.DESKTOP ? "--columns: 4" : "--columns: 2"
+      screenType.value === ScreenType.DESKTOP ? "width: 75%" : "width: 100%"
     );
 
     async function submit() {
@@ -53,32 +49,42 @@ export default defineComponent({
           return;
         }
         const utensil = await createUtensil({ name, waitTimeInMillis });
-        router.push(`/utensil/${utensil.id}`);
+        router.push(`/utensils/${utensil.id}`);
       } catch (error) {
         showErrorModal(error);
       }
     }
 
     return {
+      ModalType,
+
       columnStyle,
       utensilData,
 
       submit,
 
       isInfoVisible,
-      modalTitle,
       modalMessage,
-      isError,
     };
   },
 });
 </script>
 
 <template>
-  <div class="wrapper" :style="columnStyle">
-    <UtensilCard :utensil="utensilData" class="wrapper__card" />
+  <div class="title">
+    <h1>Utensils</h1>
+  </div>
+  <div class="container" :style="columnStyle">
+    <UtensilCard :utensil="utensilData" class="container__card" />
 
-    <form @submit.prevent="submit" class="wrapper__form">
+    <form @submit.prevent="submit" class="container__form">
+      <BaseInput
+        id="id"
+        modelValue="(not set)"
+        type="text"
+        tag="ID: "
+        disabled
+      />
       <BaseInput
         id="name"
         v-model="utensilData.name"
@@ -98,24 +104,31 @@ export default defineComponent({
 
   <InformationModal
     v-if="isInfoVisible"
-    @update:isVisible="isInfoVisible = $event"
-    :title="modalTitle"
+    @close="isInfoVisible = false"
     :message="modalMessage"
-    :isError="isError"
+    :type="ModalType.ERROR"
   />
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
   display: flex;
   flex-direction: row;
+  margin: auto;
 
   &__card {
     flex: 1 0 0;
   }
   &__form {
-    flex: calc(var(--columns) - 1) 0 0;
+    flex: 1 0 0;
     margin: 16px;
+
     display: flex;
     flex-direction: column;
     gap: 16px;

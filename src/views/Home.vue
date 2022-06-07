@@ -86,7 +86,7 @@ export default defineComponent({
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .welcome {
   display: flex;
   flex-direction: column;

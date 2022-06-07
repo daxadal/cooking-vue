@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+export function checkEnumExhausted(e: never): never {
+  throw new Error(`Value ${e} not contemplated`);
+}
+
 // #region --- Default ---
 
 export enum Colors {
@@ -8,6 +12,7 @@ export enum Colors {
   GREEN = "green",
   PURPLE = "purple",
   YELLOW = "yellow",
+  RED = "red",
 }
 
 export enum Environment {

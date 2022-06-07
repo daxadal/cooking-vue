@@ -1,7 +1,8 @@
 <script lang="ts">
 import { ref, onMounted, defineComponent, computed } from "vue";
+import { RouterLink } from "vue-router";
 
-import InformationModal from "@/components/InformationModal.vue";
+import InformationModal, { ModalType } from "@/components/InformationModal.vue";
 import IngredientCard from "@/components/IngredientCard.vue";
 
 import { Ingredient } from "@/resources/constants-types";
@@ -11,18 +12,14 @@ import BaseButton from "@/components/BaseButton.vue";
 
 export default defineComponent({
   name: "Ingredients",
-  components: { IngredientCard, InformationModal, BaseButton },
+  components: { IngredientCard, InformationModal, BaseButton, RouterLink },
   setup() {
     const ingredients = ref<Ingredient[]>([]);
 
     const isInfoVisible = ref(false);
-    const modalTitle = ref();
     const modalMessage = ref();
-    const isError = ref(true);
 
     function showErrorModal(error: any) {
-      isError.value = true;
-      modalTitle.value = "Error";
       modalMessage.value =
         error?.message || error || "An unexpected error has occurred";
       isInfoVisible.value = true;
@@ -42,13 +39,13 @@ export default defineComponent({
     });
 
     return {
+      ModalType,
+
       columnStyle,
       ingredients,
 
       isInfoVisible,
-      modalTitle,
       modalMessage,
-      isError,
     };
   },
 });
@@ -65,20 +62,21 @@ export default defineComponent({
   </div>
 
   <div class="cards" :style="columnStyle">
-    <IngredientCard
+    <RouterLink
       v-for="ingredient in ingredients"
       :key="ingredient.id"
-      :ingredient="ingredient"
-      class="cards__card"
-    />
+      :to="`/ingredients/${ingredient.id}`"
+      class="cards__link"
+    >
+      <IngredientCard :ingredient="ingredient" class="cards__card" />
+    </RouterLink>
   </div>
 
   <InformationModal
     v-if="isInfoVisible"
-    @update:isVisible="isInfoVisible = $event"
-    :title="modalTitle"
+    @close="isInfoVisible = false"
     :message="modalMessage"
-    :isError="isError"
+    :type="ModalType.ERROR"
   />
 </template>
 
@@ -103,6 +101,10 @@ export default defineComponent({
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   row-gap: 1rem;
+
+  &__link {
+    display: flex;
+  }
 
   &__card {
     flex: 1 0 0;

@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { RouterView } from "vue-router";
 
 import BaseToolbar from "./components/BaseToolbar.vue";
 import BaseDrawer, { Positions } from "./components/BaseDrawer.vue";
@@ -18,6 +19,7 @@ export default defineComponent({
     PalletteSwitch,
     BaseDivider,
     IconThreeBars,
+    RouterView,
   },
   setup() {
     const isDrawerShowing = ref(false);
@@ -105,7 +107,7 @@ export default defineComponent({
     </BaseList>
   </BaseDrawer>
   <div class="content" :style="{ 'margin-top': toolbarHeight + 'px' }">
-    <router-view />
+    <RouterView />
   </div>
 </template>
 

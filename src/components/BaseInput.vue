@@ -13,6 +13,10 @@ export default defineComponent({
       type: String,
       default: "text",
     },
+    modelValue: {
+      type: null,
+      default: "",
+    },
   },
   emits: ["update:modelValue"],
   setup(props, { emit }) {
@@ -33,6 +37,7 @@ export default defineComponent({
     <input
       :id="id"
       :type="type"
+      :value="modelValue"
       @input="onChange"
       class="wrapper__input"
       v-bind="$attrs"
@@ -64,6 +69,10 @@ export default defineComponent({
 
     &:focus {
       border-color: var(--neutral-text);
+    }
+
+    &[disabled] {
+      background-color: var(--neutral-background);
     }
   }
 }

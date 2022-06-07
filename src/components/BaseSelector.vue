@@ -29,7 +29,7 @@ export default defineComponent({
     <label :for="id" v-if="tag" class="wrapper__label">{{ tag }}</label>
     <select
       :id="id"
-      :modelValue="modelValue"
+      :value="modelValue"
       @change="onChange"
       class="wrapper__input"
       v-bind="$attrs"
@@ -63,6 +63,10 @@ export default defineComponent({
 
     &:focus {
       border-color: var(--neutral-text);
+    }
+
+    &[disabled] {
+      background-color: var(--neutral-background);
     }
   }
 }

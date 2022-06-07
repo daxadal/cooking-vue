@@ -29,6 +29,7 @@ export default defineComponent({
     tag="Theme: "
     id="themeSelector"
     class="a-select"
+    :value="Pallettes.DEFAULT"
     @update:modelValue="setTheme"
   >
     <option :value="Pallettes.DEFAULT">Default</option>
