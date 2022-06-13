@@ -9,7 +9,9 @@ export default defineComponent({
     tag: {
       type: String,
     },
-    modelValue: {},
+    modelValue: {
+      type: null,
+    },
   },
   emits: ["update:modelValue"],
   setup(props, { emit }) {
