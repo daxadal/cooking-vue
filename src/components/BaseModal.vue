@@ -4,7 +4,6 @@ import { defineComponent, ref, computed } from "vue";
 import { ScreenType, getScreenType } from "@/services/screen-size";
 
 export default defineComponent({
-  name: "modal",
   inheritAttrs: false,
   props: {
     closeOnClickAway: { type: Boolean, default: true },

@@ -8,7 +8,6 @@ import { DetailedStep } from "@/resources/constants-types";
 import { getAllDetailedSteps } from "@/services/api/routes";
 
 export default defineComponent({
-  name: "Steps",
   components: { StepCarrousel, InformationModal },
   setup() {
     const steps = ref<DetailedStep[]>([]);

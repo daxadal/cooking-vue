@@ -5,7 +5,8 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: () => import(/* webpackChunkName: "home" */ "../views/Home.vue"),
+    component: () =>
+      import(/* webpackChunkName: "home" */ "../views/HomeView.vue"),
   },
   // #endregion --- Home ---
 
@@ -14,14 +15,16 @@ const routes = [
     path: "/ingredients",
     name: "Ingredients",
     component: () =>
-      import(/* webpackChunkName: "ingredients" */ "../views/Ingredients.vue"),
+      import(
+        /* webpackChunkName: "ingredients" */ "../views/IngredientsView.vue"
+      ),
   },
   {
     path: "/ingredients/new",
     name: "Ingredient creation",
     component: () =>
       import(
-        /* webpackChunkName: "ingredients-new" */ "../views/IngredientCreation.vue"
+        /* webpackChunkName: "ingredients-new" */ "../views/IngredientCreationView.vue"
       ),
   },
   {
@@ -29,7 +32,7 @@ const routes = [
     name: "Ingredient details",
     component: () =>
       import(
-        /* webpackChunkName: "ingredients-id" */ "../views/IngredientDetails.vue"
+        /* webpackChunkName: "ingredients-id" */ "../views/IngredientDetailsView.vue"
       ),
   },
   { path: "/ingredients/:any(.*)", redirect: "/ingredients" },
@@ -40,14 +43,14 @@ const routes = [
     path: "/utensils",
     name: "Utensils",
     component: () =>
-      import(/* webpackChunkName: "utensils" */ "../views/Utensils.vue"),
+      import(/* webpackChunkName: "utensils" */ "../views/UtensilsView.vue"),
   },
   {
     path: "/utensils/new",
     name: "Utensil creation",
     component: () =>
       import(
-        /* webpackChunkName: "utensils-new" */ "../views/UtensilCreation.vue"
+        /* webpackChunkName: "utensils-new" */ "../views/UtensilCreationView.vue"
       ),
   },
   {
@@ -55,7 +58,7 @@ const routes = [
     name: "Utensil details",
     component: () =>
       import(
-        /* webpackChunkName: "utensils-id" */ "../views/UtensilDetails.vue"
+        /* webpackChunkName: "utensils-id" */ "../views/UtensilDetailsView.vue"
       ),
   },
   { path: "/utensils/:any(.*)", redirect: "/utensils" },
@@ -66,7 +69,7 @@ const routes = [
     path: "/steps",
     name: "Steps",
     component: () =>
-      import(/* webpackChunkName: "steps" */ "../views/Steps.vue"),
+      import(/* webpackChunkName: "steps" */ "../views/StepsView.vue"),
   },
   // #endregion --- Steps ---
 
@@ -75,7 +78,7 @@ const routes = [
     path: "/recipes",
     name: "Recipes",
     component: () =>
-      import(/* webpackChunkName: "recipes" */ "../views/Recipes.vue"),
+      import(/* webpackChunkName: "recipes" */ "../views/RecipesView.vue"),
   },
 
   // #endregion --- Recipes ---

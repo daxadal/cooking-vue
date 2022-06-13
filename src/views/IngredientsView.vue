@@ -11,7 +11,6 @@ import { getScreenType, ScreenType } from "@/services/screen-size";
 import BaseButton from "@/components/BaseButton.vue";
 
 export default defineComponent({
-  name: "Ingredients",
   components: { IngredientCard, InformationModal, BaseButton, RouterLink },
   setup() {
     const ingredients = ref<Ingredient[]>([]);

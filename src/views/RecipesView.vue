@@ -8,7 +8,6 @@ import { DetailedRecipe } from "@/resources/constants-types";
 import { getAllDetailedRecipes } from "@/services/api/routes";
 
 export default defineComponent({
-  name: "Recipes",
   components: { RecipeCarrousel, InformationModal },
   setup() {
     const recipes = ref<DetailedRecipe[]>([]);

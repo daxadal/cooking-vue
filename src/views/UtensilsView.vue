@@ -11,7 +11,6 @@ import { getScreenType, ScreenType } from "@/services/screen-size";
 import BaseButton from "@/components/BaseButton.vue";
 
 export default defineComponent({
-  name: "Utensils",
   components: { UtensilCard, InformationModal, BaseButton, RouterLink },
   setup() {
     const utensils = ref<Utensil[]>([]);

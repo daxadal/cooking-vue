@@ -7,7 +7,6 @@ import { getStatus } from "@/services/api/routes";
 import { getScreenType, ScreenType } from "@/services/screen-size";
 
 export default defineComponent({
-  name: "Home",
   components: {
     CountCard,
   },

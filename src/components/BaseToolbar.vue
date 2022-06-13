@@ -2,7 +2,6 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "BaseToolbar",
   props: {
     height: { type: Number, required: true },
   },
