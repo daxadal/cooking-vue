@@ -1,8 +1,8 @@
 <script lang="ts">
 import { ref, defineComponent, computed } from "vue";
 
-import InformationModal, { ModalType } from "@/components/InformationModal.vue";
-import UtensilCard from "@/components/UtensilCard.vue";
+import ModalInformation, { ModalType } from "@/components/ModalInformation.vue";
+import CardUtensil from "@/components/CardUtensil.vue";
 
 import { Utensil } from "@/resources/constants-types";
 
@@ -15,8 +15,8 @@ import BaseInput from "@/components/BaseInput.vue";
 
 export default defineComponent({
   components: {
-    UtensilCard,
-    InformationModal,
+    CardUtensil,
+    ModalInformation,
     BaseButton,
     BaseInput,
   },
@@ -75,7 +75,7 @@ export default defineComponent({
     <h1>Utensils</h1>
   </div>
   <div class="container" :style="columnStyle">
-    <UtensilCard :utensil="utensilData" class="container__card" />
+    <CardUtensil :utensil="utensilData" class="container__card" />
 
     <form @submit.prevent="submit" class="container__form">
       <BaseInput
@@ -102,11 +102,11 @@ export default defineComponent({
     </form>
   </div>
 
-  <InformationModal
+  <ModalInformation
     v-if="isInfoVisible"
-    @close="isInfoVisible = false"
     :message="modalMessage"
     :type="ModalType.ERROR"
+    @close="isInfoVisible = false"
   />
 </template>
 

@@ -2,14 +2,14 @@
 import { defineComponent, PropType } from "vue";
 
 import { DetailedRecipe } from "@/resources/constants-types";
-import IngredientCard from "@/components/IngredientCard.vue";
-import UtensilCard from "@/components/UtensilCard.vue";
+import CardIngredient from "@/components/CardIngredient.vue";
+import CardUtensil from "@/components/CardUtensil.vue";
 import IconRightArrow from "@/icons/IconRightArrow.vue";
 
 export default defineComponent({
   components: {
-    IngredientCard,
-    UtensilCard,
+    CardIngredient,
+    CardUtensil,
     IconRightArrow,
   },
   props: {
@@ -23,31 +23,31 @@ export default defineComponent({
 
 <template>
   <div class="cards">
-    <IngredientCard class="cards__card" :ingredient="recipe.input" />
+    <CardIngredient class="cards__card" :ingredient="recipe.input" />
     <IconRightArrow class="cards__arrow" />
-    <UtensilCard class="cards__card" :utensil="recipe.utensil1" />
+    <CardUtensil class="cards__card" :utensil="recipe.utensil1" />
     <IconRightArrow class="cards__arrow" />
-    <IngredientCard class="cards__card" :ingredient="recipe.mid1" />
+    <CardIngredient class="cards__card" :ingredient="recipe.mid1" />
     <template v-if="recipe.steps >= 2 && recipe.utensil2 && recipe.mid2">
       <IconRightArrow class="cards__arrow" />
-      <UtensilCard class="cards__card" :utensil="recipe.utensil2" />
+      <CardUtensil class="cards__card" :utensil="recipe.utensil2" />
       <IconRightArrow class="cards__arrow" />
-      <IngredientCard class="cards__card" :ingredient="recipe.mid2" />
+      <CardIngredient class="cards__card" :ingredient="recipe.mid2" />
       <template v-if="recipe.steps >= 3 && recipe.utensil3 && recipe.mid3">
         <IconRightArrow class="cards__arrow" />
-        <UtensilCard class="cards__card" :utensil="recipe.utensil3" />
+        <CardUtensil class="cards__card" :utensil="recipe.utensil3" />
         <IconRightArrow class="cards__arrow" />
-        <IngredientCard class="cards__card" :ingredient="recipe.mid3" />
+        <CardIngredient class="cards__card" :ingredient="recipe.mid3" />
         <template v-if="recipe.steps >= 4 && recipe.utensil4 && recipe.mid4">
           <IconRightArrow class="cards__arrow" />
-          <UtensilCard class="cards__card" :utensil="recipe.utensil4" />
+          <CardUtensil class="cards__card" :utensil="recipe.utensil4" />
           <IconRightArrow class="cards__arrow" />
-          <IngredientCard class="cards__card" :ingredient="recipe.mid4" />
+          <CardIngredient class="cards__card" :ingredient="recipe.mid4" />
           <template v-if="recipe.steps >= 5 && recipe.utensil5 && recipe.mid5">
             <IconRightArrow class="cards__arrow" />
-            <UtensilCard class="cards__card" :utensil="recipe.utensil5" />
+            <CardUtensil class="cards__card" :utensil="recipe.utensil5" />
             <IconRightArrow class="cards__arrow" />
-            <IngredientCard class="cards__card" :ingredient="recipe.mid5" />
+            <CardIngredient class="cards__card" :ingredient="recipe.mid5" />
           </template>
         </template>
       </template>

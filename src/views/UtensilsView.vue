@@ -2,8 +2,8 @@
 import { ref, onMounted, defineComponent, computed } from "vue";
 import { RouterLink } from "vue-router";
 
-import InformationModal, { ModalType } from "@/components/InformationModal.vue";
-import UtensilCard from "@/components/UtensilCard.vue";
+import ModalInformation, { ModalType } from "@/components/ModalInformation.vue";
+import CardUtensil from "@/components/CardUtensil.vue";
 
 import { Utensil } from "@/resources/constants-types";
 import { getAllUtensils } from "@/services/api/routes";
@@ -11,8 +11,7 @@ import { getScreenType, ScreenType } from "@/services/screen-size";
 import BaseButton from "@/components/BaseButton.vue";
 
 export default defineComponent({
-  name: "Utensils",
-  components: { UtensilCard, InformationModal, BaseButton, RouterLink },
+  components: { CardUtensil, ModalInformation, BaseButton, RouterLink },
   setup() {
     const utensils = ref<Utensil[]>([]);
 
@@ -66,15 +65,15 @@ export default defineComponent({
       :to="`/utensils/${utensil.id}`"
       class="cards__link"
     >
-      <UtensilCard :utensil="utensil" class="cards__card" />
+      <CardUtensil :utensil="utensil" class="cards__card" />
     </RouterLink>
   </div>
 
-  <InformationModal
+  <ModalInformation
     v-if="isInfoVisible"
-    @close="isInfoVisible = false"
     :message="modalMessage"
     :type="ModalType.ERROR"
+    @close="isInfoVisible = false"
   />
 </template>
 

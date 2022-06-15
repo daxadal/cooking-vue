@@ -2,7 +2,6 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "BaseAvatar",
   props: {
     size: { type: String, required: true },
   },

@@ -1,15 +1,16 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref } from "vue";
+import { RouterLink } from "vue-router";
 
-import CountCard from "@/components/CountCard.vue";
+import CardCount from "@/components/CardCount.vue";
 import { ApiInfo } from "@/resources/constants-types";
 import { getStatus } from "@/services/api/routes";
 import { getScreenType, ScreenType } from "@/services/screen-size";
 
 export default defineComponent({
-  name: "Home",
   components: {
-    CountCard,
+    CardCount,
+    RouterLink,
   },
   setup() {
     const apiInfo = ref<ApiInfo>();
@@ -70,19 +71,19 @@ export default defineComponent({
     <img v-if="apiInfo" class="status__image" src="@/assets/success.png" />
     <img v-else class="status__image" src="@/assets/error.png" />
   </div>
-  <div class="cards" v-if="apiInfo">
-    <router-link class="cards__card" to="/ingredients">
-      <CountCard title="Ingredients" :count="apiInfo?.stats.ingredients" />
-    </router-link>
-    <router-link class="cards__card" to="/utensils">
-      <CountCard title="Utensils" :count="apiInfo?.stats.utensils" />
-    </router-link>
-    <router-link class="cards__card" to="/steps">
-      <CountCard title="Steps" :count="apiInfo?.stats.steps" />
-    </router-link>
-    <router-link class="cards__card" to="/recipes">
-      <CountCard title="Recipes" :count="apiInfo?.stats.recipes" />
-    </router-link>
+  <div v-if="apiInfo" class="cards">
+    <RouterLink class="cards__card" to="/ingredients">
+      <CardCount title="Ingredients" :count="apiInfo?.stats.ingredients" />
+    </RouterLink>
+    <RouterLink class="cards__card" to="/utensils">
+      <CardCount title="Utensils" :count="apiInfo?.stats.utensils" />
+    </RouterLink>
+    <RouterLink class="cards__card" to="/steps">
+      <CardCount title="Steps" :count="apiInfo?.stats.steps" />
+    </RouterLink>
+    <RouterLink class="cards__card" to="/recipes">
+      <CardCount title="Recipes" :count="apiInfo?.stats.recipes" />
+    </RouterLink>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import { Colors } from "@/resources/constants-types";
 
 export default defineComponent({
@@ -11,7 +11,7 @@ export default defineComponent({
         ["a", "button", "router-link", "submit", "label"].includes(value),
     },
     color: {
-      type: String,
+      type: String as PropType<Colors>,
       default: Colors.NEUTRAL,
       validator: (value: Colors) => Object.values(Colors).includes(value),
     },

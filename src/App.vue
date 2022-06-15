@@ -6,7 +6,7 @@ import BaseToolbar from "./components/BaseToolbar.vue";
 import BaseDrawer, { Positions } from "./components/BaseDrawer.vue";
 import BaseList from "./components/BaseList.vue";
 import BaseButton from "./components/BaseButton.vue";
-import PalletteSwitch, { Pallettes } from "./components/PalletteSwitch.vue";
+import SwitchPallette, { Pallettes } from "./components/SwitchPallette.vue";
 import BaseDivider from "./components/BaseDivider.vue";
 import IconThreeBars from "./icons/IconThreeBars.vue";
 
@@ -16,7 +16,7 @@ export default defineComponent({
     BaseDrawer,
     BaseList,
     BaseButton,
-    PalletteSwitch,
+    SwitchPallette,
     BaseDivider,
     IconThreeBars,
     RouterView,
@@ -51,7 +51,7 @@ export default defineComponent({
       <h1 class="toolbar__center">Cooking Vue</h1>
     </BaseButton>
     <div class="toolbar__right">
-      <PalletteSwitch @change="setTheme" />
+      <SwitchPallette @change="setTheme" />
     </div>
   </BaseToolbar>
   <BaseDrawer

@@ -4,7 +4,6 @@ import { defineComponent, PropType } from "vue";
 import { Colors } from "@/resources/constants-types";
 
 export default defineComponent({
-  name: "BaseCard",
   props: {
     color: {
       type: String as PropType<Colors>,

@@ -46,9 +46,9 @@ export default defineComponent({
 </script>
 <template>
   <BaseModal
-    @close="$emit('close')"
     :closeOnClickAway="false"
     :hasCloseButton="false"
+    @close="$emit('close')"
   >
     <template #header>
       <h3 class="title">{{ title }}</h3>

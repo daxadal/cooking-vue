@@ -14,9 +14,9 @@ export default defineComponent({
 </script>
 <template>
   <BaseModal
-    @close="$emit('cancel')"
     :closeOnClickAway="false"
     :hasCloseButton="false"
+    @close="$emit('cancel')"
   >
     <template #header>
       <h3 class="title">Confirm action?</h3>

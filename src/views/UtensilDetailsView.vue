@@ -2,26 +2,21 @@
 import { ref, defineComponent, computed, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 
-import {
-  Colors,
-  Ingredient,
-  IngredientType,
-} from "@/resources/constants-types";
+import { Colors, Utensil } from "@/resources/constants-types";
 
 import {
-  deleteIngredient,
-  getIngredient,
-  updateIngredient,
+  deleteUtensil,
+  getUtensil,
+  updateUtensil,
 } from "@/services/api/routes";
 import { getScreenType, ScreenType } from "@/services/screen-size";
 
 import BaseButton from "@/components/BaseButton.vue";
 import BaseInput from "@/components/BaseInput.vue";
-import BaseSelector from "@/components/BaseSelector.vue";
 import BaseDivider from "@/components/BaseDivider.vue";
-import ConfirmationModal from "@/components/ConfirmationModal.vue";
-import InformationModal, { ModalType } from "@/components/InformationModal.vue";
-import IngredientCard from "@/components/IngredientCard.vue";
+import ModalConfirmation from "@/components/ModalConfirmation.vue";
+import ModalInformation, { ModalType } from "@/components/ModalInformation.vue";
+import CardUtensil from "@/components/CardUtensil.vue";
 
 import router from "@/services/router";
 
@@ -29,18 +24,17 @@ type VoidOp = () => void;
 
 export default defineComponent({
   components: {
-    IngredientCard,
-    ConfirmationModal,
-    InformationModal,
+    CardUtensil,
+    ModalConfirmation,
+    ModalInformation,
     BaseButton,
     BaseInput,
-    BaseSelector,
     BaseDivider,
   },
   setup() {
     const route = useRoute();
 
-    const ingredientData = ref<Partial<Ingredient>>({});
+    const utensilData = ref<Partial<Utensil>>({});
 
     const isInfoVisible = ref(false);
     const modalType = ref<ModalType>();
@@ -69,30 +63,34 @@ export default defineComponent({
       screenType.value === ScreenType.DESKTOP ? "width: 75%" : "width: 100%"
     );
 
-    onMounted(() => loadIngredient(route.params.id));
+    onMounted(() => loadUtensil(route.params.id));
     watch(
       () => route.params,
-      (params) => loadIngredient(params.id)
+      (params) => loadUtensil(params.id)
     );
 
-    async function loadIngredient(id?: unknown) {
+    async function loadUtensil(id?: unknown) {
       try {
-        ingredientData.value = await getIngredient(Number(id));
+        utensilData.value = await getUtensil(Number(id));
       } catch (error) {
-        showErrorModal(error, () => router.push("/ingredients"));
+        showErrorModal(error, () => router.push("/utensils"));
       }
     }
 
     async function update() {
       try {
         const id = Number(route.params.id);
-        const { name, type } = ingredientData.value;
-        if (!name || !type) {
+        const { name, waitTimeInMillis } = utensilData.value;
+        if (!name || !waitTimeInMillis) {
           showErrorModal("Fill out all the fields");
           return;
         }
-        ingredientData.value = await updateIngredient({ id, name, type });
-        showSuccessModal("Ingredient updated");
+        if (Number(waitTimeInMillis) <= 0) {
+          showErrorModal("Wait time must be greater than 0");
+          return;
+        }
+        utensilData.value = await updateUtensil({ id, name, waitTimeInMillis });
+        showSuccessModal("Utensil updated");
       } catch (error) {
         showErrorModal(error);
       }
@@ -101,11 +99,9 @@ export default defineComponent({
     async function destroy() {
       try {
         const id = Number(route.params.id);
-        await deleteIngredient(id);
+        await deleteUtensil(id);
 
-        showSuccessModal("Ingredient deleted", () =>
-          router.push("/ingredients")
-        );
+        showSuccessModal("Utensil deleted", () => router.push("/utensils"));
       } catch (error) {
         showErrorModal(error);
       }
@@ -114,10 +110,9 @@ export default defineComponent({
     return {
       ModalType,
       Colors,
-      IngredientType,
 
       columnStyle,
-      ingredientData,
+      utensilData,
 
       update,
       destroy,
@@ -136,35 +131,32 @@ export default defineComponent({
 
 <template>
   <div class="title">
-    <h1>Ingredients</h1>
+    <h1>Utensils</h1>
   </div>
   <div class="container" :style="columnStyle">
-    <IngredientCard :ingredient="ingredientData" class="container__card" />
+    <CardUtensil :utensil="utensilData" class="container__card" />
     <div class="container__right">
-      <form @submit.prevent="update" class="container__right__form">
+      <form class="container__right__form" @submit.prevent="update">
         <BaseInput
           id="id"
-          :modelValue="String(ingredientData.id)"
+          :modelValue="String(utensilData.id)"
           type="text"
           tag="ID: "
           disabled
         />
         <BaseInput
           id="name"
-          v-model="ingredientData.name"
+          v-model="utensilData.name"
           type="text"
           tag="Name: "
         />
-        <BaseSelector
-          id="type-selector"
-          tag="Type: "
-          v-model="ingredientData.type"
-        >
-          <option value="">(Select an option)</option>
-          <option :value="IngredientType.START">Raw ingredient</option>
-          <option :value="IngredientType.MID">Half-cooked food</option>
-          <option :value="IngredientType.END">Finished product</option>
-        </BaseSelector>
+        <BaseInput
+          id="name"
+          v-model="utensilData.waitTimeInMillis"
+          type="number"
+          min="0"
+          tag="Wait time (ms): "
+        />
         <BaseButton tag="submit" value="Update" />
       </form>
       <BaseDivider class="container__right__divider" />
@@ -178,19 +170,19 @@ export default defineComponent({
     </div>
   </div>
 
-  <InformationModal
+  <ModalInformation
     v-if="isInfoVisible"
+    :message="modalMessage"
+    :type="modalType"
     @close="
       isInfoVisible = false;
       onCloseInfoModal();
     "
-    :message="modalMessage"
-    :type="modalType"
   />
 
-  <ConfirmationModal
+  <ModalConfirmation
     v-if="isConfirmVisible"
-    message="Are you sure you want to delete this ingredient?"
+    message="Are you sure you want to delete this utensil?"
     @cancel="isConfirmVisible = false"
     @confirm="
       isConfirmVisible = false;
