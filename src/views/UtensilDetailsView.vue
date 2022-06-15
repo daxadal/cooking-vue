@@ -159,7 +159,7 @@ export default defineComponent({
         />
         <BaseButton tag="submit" value="Update" />
       </form>
-      <BaseDivider class="container__right__divider" />
+      <BaseDivider />
       <BaseButton
         tag="button"
         :color="Colors.RED"
@@ -218,10 +218,6 @@ export default defineComponent({
       display: flex;
       flex-direction: column;
       gap: 16px;
-    }
-
-    &__divider {
-      align-self: center;
     }
   }
 }
