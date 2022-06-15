@@ -7,7 +7,6 @@ export enum Positions {
 }
 
 export default defineComponent({
-  name: "navigation-drawer",
   components: {},
   props: {
     isShowing: { type: Boolean, required: true },
