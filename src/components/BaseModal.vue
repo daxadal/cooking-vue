@@ -79,8 +79,8 @@ export default defineComponent({
                   <div>
                     <span
                       v-if="hasCloseButton"
-                      @click="close"
                       style="vertical-align: center; cursor: pointer"
+                      @click="close"
                     >
                       Close
                     </span>

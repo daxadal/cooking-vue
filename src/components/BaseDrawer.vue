@@ -46,8 +46,8 @@ export default defineComponent({
         v-show="isShowing && hasMask"
         class="drawer__mask"
         tabindex="0"
-        @click.self="maskClick"
         :style="{ top: topOffset + 'px' }"
+        @click.self="maskClick"
       />
       <div
         v-show="isShowing"

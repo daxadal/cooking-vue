@@ -136,7 +136,7 @@ export default defineComponent({
   <div class="container" :style="columnStyle">
     <CardUtensil :utensil="utensilData" class="container__card" />
     <div class="container__right">
-      <form @submit.prevent="update" class="container__right__form">
+      <form class="container__right__form" @submit.prevent="update">
         <BaseInput
           id="id"
           :modelValue="String(utensilData.id)"
@@ -172,12 +172,12 @@ export default defineComponent({
 
   <ModalInformation
     v-if="isInfoVisible"
+    :message="modalMessage"
+    :type="modalType"
     @close="
       isInfoVisible = false;
       onCloseInfoModal();
     "
-    :message="modalMessage"
-    :type="modalType"
   />
 
   <ModalConfirmation

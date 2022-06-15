@@ -28,13 +28,13 @@ export default defineComponent({
 
 <template>
   <div class="wrapper">
-    <label :for="id" v-if="tag" class="wrapper__label">{{ tag }}</label>
+    <label v-if="tag" :for="id" class="wrapper__label">{{ tag }}</label>
     <select
       :id="id"
       :value="modelValue"
-      @change="onChange"
       class="wrapper__input"
       v-bind="$attrs"
+      @change="onChange"
     >
       <slot />
     </select>

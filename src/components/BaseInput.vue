@@ -33,14 +33,14 @@ export default defineComponent({
 
 <template>
   <div class="wrapper">
-    <label :for="id" v-if="tag" class="wrapper__label">{{ tag }}</label>
+    <label v-if="tag" :for="id" class="wrapper__label">{{ tag }}</label>
     <input
       :id="id"
       :type="type"
       :value="modelValue"
-      @input="onChange"
       class="wrapper__input"
       v-bind="$attrs"
+      @input="onChange"
     />
   </div>
 </template>

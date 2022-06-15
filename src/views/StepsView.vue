@@ -55,9 +55,9 @@ export default defineComponent({
 
   <ModalInformation
     v-if="isInfoVisible"
-    @close="isInfoVisible = false"
     :message="modalMessage"
     :type="ModalType.ERROR"
+    @close="isInfoVisible = false"
   />
 </template>
 

@@ -76,7 +76,7 @@ export default defineComponent({
   <div class="container" :style="columnStyle">
     <CardIngredient :ingredient="ingredientData" class="container__card" />
 
-    <form @submit.prevent="submit" class="container__form">
+    <form class="container__form" @submit.prevent="submit">
       <BaseInput
         id="id"
         modelValue="(not set)"
@@ -106,9 +106,9 @@ export default defineComponent({
 
   <ModalInformation
     v-if="isInfoVisible"
-    @close="isInfoVisible = false"
     :message="modalMessage"
     :type="ModalType.ERROR"
+    @close="isInfoVisible = false"
   />
 </template>
 
