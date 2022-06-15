@@ -14,7 +14,7 @@ export default defineComponent({
   },
   props: {
     step: {
-      type: Object as PropType<DetailedStep>,
+      type: Object as PropType<Partial<DetailedStep>>,
       required: true,
     },
   },
@@ -23,11 +23,11 @@ export default defineComponent({
 
 <template>
   <div class="cards">
-    <CardIngredient class="cards__card" :ingredient="step.input" />
+    <CardIngredient class="cards__card" :ingredient="step.input || {}" />
     <IconRightArrow class="cards__arrow" />
-    <CardUtensil class="cards__card" :utensil="step.utensil" />
+    <CardUtensil class="cards__card" :utensil="step.utensil || {}" />
     <IconRightArrow class="cards__arrow" />
-    <CardIngredient class="cards__card" :ingredient="step.output" />
+    <CardIngredient class="cards__card" :ingredient="step.output || {}" />
   </div>
 </template>
 
