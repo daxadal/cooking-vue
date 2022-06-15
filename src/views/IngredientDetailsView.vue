@@ -19,9 +19,9 @@ import BaseButton from "@/components/BaseButton.vue";
 import BaseInput from "@/components/BaseInput.vue";
 import BaseSelector from "@/components/BaseSelector.vue";
 import BaseDivider from "@/components/BaseDivider.vue";
-import ConfirmationModal from "@/components/ConfirmationModal.vue";
-import InformationModal, { ModalType } from "@/components/InformationModal.vue";
-import IngredientCard from "@/components/IngredientCard.vue";
+import ModalConfirmation from "@/components/ModalConfirmation.vue";
+import ModalInformation, { ModalType } from "@/components/ModalInformation.vue";
+import CardIngredient from "@/components/CardIngredient.vue";
 
 import router from "@/services/router";
 
@@ -29,9 +29,9 @@ type VoidOp = () => void;
 
 export default defineComponent({
   components: {
-    IngredientCard,
-    ConfirmationModal,
-    InformationModal,
+    CardIngredient,
+    ModalConfirmation,
+    ModalInformation,
     BaseButton,
     BaseInput,
     BaseSelector,
@@ -139,7 +139,7 @@ export default defineComponent({
     <h1>Ingredients</h1>
   </div>
   <div class="container" :style="columnStyle">
-    <IngredientCard :ingredient="ingredientData" class="container__card" />
+    <CardIngredient :ingredient="ingredientData" class="container__card" />
     <div class="container__right">
       <form @submit.prevent="update" class="container__right__form">
         <BaseInput
@@ -178,7 +178,7 @@ export default defineComponent({
     </div>
   </div>
 
-  <InformationModal
+  <ModalInformation
     v-if="isInfoVisible"
     @close="
       isInfoVisible = false;
@@ -188,7 +188,7 @@ export default defineComponent({
     :type="modalType"
   />
 
-  <ConfirmationModal
+  <ModalConfirmation
     v-if="isConfirmVisible"
     message="Are you sure you want to delete this ingredient?"
     @cancel="isConfirmVisible = false"

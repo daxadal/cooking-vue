@@ -1,8 +1,8 @@
 <script lang="ts">
 import { ref, defineComponent, computed } from "vue";
 
-import InformationModal, { ModalType } from "@/components/InformationModal.vue";
-import IngredientCard from "@/components/IngredientCard.vue";
+import ModalInformation, { ModalType } from "@/components/ModalInformation.vue";
+import CardIngredient from "@/components/CardIngredient.vue";
 
 import { Ingredient, IngredientType } from "@/resources/constants-types";
 
@@ -16,8 +16,8 @@ import BaseSelector from "@/components/BaseSelector.vue";
 
 export default defineComponent({
   components: {
-    IngredientCard,
-    InformationModal,
+    CardIngredient,
+    ModalInformation,
     BaseButton,
     BaseInput,
     BaseSelector,
@@ -74,7 +74,7 @@ export default defineComponent({
     <h1>Ingredients</h1>
   </div>
   <div class="container" :style="columnStyle">
-    <IngredientCard :ingredient="ingredientData" class="container__card" />
+    <CardIngredient :ingredient="ingredientData" class="container__card" />
 
     <form @submit.prevent="submit" class="container__form">
       <BaseInput
@@ -104,7 +104,7 @@ export default defineComponent({
     </form>
   </div>
 
-  <InformationModal
+  <ModalInformation
     v-if="isInfoVisible"
     @close="isInfoVisible = false"
     :message="modalMessage"

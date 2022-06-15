@@ -1,14 +1,14 @@
 <script lang="ts">
 import { ref, onMounted, defineComponent } from "vue";
 
-import InformationModal, { ModalType } from "@/components/InformationModal.vue";
-import StepCarrousel from "@/components/StepCarrousel.vue";
+import ModalInformation, { ModalType } from "@/components/ModalInformation.vue";
+import CarrouselStep from "@/components/CarrouselStep.vue";
 
 import { DetailedStep } from "@/resources/constants-types";
 import { getAllDetailedSteps } from "@/services/api/routes";
 
 export default defineComponent({
-  components: { StepCarrousel, InformationModal },
+  components: { CarrouselStep, ModalInformation },
   setup() {
     const steps = ref<DetailedStep[]>([]);
 
@@ -46,14 +46,14 @@ export default defineComponent({
     <h1>Steps</h1>
   </div>
   <div>
-    <StepCarrousel
+    <CarrouselStep
       v-for="step in steps"
       :key="`${step.input.id}-${step.output.id}`"
       :step="step"
     />
   </div>
 
-  <InformationModal
+  <ModalInformation
     v-if="isInfoVisible"
     @close="isInfoVisible = false"
     :message="modalMessage"

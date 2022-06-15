@@ -14,9 +14,9 @@ import { getScreenType, ScreenType } from "@/services/screen-size";
 import BaseButton from "@/components/BaseButton.vue";
 import BaseInput from "@/components/BaseInput.vue";
 import BaseDivider from "@/components/BaseDivider.vue";
-import ConfirmationModal from "@/components/ConfirmationModal.vue";
-import InformationModal, { ModalType } from "@/components/InformationModal.vue";
-import UtensilCard from "@/components/UtensilCard.vue";
+import ModalConfirmation from "@/components/ModalConfirmation.vue";
+import ModalInformation, { ModalType } from "@/components/ModalInformation.vue";
+import CardUtensil from "@/components/CardUtensil.vue";
 
 import router from "@/services/router";
 
@@ -24,9 +24,9 @@ type VoidOp = () => void;
 
 export default defineComponent({
   components: {
-    UtensilCard,
-    ConfirmationModal,
-    InformationModal,
+    CardUtensil,
+    ModalConfirmation,
+    ModalInformation,
     BaseButton,
     BaseInput,
     BaseDivider,
@@ -134,7 +134,7 @@ export default defineComponent({
     <h1>Utensils</h1>
   </div>
   <div class="container" :style="columnStyle">
-    <UtensilCard :utensil="utensilData" class="container__card" />
+    <CardUtensil :utensil="utensilData" class="container__card" />
     <div class="container__right">
       <form @submit.prevent="update" class="container__right__form">
         <BaseInput
@@ -170,7 +170,7 @@ export default defineComponent({
     </div>
   </div>
 
-  <InformationModal
+  <ModalInformation
     v-if="isInfoVisible"
     @close="
       isInfoVisible = false;
@@ -180,7 +180,7 @@ export default defineComponent({
     :type="modalType"
   />
 
-  <ConfirmationModal
+  <ModalConfirmation
     v-if="isConfirmVisible"
     message="Are you sure you want to delete this utensil?"
     @cancel="isConfirmVisible = false"

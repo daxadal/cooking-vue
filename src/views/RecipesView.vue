@@ -1,14 +1,14 @@
 <script lang="ts">
 import { ref, onMounted, defineComponent } from "vue";
 
-import InformationModal, { ModalType } from "@/components/InformationModal.vue";
-import RecipeCarrousel from "@/components/RecipeCarrousel.vue";
+import ModalInformation, { ModalType } from "@/components/ModalInformation.vue";
+import CarrouselRecipe from "@/components/CarrouselRecipe.vue";
 
 import { DetailedRecipe } from "@/resources/constants-types";
 import { getAllDetailedRecipes } from "@/services/api/routes";
 
 export default defineComponent({
-  components: { RecipeCarrousel, InformationModal },
+  components: { CarrouselRecipe, ModalInformation },
   setup() {
     const recipes = ref<DetailedRecipe[]>([]);
 
@@ -46,14 +46,14 @@ export default defineComponent({
     <h1>Recipes</h1>
   </div>
   <div>
-    <RecipeCarrousel
+    <CarrouselRecipe
       v-for="recipe in recipes"
       :key="`${recipe.input.id}-${recipe.output.id}`"
       :recipe="recipe"
     />
   </div>
 
-  <InformationModal
+  <ModalInformation
     v-if="isInfoVisible"
     @close="isInfoVisible = false"
     :message="modalMessage"

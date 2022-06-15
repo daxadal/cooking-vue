@@ -2,14 +2,14 @@
 import { defineComponent, PropType } from "vue";
 
 import { DetailedStep } from "@/resources/constants-types";
-import IngredientCard from "@/components/IngredientCard.vue";
-import UtensilCard from "@/components/UtensilCard.vue";
+import CardIngredient from "@/components/CardIngredient.vue";
+import CardUtensil from "@/components/CardUtensil.vue";
 import IconRightArrow from "@/icons/IconRightArrow.vue";
 
 export default defineComponent({
   components: {
-    IngredientCard,
-    UtensilCard,
+    CardIngredient,
+    CardUtensil,
     IconRightArrow,
   },
   props: {
@@ -23,11 +23,11 @@ export default defineComponent({
 
 <template>
   <div class="cards">
-    <IngredientCard class="cards__card" :ingredient="step.input" />
+    <CardIngredient class="cards__card" :ingredient="step.input" />
     <IconRightArrow class="cards__arrow" />
-    <UtensilCard class="cards__card" :utensil="step.utensil" />
+    <CardUtensil class="cards__card" :utensil="step.utensil" />
     <IconRightArrow class="cards__arrow" />
-    <IngredientCard class="cards__card" :ingredient="step.output" />
+    <CardIngredient class="cards__card" :ingredient="step.output" />
   </div>
 </template>
 

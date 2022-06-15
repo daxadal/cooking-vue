@@ -1,14 +1,14 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref } from "vue";
 
-import CountCard from "@/components/CountCard.vue";
+import CardCount from "@/components/CardCount.vue";
 import { ApiInfo } from "@/resources/constants-types";
 import { getStatus } from "@/services/api/routes";
 import { getScreenType, ScreenType } from "@/services/screen-size";
 
 export default defineComponent({
   components: {
-    CountCard,
+    CardCount,
   },
   setup() {
     const apiInfo = ref<ApiInfo>();
@@ -71,16 +71,16 @@ export default defineComponent({
   </div>
   <div class="cards" v-if="apiInfo">
     <router-link class="cards__card" to="/ingredients">
-      <CountCard title="Ingredients" :count="apiInfo?.stats.ingredients" />
+      <CardCount title="Ingredients" :count="apiInfo?.stats.ingredients" />
     </router-link>
     <router-link class="cards__card" to="/utensils">
-      <CountCard title="Utensils" :count="apiInfo?.stats.utensils" />
+      <CardCount title="Utensils" :count="apiInfo?.stats.utensils" />
     </router-link>
     <router-link class="cards__card" to="/steps">
-      <CountCard title="Steps" :count="apiInfo?.stats.steps" />
+      <CardCount title="Steps" :count="apiInfo?.stats.steps" />
     </router-link>
     <router-link class="cards__card" to="/recipes">
-      <CountCard title="Recipes" :count="apiInfo?.stats.recipes" />
+      <CardCount title="Recipes" :count="apiInfo?.stats.recipes" />
     </router-link>
   </div>
 </template>

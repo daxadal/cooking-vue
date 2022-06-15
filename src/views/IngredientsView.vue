@@ -2,8 +2,8 @@
 import { ref, onMounted, defineComponent, computed } from "vue";
 import { RouterLink } from "vue-router";
 
-import InformationModal, { ModalType } from "@/components/InformationModal.vue";
-import IngredientCard from "@/components/IngredientCard.vue";
+import ModalInformation, { ModalType } from "@/components/ModalInformation.vue";
+import CardIngredient from "@/components/CardIngredient.vue";
 
 import { Ingredient } from "@/resources/constants-types";
 import { getAllIngredients } from "@/services/api/routes";
@@ -11,7 +11,7 @@ import { getScreenType, ScreenType } from "@/services/screen-size";
 import BaseButton from "@/components/BaseButton.vue";
 
 export default defineComponent({
-  components: { IngredientCard, InformationModal, BaseButton, RouterLink },
+  components: { CardIngredient, ModalInformation, BaseButton, RouterLink },
   setup() {
     const ingredients = ref<Ingredient[]>([]);
 
@@ -67,11 +67,11 @@ export default defineComponent({
       :to="`/ingredients/${ingredient.id}`"
       class="cards__link"
     >
-      <IngredientCard :ingredient="ingredient" class="cards__card" />
+      <CardIngredient :ingredient="ingredient" class="cards__card" />
     </RouterLink>
   </div>
 
-  <InformationModal
+  <ModalInformation
     v-if="isInfoVisible"
     @close="isInfoVisible = false"
     :message="modalMessage"
