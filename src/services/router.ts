@@ -80,8 +80,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "recipes" */ "../views/RecipesView.vue"),
   },
-
   // #endregion --- Recipes ---
+
+  // #region --- 404 ---
+  { path: "/:any(.*)", redirect: "/" },
+  // #endregion --- 404 ---
 ];
 
 const router = createRouter({
