@@ -157,8 +157,8 @@ export default defineComponent({
         />
         <BaseSelector
           id="type-selector"
-          tag="Type: "
           v-model="ingredientData.type"
+          tag="Type: "
         >
           <option value="">(Select an option)</option>
           <option :value="IngredientType.START">Raw ingredient</option>
