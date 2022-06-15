@@ -71,6 +71,15 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "steps" */ "../views/StepsView.vue"),
   },
+  {
+    path: "/steps/new",
+    name: "Step creation",
+    component: () =>
+      import(
+        /* webpackChunkName: "steps-new" */ "../views/StepCreationView.vue"
+      ),
+  },
+  { path: "/steps/:any(.*)", redirect: "/steps" },
   // #endregion --- Steps ---
 
   // #region --- Recipes ---

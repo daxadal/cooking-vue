@@ -20,7 +20,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .divider {
   background-color: var(--neutral-detail);
-  margin: 0.5rem;
+  margin: 16px;
 
   &--horizontal {
     display: block;
@@ -28,6 +28,7 @@ export default defineComponent({
     width: 100%;
     min-width: 100%;
     height: 1px;
+    align-self: center;
   }
 
   &--vertical {

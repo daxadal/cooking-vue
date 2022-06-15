@@ -157,17 +157,17 @@ export default defineComponent({
         />
         <BaseSelector
           id="type-selector"
-          tag="Type: "
           v-model="ingredientData.type"
+          tag="Type: "
         >
-          <option value="">(Select an option)</option>
+          <option value="" disabled>(Select an option)</option>
           <option :value="IngredientType.START">Raw ingredient</option>
           <option :value="IngredientType.MID">Half-cooked food</option>
           <option :value="IngredientType.END">Finished product</option>
         </BaseSelector>
         <BaseButton tag="submit" value="Update" />
       </form>
-      <BaseDivider class="container__right__divider" />
+      <BaseDivider />
       <BaseButton
         tag="button"
         :color="Colors.RED"
@@ -226,10 +226,6 @@ export default defineComponent({
       display: flex;
       flex-direction: column;
       gap: 16px;
-    }
-
-    &__divider {
-      align-self: center;
     }
   }
 }
