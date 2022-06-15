@@ -2,13 +2,14 @@
 import { ref, onMounted, defineComponent } from "vue";
 
 import ModalInformation, { ModalType } from "@/components/ModalInformation.vue";
+import BaseButton from "@/components/BaseButton.vue";
 import CarrouselStep from "@/components/CarrouselStep.vue";
 
 import { DetailedStep } from "@/resources/constants-types";
 import { getAllDetailedSteps } from "@/services/api/routes";
 
 export default defineComponent({
-  components: { CarrouselStep, ModalInformation },
+  components: { BaseButton, CarrouselStep, ModalInformation },
   setup() {
     const steps = ref<DetailedStep[]>([]);
 
@@ -44,6 +45,9 @@ export default defineComponent({
 <template>
   <div class="title">
     <h1>Steps</h1>
+    <div class="title__buttons">
+      <BaseButton tag="router-link" to="/steps/new"> Create new </BaseButton>
+    </div>
   </div>
   <div>
     <CarrouselStep
@@ -66,5 +70,15 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &__buttons {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 32px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 }
 </style>
