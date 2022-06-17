@@ -55,7 +55,6 @@ export default defineComponent({
       v-for="step in steps"
       :key="`${step.input.id}-${step.utensil.id}-${step.output.id}`"
       :to="`/steps/${step.input.id}-${step.utensil.id}-${step.output.id}`"
-      class="cards__link"
     >
       <CarrouselStep :step="step" />
     </RouterLink>
