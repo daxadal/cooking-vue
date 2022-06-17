@@ -1,5 +1,6 @@
 <script lang="ts">
 import { ref, onMounted, defineComponent } from "vue";
+import { RouterLink } from "vue-router";
 
 import ModalInformation, { ModalType } from "@/components/ModalInformation.vue";
 import BaseButton from "@/components/BaseButton.vue";
@@ -9,7 +10,7 @@ import { DetailedStep } from "@/resources/constants-types";
 import { getAllDetailedSteps } from "@/services/api/routes";
 
 export default defineComponent({
-  components: { BaseButton, CarrouselStep, ModalInformation },
+  components: { BaseButton, CarrouselStep, ModalInformation, RouterLink },
   setup() {
     const steps = ref<DetailedStep[]>([]);
 
@@ -50,11 +51,13 @@ export default defineComponent({
     </div>
   </div>
   <div>
-    <CarrouselStep
+    <RouterLink
       v-for="step in steps"
-      :key="`${step.input.id}-${step.output.id}`"
-      :step="step"
-    />
+      :key="`${step.input.id}-${step.utensil.id}-${step.output.id}`"
+      :to="`/steps/${step.input.id}-${step.utensil.id}-${step.output.id}`"
+    >
+      <CarrouselStep :step="step" />
+    </RouterLink>
   </div>
 
   <ModalInformation

@@ -11,7 +11,7 @@ import {
   UtensilArray,
 } from "@/resources/constants-types";
 
-import { del, delWithBody, get, post, put } from "./http-methods";
+import { del, get, post, put } from "./http-methods";
 
 // #region --- Default ---
 
@@ -95,13 +95,27 @@ export const getAllDetailedSteps = async (): Promise<DetailedStep[]> => {
   return DetailedStepArray.parse(response);
 };
 
+export const getDetailedStep = async ({
+  input,
+  utensil,
+  output,
+}: SimpleStep): Promise<DetailedStep> => {
+  const response = await get(
+    `/steps/${input}-${utensil}-${output}?detailed=true`
+  );
+  return DetailedStep.parse(response);
+};
+
 export const createStep = async (step: SimpleStep): Promise<DetailedStep> => {
   const response = await post("/steps", step);
   return DetailedStep.parse(response);
 };
 
-export const deleteStep = async (step: SimpleStep): Promise<void> =>
-  delWithBody("/steps", step);
+export const deleteStep = async ({
+  input,
+  utensil,
+  output,
+}: SimpleStep): Promise<void> => del(`/steps/${input}-${utensil}-${output}`);
 
 // #endregion --- Steps ---
 
