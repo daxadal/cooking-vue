@@ -5,7 +5,7 @@ import {
   unsetAuthenticationToken,
 } from "@/services/token";
 
-const DOMAIN = "http://localhost:3000"; // TODO: Make it configurable
+const DOMAIN = process.env.VUE_APP_BACK_URL as string;
 
 function hasJsonContent(response: Response) {
   const contentType = response.headers.get("Content-Type");
