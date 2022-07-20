@@ -1,0 +1,121 @@
+[
+  {
+    "input": { "id": 101, "name": "Liquid dough", "type": "start" },
+    "utensil": { "id": 1, "name": "Stand mixer", "waitTimeInMillis": 2000 },
+    "output": { "id": 103, "name": "Raw muffin", "type": "mid" }
+  },
+  {
+    "input": { "id": 102, "name": "Dense dough", "type": "start" },
+    "utensil": { "id": 3, "name": "Rolling pin", "waitTimeInMillis": 1500 },
+    "output": { "id": 104, "name": "Raw croissant", "type": "mid" }
+  },
+  {
+    "input": { "id": 104, "name": "Raw croissant", "type": "mid" },
+    "utensil": {
+      "id": 4,
+      "name": "Chocolate sprinkler",
+      "waitTimeInMillis": 1000
+    },
+    "output": { "id": 108, "name": "Raw chocolate croissant", "type": "mid" }
+  },
+  {
+    "input": { "id": 103, "name": "Raw muffin", "type": "mid" },
+    "utensil": {
+      "id": 4,
+      "name": "Chocolate sprinkler",
+      "waitTimeInMillis": 1000
+    },
+    "output": { "id": 105, "name": "Raw chocolate muffin", "type": "mid" }
+  },
+  {
+    "input": { "id": 104, "name": "Raw croissant", "type": "mid" },
+    "utensil": {
+      "id": 5,
+      "name": "Banana sprinkler",
+      "waitTimeInMillis": 1000
+    },
+    "output": { "id": 120, "name": "Raw banana croissant", "type": "mid" }
+  },
+  {
+    "input": { "id": 103, "name": "Raw muffin", "type": "mid" },
+    "utensil": {
+      "id": 5,
+      "name": "Banana sprinkler",
+      "waitTimeInMillis": 1000
+    },
+    "output": { "id": 119, "name": "Raw banana muffin", "type": "mid" }
+  },
+  {
+    "input": { "id": 103, "name": "Raw muffin", "type": "mid" },
+    "utensil": { "id": 2, "name": "Oven", "waitTimeInMillis": 5000 },
+    "output": { "id": 106, "name": "Muffin", "type": "end" }
+  },
+  {
+    "input": { "id": 104, "name": "Raw croissant", "type": "mid" },
+    "utensil": { "id": 2, "name": "Oven", "waitTimeInMillis": 5000 },
+    "output": { "id": 107, "name": "Croissant", "type": "end" }
+  },
+  {
+    "input": { "id": 105, "name": "Raw chocolate muffin", "type": "mid" },
+    "utensil": { "id": 2, "name": "Oven", "waitTimeInMillis": 5000 },
+    "output": { "id": 110, "name": "Chocolate muffin", "type": "end" }
+  },
+  {
+    "input": { "id": 108, "name": "Raw chocolate croissant", "type": "mid" },
+    "utensil": { "id": 2, "name": "Oven", "waitTimeInMillis": 5000 },
+    "output": { "id": 109, "name": "Chocolate croissant", "type": "end" }
+  },
+  {
+    "input": { "id": 119, "name": "Raw banana muffin", "type": "mid" },
+    "utensil": { "id": 2, "name": "Oven", "waitTimeInMillis": 5000 },
+    "output": { "id": 122, "name": "Banana muffin", "type": "end" }
+  },
+  {
+    "input": { "id": 120, "name": "Raw banana croissant", "type": "mid" },
+    "utensil": { "id": 2, "name": "Oven", "waitTimeInMillis": 5000 },
+    "output": { "id": 121, "name": "Banana croissant", "type": "end" }
+  },
+  {
+    "input": { "id": 111, "name": "Egg", "type": "start" },
+    "utensil": { "id": 6, "name": "Pan", "waitTimeInMillis": 1250 },
+    "output": { "id": 112, "name": "Fried egg", "type": "end" }
+  },
+  {
+    "input": { "id": 111, "name": "Egg", "type": "start" },
+    "utensil": { "id": 1, "name": "Stand mixer", "waitTimeInMillis": 2000 },
+    "output": { "id": 113, "name": "Raw pancake", "type": "mid" }
+  },
+  {
+    "input": { "id": 113, "name": "Raw pancake", "type": "mid" },
+    "utensil": { "id": 6, "name": "Pan", "waitTimeInMillis": 1250 },
+    "output": { "id": 114, "name": "Pancake", "type": "end" }
+  },
+  {
+    "input": { "id": 113, "name": "Raw pancake", "type": "mid" },
+    "utensil": {
+      "id": 5,
+      "name": "Banana sprinkler",
+      "waitTimeInMillis": 1000
+    },
+    "output": { "id": 115, "name": "Raw banana pancake", "type": "mid" }
+  },
+  {
+    "input": { "id": 115, "name": "Raw banana pancake", "type": "mid" },
+    "utensil": { "id": 6, "name": "Pan", "waitTimeInMillis": 1250 },
+    "output": { "id": 116, "name": "Banana pancake", "type": "end" }
+  },
+  {
+    "input": { "id": 113, "name": "Raw pancake", "type": "mid" },
+    "utensil": {
+      "id": 4,
+      "name": "Chocolate sprinkler",
+      "waitTimeInMillis": 1000
+    },
+    "output": { "id": 117, "name": "Raw chocolate pancake", "type": "mid" }
+  },
+  {
+    "input": { "id": 117, "name": "Raw chocolate pancake", "type": "mid" },
+    "utensil": { "id": 6, "name": "Pan", "waitTimeInMillis": 1250 },
+    "output": { "id": 118, "name": "Chocolate pancake", "type": "end" }
+  }
+]
