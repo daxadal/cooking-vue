@@ -17,7 +17,7 @@ import {
   createStep,
   getAllIngredients,
   getAllUtensils,
-} from "@/services/api/routes";
+} from "@/services/api";
 import router from "@/services/router";
 
 export default defineComponent({

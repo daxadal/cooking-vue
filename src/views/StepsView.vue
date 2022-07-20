@@ -7,7 +7,7 @@ import BaseButton from "@/components/BaseButton.vue";
 import CarrouselStep from "@/components/CarrouselStep.vue";
 
 import { DetailedStep } from "@/resources/constants-types";
-import { getAllDetailedSteps } from "@/services/api/routes";
+import { getAllDetailedSteps } from "@/services/api";
 
 export default defineComponent({
   components: { BaseButton, CarrouselStep, ModalInformation, RouterLink },

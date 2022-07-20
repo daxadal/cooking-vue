@@ -4,11 +4,7 @@ import { useRoute } from "vue-router";
 
 import { Colors, Utensil } from "@/resources/constants-types";
 
-import {
-  deleteUtensil,
-  getUtensil,
-  updateUtensil,
-} from "@/services/api/routes";
+import { deleteUtensil, getUtensil, updateUtensil } from "@/services/api";
 import { getScreenType, ScreenType } from "@/services/screen-size";
 
 import BaseButton from "@/components/BaseButton.vue";

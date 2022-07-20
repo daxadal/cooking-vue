@@ -6,7 +6,7 @@ import CardUtensil from "@/components/CardUtensil.vue";
 
 import { Utensil } from "@/resources/constants-types";
 
-import { createUtensil } from "@/services/api/routes";
+import { createUtensil } from "@/services/api";
 import { getScreenType, ScreenType } from "@/services/screen-size";
 import router from "@/services/router";
 

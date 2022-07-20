@@ -4,7 +4,7 @@ import { RouterLink } from "vue-router";
 
 import CardCount from "@/components/CardCount.vue";
 import { ApiInfo } from "@/resources/constants-types";
-import { getStatus } from "@/services/api/routes";
+import { getStatus } from "@/services/api";
 import { getScreenType, ScreenType } from "@/services/screen-size";
 
 export default defineComponent({

@@ -12,7 +12,7 @@ import {
   deleteIngredient,
   getIngredient,
   updateIngredient,
-} from "@/services/api/routes";
+} from "@/services/api";
 import { getScreenType, ScreenType } from "@/services/screen-size";
 
 import BaseButton from "@/components/BaseButton.vue";
