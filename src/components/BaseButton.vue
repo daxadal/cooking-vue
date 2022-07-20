@@ -42,69 +42,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 @use "../styles/mixins.scss";
 
-@mixin setButtonType($color) {
-  background-color: $color;
-  border: 1px solid $color;
-  box-shadow: 0 2px 4px fade($color, 40%);
-
-  &:hover {
-    background-color: lighten($color, 16%);
-    border: 1px solid lighten($color, 16%);
-  }
-
-  &:active {
-    background-color: darken($color, 7%);
-    border: 1px solid darken($color, 7%);
-    box-shadow: none;
-  }
-
-  &:focus {
-    box-shadow: 0 1px 2px fade-out($color, 0.8), 0 0 0 2px fade-out($color, 0.8);
-  }
-
-  &.button--text {
-    color: $color;
-    text-shadow: none;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-  }
-
-  &.button--text:hover {
-    background-color: fade-out($color, 0.94);
-  }
-
-  &.button--text:focus {
-    box-shadow: 0 0 0 3px fade-out($color, 0.8);
-  }
-
-  &.button--text:active {
-    background-color: fade-out($color, 0.8);
-    box-shadow: none;
-  }
-}
-
-@mixin setOutlined($color) {
-  color: $color;
-  text-shadow: none;
-  background-color: transparent;
-  border: 1px solid $color;
-  box-shadow: none;
-
-  &:hover {
-    background-color: fade-out($color, 0.93);
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 3px fade-out($color, 0.8);
-  }
-
-  &:active {
-    top: 0;
-    background-color: fade-out($color, 0.85) !important;
-  }
-}
-
 .button {
   display: flex;
   align-items: center;
@@ -113,7 +50,6 @@ export default defineComponent({
   box-sizing: border-box;
   border: 1px solid;
   border-radius: 4px;
-  outline: none;
   box-shadow: none;
 
   max-width: 100%;
