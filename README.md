@@ -12,7 +12,13 @@ Create **recipes** by creating the individual **steps** necessary to transform t
 
 # Availability
 
+## Fully functional (connected to the Cooking API server)
+
 _(This server is not currently being served on the Internet)_
+
+## Mock page (API calls mocked)
+
+- https://egarciadececa.gitlab.io/cooking-vue/#/
 
 # Previous steps
 
