@@ -13,11 +13,7 @@ import {
   Utensil,
 } from "@/resources/constants-types";
 
-import {
-  createStep,
-  getAllIngredients,
-  getAllUtensils,
-} from "@/services/api";
+import { createStep, getAllIngredients, getAllUtensils } from "@/services/api";
 import router from "@/services/router";
 
 export default defineComponent({
