@@ -3,7 +3,7 @@ import { computed, defineComponent, onMounted, ref } from "vue";
 import { RouterLink } from "vue-router";
 
 import CardCount from "@/components/CardCount.vue";
-import { ApiInfo } from "@/resources/constants-types";
+import { ApiInfo, Environment } from "@/resources/constants-types";
 import { getStatus } from "@/services/api";
 import { getScreenType, ScreenType } from "@/services/screen-size";
 
@@ -42,6 +42,7 @@ export default defineComponent({
     });
 
     return {
+      Environment,
       columnStyle,
       apiInfo,
 
@@ -66,11 +67,30 @@ export default defineComponent({
   <div class="status">
     <h2>API status:</h2>
 
-    <p>{{ apiInfo ? "Connected" : "Not connected" }}</p>
+    <p>
+      {{ apiInfo ? `Connected to ${apiInfo.environment}` : "Not connected" }}
+    </p>
 
-    <img v-if="apiInfo" class="status__image" src="@/assets/success.png" />
+    <img
+      v-if="apiInfo && apiInfo.environment === Environment.LOCAL_MOCK"
+      class="status__image"
+      src="@/assets/warning.svg"
+    />
+    <img v-else-if="apiInfo" class="status__image" src="@/assets/success.png" />
     <img v-else class="status__image" src="@/assets/error.png" />
   </div>
+  <p
+    v-if="apiInfo && apiInfo.environment === Environment.LOCAL_MOCK"
+    class="mock-explanation"
+  >
+    This environment is NOT connected to a server that provides the required
+    data and functionality. <br />
+    Instead, all API calls are mocked to return a fixed successful response that
+    mimics the shape of an actual server response. <br />
+    This allows the UI to be explored without having to put up a server. <br />
+    Because of it, user actions WILL NOT PERSIST and data between pages MAY BE
+    INCONSISTENT.
+  </p>
   <div v-if="apiInfo" class="cards">
     <RouterLink class="cards__card" to="/ingredients">
       <CardCount title="Ingredients" :count="apiInfo?.stats.ingredients" />
@@ -120,5 +140,10 @@ export default defineComponent({
     height: 24px;
     margin-top: -8px;
   }
+}
+
+.mock-explanation {
+  color: var(--red-text);
+  font-style: italic;
 }
 </style>
