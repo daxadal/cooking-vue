@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
-const { defineConfig } = require("@vue/cli-service");
 
-module.exports = defineConfig({
+module.exports = {
   publicPath: "./",
   pages: {
     index: {
@@ -17,4 +16,4 @@ module.exports = defineConfig({
       },
     },
   },
-});
+};
