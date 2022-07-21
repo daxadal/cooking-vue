@@ -2,6 +2,7 @@
 const path = require("path");
 
 module.exports = {
+  publicPath: "./",
   pages: {
     index: {
       entry: "src/main.ts",

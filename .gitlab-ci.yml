@@ -6,15 +6,48 @@ workflow:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "web"' # Run when requested manually
       when: always
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' # Run on merge request
       when: always
     - when: never # Otherwise -> Don't pipeline
 
 stages:
   - build
+  - deploy
 
-build-dev:
+compile:
   stage: build
   script:
+    - echo "Pipeline triggered by '$CI_PIPELINE_SOURCE'"
     - npm ci
     - npm run build
+
+compile-mocked:
+  stage: build
+  cache:
+    paths:
+      - dist/
+    policy: push
+  script:
+    - echo "Pipeline triggered by '$CI_PIPELINE_SOURCE'"
+    - npm ci
+    - npm run build:mocked
+
+pages:
+  stage: deploy
+  cache:
+    paths:
+      - dist/
+    policy: pull
+  script:
+    - mkdir .public
+    - cp -r dist/* .public
+    - rm -rf public
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' # Run on merge request

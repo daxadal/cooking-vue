@@ -16,6 +16,7 @@ export enum Colors {
 }
 
 export enum Environment {
+  LOCAL_MOCK = "LOCAL_MOCK",
   PROD = "PROD",
   DEV = "DEV",
 }

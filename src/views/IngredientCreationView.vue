@@ -6,7 +6,7 @@ import CardIngredient from "@/components/CardIngredient.vue";
 
 import { Ingredient, IngredientType } from "@/resources/constants-types";
 
-import { createIngredient } from "@/services/api/routes";
+import { createIngredient } from "@/services/api";
 import { getScreenType, ScreenType } from "@/services/screen-size";
 import router from "@/services/router";
 

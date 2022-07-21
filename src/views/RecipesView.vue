@@ -5,7 +5,7 @@ import ModalInformation, { ModalType } from "@/components/ModalInformation.vue";
 import CarrouselRecipe from "@/components/CarrouselRecipe.vue";
 
 import { DetailedRecipe } from "@/resources/constants-types";
-import { getAllDetailedRecipes } from "@/services/api/routes";
+import { getAllDetailedRecipes } from "@/services/api";
 
 export default defineComponent({
   components: { CarrouselRecipe, ModalInformation },

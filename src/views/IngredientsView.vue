@@ -6,7 +6,7 @@ import ModalInformation, { ModalType } from "@/components/ModalInformation.vue";
 import CardIngredient from "@/components/CardIngredient.vue";
 
 import { Ingredient } from "@/resources/constants-types";
-import { getAllIngredients } from "@/services/api/routes";
+import { getAllIngredients } from "@/services/api";
 import { getScreenType, ScreenType } from "@/services/screen-size";
 import BaseButton from "@/components/BaseButton.vue";
 

@@ -10,7 +10,7 @@ import CarrouselStep from "@/components/CarrouselStep.vue";
 
 import { Colors, DetailedStep } from "@/resources/constants-types";
 
-import { deleteStep, getDetailedStep } from "@/services/api/routes";
+import { deleteStep, getDetailedStep } from "@/services/api";
 import router from "@/services/router";
 
 type VoidOp = () => void;
