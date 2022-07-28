@@ -10,6 +10,10 @@ workflow:
       when: always
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' # Run on merge request
       when: always
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_OPEN_MERGE_REQUESTS' # Avoid duplicated pipelines
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH' # Run on branch push
+      when: always
     - when: never # Otherwise -> Don't pipeline
 
 stages:
@@ -18,6 +22,11 @@ stages:
 
 compile:
   stage: build
+  cache:
+    key: development
+    paths:
+      - dist/
+    policy: push
   script:
     - echo "Pipeline triggered by '$CI_PIPELINE_SOURCE'"
     - npm ci
@@ -26,6 +35,7 @@ compile:
 compile-mocked:
   stage: build
   cache:
+    key: mocked
     paths:
       - dist/
     policy: push
@@ -37,6 +47,7 @@ compile-mocked:
 pages:
   stage: deploy
   cache:
+    key: mocked
     paths:
       - dist/
     policy: pull
@@ -50,4 +61,31 @@ pages:
       - public
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: on_success
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' # Run on merge request
+      when: on_success
+    - if: '$CI_OPEN_MERGE_REQUESTS'
+      when: on_success
+    - when: manual
+      allow_failure: true
+
+deploy-to-server:
+  stage: deploy
+  image: instrumentisto/rsync-ssh:alpine
+  cache:
+    key: development
+    paths:
+      - dist/
+    policy: pull
+  environment:
+    name: development
+  script:
+    - cp $SERVER_KEY server_key
+    - ./deploy-pipeline.sh
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      when: on_success
+    - if: '$CI_OPEN_MERGE_REQUESTS'
+      when: on_success
+    - when: manual
+      allow_failure: true
