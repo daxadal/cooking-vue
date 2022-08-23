@@ -14,7 +14,8 @@ Create **recipes** by creating the individual **steps** necessary to transform t
 
 ## Fully functional (connected to the Cooking API server)
 
-_(This server is not currently being served on the Internet)_
+- https://cooking-vue.daxadal.tk/#/
+- https://cooking-vue.egarciadececa.tk/#/
 
 ## Mock page (API calls mocked)
 
